@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>María Cecilia Reyes, Ph.D. — Digital Humanist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0a0a0a; --white: #ffffff; --accent: #0047FF;
+      --accent-light: #eaf0ff; --gray: #888; --light-gray: #f5f5f5;
+      --border: #e2e2e2;
+      --font-serif: 'EB Garamond', Georgia, serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--white); color: var(--black); font-family: var(--font-serif); font-size: 18px; line-height: 1.65; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 3rem; background: var(--white); border-bottom: 1px solid var(--border); }
+    .nav-name { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+    .nav-toggle { display: flex; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; background: none; border: none; padding: 0.3rem; z-index: 201; }
+    .nav-toggle span { display: block; width: 22px; height: 1.5px; background: var(--black); transition: transform 0.25s, opacity 0.25s; transform-origin: center; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-dropdown { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 199; background: var(--white); display: flex; flex-direction: column; justify-content: center; padding: 6rem 3rem 3rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .nav-dropdown.open { opacity: 1; pointer-events: all; }
+    .nav-dropdown ul { list-style: none; }
+    .nav-dropdown li { border-bottom: 1px solid var(--border); }
+    .nav-dropdown a { display: flex; align-items: baseline; gap: 1.2rem; padding: 1.1rem 0; font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 400; letter-spacing: -0.02em; text-decoration: none; color: var(--black); transition: color 0.2s; }
+    .nav-dropdown a:hover { color: var(--accent); }
+    .nav-dropdown a:hover .nav-item-num { color: var(--accent); }
+    .nav-item-num { font-family: var(--font-mono); font-size: 0.6rem; color: var(--gray); letter-spacing: 0.1em; align-self: center; transition: color 0.2s; }
+    .nav-dropdown-foot { margin-top: auto; padding-top: 2rem; display: flex; gap: 2rem; }
+    .nav-dropdown-foot a { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--gray); transition: color 0.2s; }
+    .nav-dropdown-foot a:hover { color: var(--accent); }
+
+    /* HERO */
+    #home { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 60px; border-bottom: 1px solid var(--border); }
+    .hero-left { display: flex; flex-direction: column; justify-content: flex-end; padding: 5rem 3rem; border-right: 1px solid var(--border); }
+    .hero-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+    .hero-name { font-size: clamp(2.8rem, 5vw, 4.8rem); font-weight: 400; line-height: 1.08; letter-spacing: -0.01em; }
+    .hero-name em { font-style: italic; color: var(--accent); }
+    .hero-right { display: flex; flex-direction: column; justify-content: flex-end; padding: 5rem 3rem; }
+    .hero-tagline { font-size: 1.15rem; color: var(--gray); max-width: 380px; margin-bottom: 2.5rem; font-style: italic; }
+    .hero-descriptor { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); }
+    .hero-descriptor span { display: block; border-top: 1px solid var(--border); padding-top: 0.6rem; margin-top: 0.6rem; }
+
+    /* SECTION BASE */
+    section { padding: 5rem 3rem; border-top: 1px solid var(--border); }
+    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3rem; }
+    .section-number { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.1em; }
+    .section-title { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 400; letter-spacing: -0.01em; }
+
+    /* FILTER BAR */
+    .filter-bar { display: flex; gap: 0; flex-wrap: wrap; border: 1px solid var(--border); width: fit-content; }
+    .filter-btn { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; background: none; border: none; padding: 0.6rem 1.2rem; cursor: pointer; color: var(--gray); border-right: 1px solid var(--border); transition: background 0.15s, color 0.15s; }
+    .filter-btn:last-child { border-right: none; }
+    .filter-btn:hover { background: var(--accent-light); color: var(--accent); }
+    .filter-btn.active { background: var(--accent); color: var(--white); }
+    .view-toggle { display: flex; gap: 0.6rem; align-items: center; }
+    .view-btn { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; background: none; border: 1px solid var(--border); padding: 0.4rem 0.8rem; cursor: pointer; color: var(--gray); transition: all 0.15s; }
+    .view-btn.active { border-color: var(--accent); color: var(--accent); }
+    .projects-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem; }
+
+    /* PROJECTS GRID */
+    .projects-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+    .project-card { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.18s; overflow: hidden; }
+    .project-card.hidden { display: none; }
+    .project-card:hover { background: var(--accent-light); }
+    .project-card:hover .project-title { color: var(--accent); }
+    .card-image { width: 100%; aspect-ratio: 4/3; background: var(--light-gray); overflow: hidden; }
+    .card-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+    .project-card:hover .card-image img { transform: scale(1.04); }
+    .card-image-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--light-gray); }
+    .card-image-placeholder svg { opacity: 0.15; }
+    .card-body { padding: 1.2rem 1.2rem 1.4rem; }
+    .project-tag { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+    .project-title { font-size: 0.95rem; font-weight: 500; line-height: 1.3; transition: color 0.18s; }
+    .project-year { font-family: var(--font-mono); font-size: 0.54rem; color: var(--gray); margin-top: 0.6rem; }
+    .card-hint { font-family: var(--font-mono); font-size: 0.5rem; color: var(--accent); letter-spacing: 0.08em; margin-top: 0.5rem; opacity: 0; transition: opacity 0.18s; }
+    .project-card:hover .card-hint { opacity: 1; }
+    .projects-grid.gallery-view { grid-template-columns: repeat(4, 1fr); }
+    .projects-grid.gallery-view .card-image { aspect-ratio: 16/10; }
+
+    /* PROJECT MODAL */
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.45); backdrop-filter: blur(4px); align-items: flex-start; justify-content: center; padding: 80px 2rem 2rem; overflow-y: auto; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: var(--white); border: 1px solid var(--border); max-width: 680px; width: 100%; position: relative; animation: modalIn 0.22s ease; margin-bottom: 2rem; }
+    @keyframes modalIn { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+    .modal-close { position: absolute; top: 1rem; right: 1.2rem; background: none; border: none; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); cursor: pointer; transition: color 0.2s; z-index: 2; }
+    .modal-close:hover { color: var(--accent); }
+    .modal-media { width: 100%; aspect-ratio: 16/9; background: var(--light-gray); overflow: hidden; }
+    .modal-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .modal-media iframe { width: 100%; height: 100%; border: none; display: block; }
+    .modal-media-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .modal-media-placeholder svg { opacity: 0.12; }
+    .modal-body { padding: 2rem 2.5rem 2.5rem; }
+    .modal-tag { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; }
+    .modal-title { font-size: 1.8rem; font-weight: 400; line-height: 1.2; margin-bottom: 0.3rem; }
+    .modal-meta-row { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 1.2rem 0 1.6rem; }
+    .modal-meta-cell { padding: 0.7rem 1.2rem 0.7rem 0; margin-right: 1.2rem; }
+    .modal-meta-label { font-family: var(--font-mono); font-size: 0.56rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray); display: block; margin-bottom: 0.2rem; }
+    .modal-meta-value { font-family: var(--font-mono); font-size: 0.68rem; color: var(--black); }
+    .modal-desc { font-size: 1.05rem; color: #333; line-height: 1.75; font-style: normal; }
+    .modal-links { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.8rem; }
+    .modal-ext-link { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-decoration: none; border: 1px solid var(--accent); padding: 0.45rem 0.9rem; transition: background 0.15s, color 0.15s; }
+    .modal-ext-link:hover { background: var(--accent); color: var(--white); }
+
+    /* PUBLICATIONS */
+    .pub-tabs { display: flex; gap: 0; border: 1px solid var(--border); width: fit-content; margin-bottom: 2.5rem; }
+    .pub-tab { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; background: none; border: none; border-right: 1px solid var(--border); padding: 0.55rem 1rem; cursor: pointer; color: var(--gray); transition: background 0.15s, color 0.15s; }
+    .pub-tab:last-child { border-right: none; }
+    .pub-tab.active { background: var(--accent); color: var(--white); }
+    .pub-section { display: none; max-width: 820px; }
+    .pub-section.active { display: block; }
+    .pub-item { display: grid; grid-template-columns: 72px 1fr; gap: 1.5rem; padding: 1.6rem 0; border-bottom: 1px solid var(--border); align-items: start; }
+    .pub-year { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); padding-top: 0.2rem; }
+    .pub-title { font-size: 1.05rem; font-style: italic; margin-bottom: 0.3rem; line-height: 1.4; }
+    .pub-meta { font-family: var(--font-mono); font-size: 0.6rem; color: var(--gray); letter-spacing: 0.05em; }
+    .pub-link { font-family: var(--font-mono); font-size: 0.6rem; color: var(--accent); text-decoration: none; letter-spacing: 0.06em; display: inline-block; margin-top: 0.5rem; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+    .pub-link:hover { border-color: var(--accent); }
+
+    /* TEACHING */
+    #teaching { padding: 5rem 3rem; border-top: 1px solid var(--border); }
+    .teaching-sub { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+    .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); margin-bottom: 4rem; }
+    .course-card { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.8rem 1.6rem; cursor: pointer; transition: background 0.18s; }
+    .course-card:hover { background: var(--accent-light); }
+    .course-card:hover .course-title { color: var(--accent); }
+    .course-type { font-family: var(--font-mono); font-size: 0.57rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .course-title { font-size: 1.05rem; font-weight: 500; line-height: 1.3; margin-bottom: 0.4rem; transition: color 0.18s; }
+    .course-meta { font-family: var(--font-mono); font-size: 0.57rem; color: var(--gray); letter-spacing: 0.06em; }
+    .course-hint { font-family: var(--font-mono); font-size: 0.52rem; color: var(--accent); letter-spacing: 0.08em; margin-top: 0.7rem; opacity: 0; transition: opacity 0.18s; }
+    .course-card:hover .course-hint { opacity: 1; }
+    .course-modal-desc { font-size: 1.05rem; color: #333; font-style: normal; line-height: 1.75; margin-bottom: 1.8rem; }
+    .course-students-label { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+    .course-student-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+    .course-student-item { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; }
+    .course-student-img { width: 100%; aspect-ratio: 1/1; background: var(--light-gray); overflow: hidden; }
+    .course-student-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .course-student-img-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .course-student-img-ph svg { opacity: 0.12; }
+    .course-student-caption { padding: 0.6rem 0.7rem; }
+    .course-student-name { font-family: var(--font-mono); font-size: 0.54rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--black); }
+    .course-student-note { font-family: var(--font-mono); font-size: 0.5rem; color: var(--gray); margin-top: 0.15rem; }
+    .lab-block { border: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 0; cursor: pointer; transition: background 0.18s; }
+    .lab-block:hover { background: var(--accent-light); }
+    .lab-left { padding: 2.2rem 2.5rem; border-right: 1px solid var(--border); }
+    .lab-right { padding: 2.2rem 2.5rem; display: flex; flex-direction: column; justify-content: flex-end; }
+    .lab-eyebrow { font-family: var(--font-mono); font-size: 0.57rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; }
+    .lab-name { font-size: 1.4rem; font-weight: 500; line-height: 1.2; margin-bottom: 0.3rem; transition: color 0.18s; }
+    .lab-block:hover .lab-name { color: var(--accent); }
+    .lab-tagline { font-size: 0.92rem; font-style: italic; color: var(--gray); }
+    .lab-desc { font-size: 0.92rem; color: #444; line-height: 1.65; }
+    .lab-hint { font-family: var(--font-mono); font-size: 0.55rem; color: var(--accent); letter-spacing: 0.08em; margin-top: 1rem; opacity: 0; transition: opacity 0.18s; }
+    .lab-block:hover .lab-hint { opacity: 1; }
+
+    /* PRESS + EVENTS */
+    #chronicle { padding: 5rem 3rem; border-top: 1px solid var(--border); }
+    .chronicle-layout { display: grid; grid-template-columns: 1fr 460px; gap: 0; }
+    .chronicle-main { padding-right: 3rem; border-right: 1px solid var(--border); }
+    .chronicle-aside { padding-left: 2.5rem; }
+    .press-sub { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+    .press-item { display: flex; align-items: baseline; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; }
+    .press-item:hover .press-title { color: var(--accent); }
+    .press-type-badge { font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); white-space: nowrap; flex-shrink: 0; width: 68px; }
+    .press-title { font-size: 0.95rem; font-weight: 400; line-height: 1.4; flex: 1; transition: color 0.15s; }
+    .press-meta-right { font-family: var(--font-mono); font-size: 0.52rem; color: var(--gray); white-space: nowrap; flex-shrink: 0; text-align: right; }
+    .press-arrow { font-family: var(--font-mono); font-size: 0.6rem; color: var(--accent); flex-shrink: 0; margin-left: 0.4rem; }
+    .events-sub { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+    .event-item { display: grid; grid-template-columns: 72px 1fr; gap: 1.4rem; padding: 1.4rem 0; border-bottom: 1px solid var(--border); align-items: start; text-decoration: none; color: inherit; }
+    .event-item:hover .event-title { color: var(--accent); }
+    .event-date-block { text-align: center; }
+    .event-month { font-family: var(--font-mono); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray); }
+    .event-day { font-size: 2.8rem; font-weight: 400; line-height: 1; color: var(--accent); }
+    .event-year-small { font-family: var(--font-mono); font-size: 0.52rem; color: var(--gray); }
+    .event-title { font-size: 1.05rem; font-weight: 500; margin-bottom: 0.3rem; line-height: 1.3; transition: color 0.15s; }
+    .event-venue { font-family: var(--font-mono); font-size: 0.58rem; color: var(--gray); letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+    .event-badge { display: inline-block; font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.18rem 0.45rem; border: 1px solid var(--accent); color: var(--accent); }
+    .event-link-label { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.08em; color: var(--accent); display: inline-block; margin-top: 0.5rem; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+    .event-item:hover .event-link-label { border-color: var(--accent); }
+
+    /* ABOUT */
+    #about { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; border-top: 1px solid var(--border); }
+    .about-left { padding: 5rem 3rem; border-right: 1px solid var(--border); }
+    .about-right { padding: 5rem 3rem; }
+    .about-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 2rem; }
+    .headshot-wrapper { width: 140px; height: 140px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 1.8rem; background: #f4f4f4; }
+    .headshot-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .headshot-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; }
+    .headshot-placeholder svg { opacity: 0.2; }
+    .headshot-placeholder span { font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); text-align: center; line-height: 1.8; }
+    .about-bio { font-size: 1.05rem; max-width: 500px; color: #333; }
+    .about-bio p + p { margin-top: 1.2rem; }
+    .about-links { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 2rem; }
+    .about-links a { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; transition: color 0.2s; }
+    .about-links a::before { content: '→'; color: var(--accent); }
+    .about-links a:hover { color: var(--accent); }
+    .field-row { display: flex; border-bottom: 1px solid var(--border); padding: 1rem 0; }
+    .field-label { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray); width: 130px; flex-shrink: 0; padding-top: 0.15rem; }
+    .field-value { font-size: 0.92rem; color: var(--black); }
+
+    /* CONTACT */
+    #contact { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; border-top: 1px solid var(--border); }
+    .contact-left { padding: 5rem 3rem; border-right: 1px solid var(--border); }
+    .contact-intro { font-size: 1.25rem; font-style: italic; max-width: 420px; color: #444; margin-bottom: 2.5rem; line-height: 1.5; }
+    .contact-email { font-size: 1.05rem; color: var(--black); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 1px; transition: color 0.2s; }
+    .contact-email:hover { color: var(--accent); }
+    .contact-right { padding: 5rem 3rem; display: flex; flex-direction: column; justify-content: flex-end; }
+    .social-link { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--black); display: flex; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .social-link:hover { color: var(--accent); }
+    .social-link .arrow { color: var(--accent); margin-left: auto; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 1.8rem 3rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-name { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); }
+    .footer-copy { font-family: var(--font-mono); font-size: 0.58rem; color: #ccc; }
+
+    /* LANG SWITCHER */
+    .lang-switcher { display: flex; gap: 0; border: 1px solid var(--border); flex-shrink: 0; }
+    .lang-btn { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 0.35rem 0.65rem; color: var(--gray); border-right: 1px solid var(--border); transition: background 0.15s, color 0.15s; }
+    .lang-btn:last-child { border-right: none; }
+    .lang-btn:hover { color: var(--accent); background: var(--accent-light); }
+    .lang-btn.active { background: var(--accent); color: var(--white); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1200px) { .projects-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 900px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 860px) {
+      nav { padding: 1rem 1.4rem; }
+      #home { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 6rem 1.4rem 2rem; border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-right { padding: 2rem 1.4rem 4rem; }
+      section, #teaching, #chronicle { padding: 4rem 1.4rem; }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .courses-grid { grid-template-columns: repeat(2, 1fr); }
+      .lab-block, #about, #contact { grid-template-columns: 1fr; }
+      .lab-left, .about-left, .contact-left { border-right: none; border-bottom: 1px solid var(--border); padding: 4rem 1.4rem; }
+      .about-right, .contact-right, .lab-right { padding: 4rem 1.4rem; }
+      .chronicle-layout { grid-template-columns: 1fr; }
+      .chronicle-main { padding-right: 0; border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 3rem; margin-bottom: 3rem; }
+      .chronicle-aside { padding-left: 0; }
+      .pub-item { grid-template-columns: 60px 1fr; gap: 1rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.8rem 1.4rem; }
+      .modal-body { padding: 1.5rem 1.4rem 2rem; }
+    }
+    @media (max-width: 480px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-name" href="#home">XEH REYES</a>
+  <div class="lang-switcher">
+    <a href="index.html" class="lang-btn active">EN</a>
+    <a href="index_es.html" class="lang-btn">ES</a>
+    <a href="index_it.html" class="lang-btn">IT</a>
+  </div>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Menu" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- DROPDOWN -->
+<div class="nav-dropdown" id="nav-dropdown">
+  <ul>
+    <li><a href="#projects" onclick="closeNav()"><span class="nav-item-num">01</span>Projects</a></li>
+    <li><a href="#publications" onclick="closeNav()"><span class="nav-item-num">02</span>Publications</a></li>
+    <li><a href="#teaching" onclick="closeNav()"><span class="nav-item-num">03</span>Teaching</a></li>
+    <li><a href="#chronicle" onclick="closeNav()"><span class="nav-item-num">04</span>Current</a></li>
+    <li><a href="#about" onclick="closeNav()"><span class="nav-item-num">05</span>Bio</a></li>
+    <li><a href="#contact" onclick="closeNav()"><span class="nav-item-num">06</span>Contact</a></li>
+  </ul>
+  <div class="nav-dropdown-foot">
+    <a href="/cdn-cgi/l/email-protection#c1aca0b3a8a0a2a4a2a8ada8a0b3a4b8a4b2b381a6aca0a8adefa2aeac"><span class="__cf_email__" data-cfemail="7f121e0d161e1c1a1c1613161e0d1a061a0c0d3f18121e1613511c1012">[email&#160;protected]</span></a>
+    <a href="https://orcid.org/0000-0001-8084-469X" target="_blank">ORCID</a>
+    <a href="https://scholar.google.com/citations?hl=en&user=5dFD_mgAAAAJ" target="_blank">Scholar</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div id="home">
+  <div class="hero-left">
+    <p class="hero-label">Digital Humanist · Ph.D.</p>
+    <h1 class="hero-name">María<br>Cecilia<br><em>Reyes</em></h1>
+  </div>
+  <div class="hero-right">
+    <p class="hero-tagline">Working at the intersection of narrative, immersion, and learning.</p>
+    <div class="hero-descriptor">
+      <span>Interactive Digital Narrative</span>
+      <span>Immersive Media</span>
+      <span>Digital Pedagogy</span>
+      <span>Film Theory</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal">
+    <span class="section-number">01</span>
+    <h2 class="section-title">Projects</h2>
+  </div>
+  <div class="projects-toolbar reveal">
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProjects('all',this)">All</button>
+      <button class="filter-btn" onclick="filterProjects('Interactive Narrative',this)">Interactive Narrative</button>
+      <button class="filter-btn" onclick="filterProjects('Immersive Media',this)">Immersive Media</button>
+      <button class="filter-btn" onclick="filterProjects('Documentary',this)">Documentary</button>
+      <button class="filter-btn" onclick="filterProjects('Performance',this)">Performance</button>
+      <button class="filter-btn" onclick="filterProjects('Digital Pedagogy',this)">Digital Pedagogy</button>
+      <button class="filter-btn" onclick="filterProjects('Publication',this)">Publication</button>
+    </div>
+    <div class="view-toggle">
+      <button class="view-btn active" id="grid-btn" onclick="setView('grid')">Grid</button>
+      <button class="view-btn" id="gallery-btn" onclick="setView('gallery')">Gallery</button>
+    </div>
+  </div>
+
+  <div class="projects-grid" id="projects-grid">
+
+    <div class="project-card reveal" data-category="Digital Pedagogy"
+      onclick="openModal('Digital Pedagogy','An Educator\'s Guide to Interactive Digital Narrative','2024','Editor & Co-Curator','A global, transdisciplinary, and continuously evolving collection dedicated to educators, scholars, and practitioners who teach IDN across diverse fields — storytelling, game development, journalism, AR/VR/XR, digital humanities, and more. 45 syllabi from university programs worldwide, this first edition offers a kaleidoscopic view of IDN as it solidifies into a recognized academic discipline.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/4ad1d2d5-0056-4bd5-a875-cfd65a31fe49/IDN-Book-Syllabi-1024x819.jpg',[{label:'idnsyllabi.com',url:'https://idnsyllabi.com/'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/4ad1d2d5-0056-4bd5-a875-cfd65a31fe49/IDN-Book-Syllabi-1024x819.jpg" alt="IDN Syllabi" /></div>
+      <div class="card-body">
+        <p class="project-tag">Digital Pedagogy</p>
+        <h3 class="project-title">An Educator's Guide to IDN: Syllabi from Around the World</h3>
+        <p class="project-year">2024</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Interactive Narrative"
+      onclick="openModal('Interactive Narrative','Chill Out! Interactive Cinema is not Dead!','2024','Lead Researcher & Workshop Director','A co-created interactive short film that uses a Brain-Computer Interface (BCI) — specifically the relaxation parameter of an EEG headset — to trigger the progression of the story. Developed at Universidad del Norte (Colombia) in a 3-day workshop entirely by students. Framed in interactive cinema, enactive cinema, and IDN studies.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1720982335154-DKR5VM9890GBG0CPPL6G/IMG_1239.jpeg',[{label:'View project',url:'https://www.xehreyes.net/projects/interactivecinema'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1720982335154-DKR5VM9890GBG0CPPL6G/IMG_1239.jpeg" alt="Chill Out!" /></div>
+      <div class="card-body">
+        <p class="project-tag">Interactive Narrative</p>
+        <h3 class="project-title">Chill Out! Interactive Cinema is not Dead!</h3>
+        <p class="project-year">2024</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Publication"
+      onclick="openModal('Publication','Interactive Fiction in Cinematic VR — Towards the Interactive Immersive Movie','2024','Author','A narrative model combining live-action 360° video with interactive fiction structure to create immersive and interactive narrative experiences. The book presents an epistemology of immersive interactive movies, the production workflow, and an evaluation methodology. Published by Mimesis International.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1711126599808-60DANPKMJFKHMKQSPX54/international-reyes-interactive-fiction-cinematic-virtual-reality.jpg',[{label:'Mimesis International',url:'https://mimesisinternational.com/interactive-fiction-in-cinematic-virtual-reality-towards-the-interactive-immersive-movie/'},{label:'Amazon',url:'https://www.amazon.com/Interactive-Fiction-Cinematic-Virtual-Reality/dp/8869773256'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1711126599808-60DANPKMJFKHMKQSPX54/international-reyes-interactive-fiction-cinematic-virtual-reality.jpg" alt="IFCVR Book" /></div>
+      <div class="card-body">
+        <p class="project-tag">Publication</p>
+        <h3 class="project-title">Interactive Fiction in Cinematic VR</h3>
+        <p class="project-year">2024</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Immersive Media"
+      onclick="openModal('Immersive Media','Inverted Dreaming','2022','Artist','An immersive video installation that evokes the disjointed logic of dreams. Have you ever awakened trying to reconstruct the disconnected imagery of a long dream? Inverted Dreaming attempts to build that impossible logic line — creating an experience suspended between memory and imagination.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/7482f125-3c0b-4945-a1ad-53365ddc878b/Performance+3.png',[{label:'View project',url:'https://www.xehreyes.net/projects/inverted-dreaming-6her2'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1654360386355-0GM0E7QEJQFLFNZ0X5E6/Mountains+3.png" alt="Inverted Dreaming" /></div>
+      <div class="card-body">
+        <p class="project-tag">Immersive Media</p>
+        <h3 class="project-title">Inverted Dreaming</h3>
+        <p class="project-year">2022</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Interactive Narrative"
+      onclick="openModal('Interactive Narrative','Pueblo Santo — A Cumbia Trip','2022','Creator & Director','An interactive musical experience for VR. The indigenous Amacumbié cosmogony intertwines with Colombia\'s history of violence. Pueblo Santo, where Cumbia originated, was submerged in an eternal fog after a massacre. Only the lost gaita player can bring the town back to life by playing Cumbia\'s original melody. Illustrated by Laura Ortiz. Work-in-progress.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/4037f522-3b29-4fab-b164-029b11e7798e/PuebloSanto-CumbiaTrip',[{label:'View project',url:'https://www.xehreyes.net/projects/pueblo-santo-a-cumbia-trip-b4spt'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1648667205869-YORUCV1N3S36BL5CCCT1/Screenshot+2022-03-30+at+21.46.12.png" alt="Pueblo Santo" /></div>
+      <div class="card-body">
+        <p class="project-tag">Interactive Narrative</p>
+        <h3 class="project-title">Pueblo Santo — A Cumbia Trip</h3>
+        <p class="project-year">2022</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Documentary"
+      onclick="openModal('Documentary','Same Different','2022','Director & Editor','A rare encounter between the Khoekhoegowab language and a still camera. A poetry short film that explores language, identity, and the body through the lens of an indigenous tongue that few cameras have ever met.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1651337730179-YVI1YT3K84MAJ88S8RBQ/IMG_3811.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/same-different-ggcpe'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1651337730179-YVI1YT3K84MAJ88S8RBQ/IMG_3811.jpg" alt="Same Different" /></div>
+      <div class="card-body">
+        <p class="project-tag">Documentary</p>
+        <h3 class="project-title">Same Different</h3>
+        <p class="project-year">2022</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Performance"
+      onclick="openModal('Performance','En el Principio Todo Era Cumbia','2021','Creator & Performer','A storytelling and musical performance exploring the cosmogonies of Cumbia — its meanings, instruments, songs, and dance. A journey to the pre-Columbian Caribbean coast of Colombia. Presented at Expomotricidad 2021, Universidad de Antioquia.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1633098814083-HR7R0PDQI4K5RRBMI3IS/Screenshot%2B2021-10-01%2Bat%2B16.25.14.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/cumbia-g3xyd'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1633098814083-HR7R0PDQI4K5RRBMI3IS/Screenshot%2B2021-10-01%2Bat%2B16.25.14.jpg" alt="En el Principio Todo Era Cumbia" /></div>
+      <div class="card-body">
+        <p class="project-tag">Performance</p>
+        <h3 class="project-title">En el Principio Todo Era Cumbia</h3>
+        <p class="project-year">2021</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Publication"
+      onclick="openModal('Publication','Texts of Discomfort: Interactive Storytelling Art','2021','Co-Editor','Edited with James Pope. Published by Carnegie Mellon University ETC Press. A collection arising from the ICIDS 2020 art exhibition curated around Barthes\'s concept of the Text of Bliss — interactive digital artworks that generate discomfort through form and content, inspiring radical changes in the way we perceive the world.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1639101320540-QPILSUFYLNUS5BMA8QZN/750px+Wide+-+519px+Tall.jpg',[{label:'CMU ETC Press',url:'https://press.etc.cmu.edu/index.php/product/texts-of-discomfort/'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1639101320540-QPILSUFYLNUS5BMA8QZN/750px+Wide+-+519px+Tall.jpg" alt="Texts of Discomfort Book" /></div>
+      <div class="card-body">
+        <p class="project-tag">Publication</p>
+        <h3 class="project-title">Texts of Discomfort: Interactive Storytelling Art</h3>
+        <p class="project-year">2021</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Interactive Narrative"
+      onclick="openModal('Interactive Narrative','Texts of Discomfort — ICIDS 2020 Art Exhibition','2020','Creative Co-Chair','Co-curated art exhibition for the 13th International Conference on Interactive Digital Storytelling (ICIDS 2020, Bournemouth). Gathered interactive digital artworks exploring Barthes\'s concept of the Text of Bliss: works that discomfort, unsettle assumptions, and inspire radical change in perception.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1603807532598-CTPVF6FJFRPNLQEU07EM/ArtExhibitionWroks.png',[{label:'ICIDS 2020',url:'https://icids2020.bournemouth.ac.uk/exhibition/'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1603807532598-CTPVF6FJFRPNLQEU07EM/ArtExhibitionWroks.png" alt="Texts of Discomfort Exhibition" /></div>
+      <div class="card-body">
+        <p class="project-tag">Interactive Narrative</p>
+        <h3 class="project-title">Texts of Discomfort — ICIDS 2020 Exhibition</h3>
+        <p class="project-year">2020</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Documentary"
+      onclick="openModal('Documentary','NIJOLE','2020','Screenwriter & Editor','An intimate portrait of Lithuanian/Colombian artist Nijole Sivickas and her unusual relationship with her son, philosopher and politician Antanas Mockus. Exhibited at FICCI, DOKLeipzig, DOCSBarcelona, and others.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1609175748826-XF5VF1F4K2VAFT6ZZBL9/Untitled2_1.250.1.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/nijole-xxf8z'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1609175748826-XF5VF1F4K2VAFT6ZZBL9/Untitled2_1.250.1.jpg" alt="NIJOLE" /></div>
+      <div class="card-body">
+        <p class="project-tag">Documentary</p>
+        <h3 class="project-title">NIJOLE</h3>
+        <p class="project-year">2020</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Interactive Narrative"
+      onclick="openModal('Interactive Narrative','ZENA — An Interactive VR Film','2018','Co-Creator & Screenwriter','Lorenzo, a young apprentice of Alchemy, receives a call from the future through a dream. The one choosing the path won\'t be Lorenzo — but the interactor. An interactive VR film exploring branching narrative in 360° cinematic space. Production case study published at ICIDS 2018.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623154143659-YAUYVSLVY2UHHUESIWVJ/ZENA%2BICIDS%2B%25281%2529.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/zena-2k24d'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623154143659-YAUYVSLVY2UHHUESIWVJ/ZENA%2BICIDS%2B%25281%2529.jpg" alt="ZENA" /></div>
+      <div class="card-body">
+        <p class="project-tag">Interactive Narrative</p>
+        <h3 class="project-title">ZENA — An Interactive VR Film</h3>
+        <p class="project-year">2018</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Interactive Narrative"
+      onclick="openModal('Interactive Narrative','What Would an Artist Do?','2020','Artist & Curator','A transmedia art exhibition opened at the Ceramics Museum in Mondovì, dedicated to the unusual artistic-existential approach of a contemporary artist. Produced during residency at Schloss Solitude Akademie.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591800984380-XV92K8SUXRH0ZD56CXIJ/Screen%2BShot%2B2018-11-30%2Bat%2B13.03.10.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/what-would-an-artist-do-srazy'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591800984380-XV92K8SUXRH0ZD56CXIJ/Screen%2BShot%2B2018-11-30%2Bat%2B13.03.10.jpg" alt="What Would an Artist Do" /></div>
+      <div class="card-body">
+        <p class="project-tag">Interactive Narrative</p>
+        <h3 class="project-title">What Would an Artist Do?</h3>
+        <p class="project-year">2020</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Immersive Media"
+      onclick="openModal('Immersive Media','Yona Friedman Ceramic City — VR','2021','VR Director','In 2002, architect Yona Friedman created his ideal city for the Biennale of Ceramics. This city was brought to life in VR, allowing visitors to wander through Friedman\'s utopian vision created from ceramic pieces by artists of Albissola Marina.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155137391-WSVWPI0D7T751DNHCFMW/img703%25281%2529.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/ceramic-city-vr-7f4et'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155137391-WSVWPI0D7T751DNHCFMW/img703%25281%2529.jpg" alt="Ceramic City VR" /></div>
+      <div class="card-body">
+        <p class="project-tag">Immersive Media</p>
+        <h3 class="project-title">Yona Friedman Ceramic City — VR</h3>
+        <p class="project-year">2021</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Digital Pedagogy"
+      onclick="openModal('Digital Pedagogy','Interactive MOOC','2020','Researcher & Designer','An open platform for online training enabling large-scale transfer of knowledge using the TRIS model. Developed at CNR-ITD (Italian National Research Council), designed for students who cannot physically attend school. The I-MOOC breaks sequentiality and adapts to each learner\'s path.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623142796394-42R1SMHWNA6N64HRMD11/Screenshot%2B2021-06-08%2Bat%2B10.58.41.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/interactive-mooc-zxzey'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623142796394-42R1SMHWNA6N64HRMD11/Screenshot%2B2021-06-08%2Bat%2B10.58.41.jpg" alt="Interactive MOOC" /></div>
+      <div class="card-body">
+        <p class="project-tag">Digital Pedagogy</p>
+        <h3 class="project-title">Interactive MOOC</h3>
+        <p class="project-year">2020</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Publication"
+      onclick="openModal('Publication','Come Disegnare un Corso Online','2020','Co-Author','Authored with Valeria Piras and Guglielmo Trentin. Published by Franco Angeli, Milan. A guide for both educational design and communication design of online video-based courses, born from the mutual contamination of skills across online-education and communication design.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155081375-GZ6XK2N6B4COH2N0KXHT/unsplash-image-tZc3vjPCk-Q.jpg',[{label:'Franco Angeli',url:'https://www.francoangeli.it/Libro/Come-disegnare-un-corso-online-Criteri-di-progettazione-didattica-e-della-comunicazione?Id=26822'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155081375-GZ6XK2N6B4COH2N0KXHT/unsplash-image-tZc3vjPCk-Q.jpg" alt="Come Disegnare un Corso Online" /></div>
+      <div class="card-body">
+        <p class="project-tag">Publication</p>
+        <h3 class="project-title">Come Disegnare un Corso Online</h3>
+        <p class="project-year">2020</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Documentary"
+      onclick="openModal('Documentary','7 Lune e Un Palmo di Neve','2020','Editor','A feature film following 8 pre-teenagers on a winter morning. In their moods we perceive ambiguous events, small misunderstandings, anomalies challenging everyday life. The approach of adolescence is not the point — these are moments of barely perceptible rupture.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1609175463480-E6OBWEK11SYT95R8KJ5K/Captura%2Bde%2Bpantalla%2B2020-12-28%2Ba%2Blas%2B17.59.23.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/7lune-pk6xl'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1609175463480-E6OBWEK11SYT95R8KJ5K/Captura%2Bde%2Bpantalla%2B2020-12-28%2Ba%2Blas%2B17.59.23.jpg" alt="7 Lune" /></div>
+      <div class="card-body">
+        <p class="project-tag">Documentary</p>
+        <h3 class="project-title">7 Lune e Un Palmo di Neve</h3>
+        <p class="project-year">2020</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Documentary"
+      onclick="openModal('Documentary','L\'Isola','2021','Editor','A mosaic film about the city of Taranto — which Pasolini called \"a giant chipped diamond\" — caught between an enormous urban renewal project and its contradictions. Directed by Mark Jhon Ostrowski.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1622827711748-RBADMZ19N110CS9GNJGU/Screenshot%2B2021-06-04%2Bat%2B16.07.56.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/lisola-cjc8s'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1622827711748-RBADMZ19N110CS9GNJGU/Screenshot%2B2021-06-04%2Bat%2B16.07.56.jpg" alt="L'Isola" /></div>
+      <div class="card-body">
+        <p class="project-tag">Documentary</p>
+        <h3 class="project-title">L'Isola</h3>
+        <p class="project-year">2021</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Immersive Media"
+      onclick="openModal('Immersive Media','Le Marittime Irraggiungibili: Scenari Alpini a 360°','2016','Director','A 360° interactive video project exploring the unreachable Maritime Alps. Produced during a workshop at Parco delle Alpi Marittime, Valdieri, Italy. One of the first interactive 360° documentary experiences developed in the Italian context.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1482542512692-AVPZMUOTAWGM74QHAEZ2/Asset+0',[{label:'View project',url:'https://www.xehreyes.net/projects/le-marittime-irraggiungibili-88hd8'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1482542512692-AVPZMUOTAWGM74QHAEZ2/Asset+0" alt="Le Marittime Irraggiungibili" /></div>
+      <div class="card-body">
+        <p class="project-tag">Immersive Media</p>
+        <h3 class="project-title">Le Marittime Irraggiungibili</h3>
+        <p class="project-year">2016</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Digital Pedagogy"
+      onclick="openModal('Digital Pedagogy','Who Is Behind the Cameras?','2013','Workshop Coordinator','An audiovisual workshop coordinated by Mundo Libre ONLUS–CEPAM, financed by the Consejo Nacional de Cinematografía del Ecuador. Held in Esmeraldas, Ecuador (2012–13). Teaching local communities filmmaking as a tool for self-representation and cultural agency.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591805227304-0W0Y7NHHTLKKVJCZO128/midiendo_luz.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/mundolibre-y5kzx'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591805227304-0W0Y7NHHTLKKVJCZO128/midiendo_luz.jpg" alt="Who is behind the cameras" /></div>
+      <div class="card-body">
+        <p class="project-tag">Digital Pedagogy</p>
+        <h3 class="project-title">Who Is Behind the Cameras?</h3>
+        <p class="project-year">2013</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Documentary"
+      onclick="openModal('Documentary','Amazonia 2.0','2012','Director & Editor','In Sarayaku, an Ecuadorian indigenous community uses the Internet as a tool for sovereignty. Creativity vs. arms, respect for Mother Earth vs. petroleum, communal solidarity vs. Western individualism — and the Internet as the first great network that can overturn the hierarchy.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646008809-SPSMN3L1T1WJHORJ0QFL/Captura+de+pantalla+2020-06-08+a+las+21.53.19.png',[{label:'View project',url:'https://www.xehreyes.net/projects/amazzonia-20-meprp'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646008809-SPSMN3L1T1WJHORJ0QFL/Captura+de+pantalla+2020-06-08+a+las+21.53.19.png" alt="Amazonia 2.0" /></div>
+      <div class="card-body">
+        <p class="project-tag">Documentary</p>
+        <h3 class="project-title">Amazonia 2.0</h3>
+        <p class="project-year">2012</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Documentary"
+      onclick="openModal('Documentary','Autunno Viola','2011','Director & Editor','In autumn 2010, the ancient balances of Viola Castello — a community among the chestnut groves of the Piedmontese Ligurian Alps — approach their end. Abandonment, globalization, and radical changes in values mark the condemnation of a centuries-old ecosystem.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646173490-XV3F9MBJ9G2ARQVPU27H/5120814296_501a77686b_b.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/autunno-viola-rgrhe'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646173490-XV3F9MBJ9G2ARQVPU27H/5120814296_501a77686b_b.jpg" alt="Autunno Viola" /></div>
+      <div class="card-body">
+        <p class="project-tag">Documentary</p>
+        <h3 class="project-title">Autunno Viola</h3>
+        <p class="project-year">2011</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-category="Documentary"
+      onclick="openModal('Documentary','Las Farotas de Talaigua','2009','Director','José Ospino Turizzo searches for the true story of Las Farotas — a traditional Colombian dance where men dress as women to remember when Spanish colonists abused their wives. A documentary about resistance, memory, and the body as archive of colonial history.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591806032468-LQ9XMVARTP9N3N7K76GG/12517_327263350767243_6590389956199639729_n.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/las-farotas-de-talaigua-ngfcs'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591806032468-LQ9XMVARTP9N3N7K76GG/12517_327263350767243_6590389956199639729_n.jpg" alt="Las Farotas de Talaigua" /></div>
+      <div class="card-body">
+        <p class="project-tag">Documentary</p>
+        <h3 class="project-title">Las Farotas de Talaigua</h3>
+        <p class="project-year">2009</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECT MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">Close ✕</button>
+    <div class="modal-media" id="modal-media"><div class="modal-media-placeholder"><svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="4" y="10" width="56" height="44" rx="1" stroke="#0a0a0a" stroke-width="1.5"/><path d="M4 44l14-14 10 10 12-16 20 20" stroke="#0a0a0a" stroke-width="1.5" stroke-linejoin="round"/></svg></div></div>
+    <div class="modal-body">
+      <p class="modal-tag" id="modal-tag"></p>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-meta-row">
+        <div class="modal-meta-cell"><span class="modal-meta-label">Year</span><span class="modal-meta-value" id="modal-year"></span></div>
+        <div class="modal-meta-cell"><span class="modal-meta-label">Role</span><span class="modal-meta-value" id="modal-role"></span></div>
+      </div>
+      <p class="modal-desc" id="modal-desc"></p>
+      <div class="modal-links" id="modal-links"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-header reveal">
+    <span class="section-number">02</span>
+    <h2 class="section-title">Publications</h2>
+  </div>
+  <div class="pub-tabs reveal">
+    <button class="pub-tab active" onclick="switchPub('books',this)">Books</button>
+    <button class="pub-tab" onclick="switchPub('chapters',this)">Chapters</button>
+    <button class="pub-tab" onclick="switchPub('papers',this)">Papers</button>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="pub-section active" id="pub-books">
+    <div class="pub-item reveal">
+      <div class="pub-year">2024</div>
+      <div>
+        <p class="pub-title">Interactive Fiction in Cinematic Virtual Reality: Towards the Interactive Immersive Movie</p>
+        <p class="pub-meta">Mimesis International · ISBN 9788869773</p>
+        <a href="https://mimesisinternational.com/interactive-fiction-in-cinematic-virtual-reality/" class="pub-link" target="_blank">↗ View book</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2024</div>
+      <div>
+        <p class="pub-title">An Educator's Guide to Interactive Digital Narrative: Syllabi and Resources from Around the World</p>
+        <p class="pub-meta">ARDIN & Carnegie Mellon University Press · Ed. Reyes, M.C. et al.</p>
+        <a href="https://idnsyllabi.com/" class="pub-link" target="_blank">↗ View book</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2021</div>
+      <div>
+        <p class="pub-title">Texts of Discomfort: Interactive Storytelling Art</p>
+        <p class="pub-meta">Carnegie Mellon University ETC Press · Eds. Reyes, M.C. & Pope, J.</p>
+        <a href="https://press.etc.cmu.edu/index.php/product/texts-of-discomfort/" class="pub-link" target="_blank">↗ View book</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2020</div>
+      <div>
+        <p class="pub-title">Come Disegnare un Corso Online: Criteri di Progettazione Didattica e della Comunicazione</p>
+        <p class="pub-meta">Franco Angeli, Milano · Piras V., Reyes M.C., Trentin G. · ISBN 9788835103059</p>
+        <a href="https://www.francoangeli.it/Libro/Come-disegnare-un-corso-online-Criteri-di-progettazione-didattica-e-della-comunicazione?Id=26822" class="pub-link" target="_blank">↗ View book</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTERS -->
+  <div class="pub-section" id="pub-chapters">
+    <div class="pub-item reveal">
+      <div class="pub-year">2023</div>
+      <div>
+        <p class="pub-title">Understanding the Authoring Process</p>
+        <p class="pub-meta">In Hargood et al., The Authoring Problem. Springer · Kitromili, S. & Reyes, M.C.</p>
+        <a href="#" class="pub-link">↗ View chapter</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2021</div>
+      <div>
+        <p class="pub-title">De la Cinematografía a la Inmersografía</p>
+        <p class="pub-meta">Cuadernos de Cine Colombiano Nº31</p>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2021</div>
+      <div>
+        <p class="pub-title">La Forma Cinematografica della Realtà Virtuale</p>
+        <p class="pub-meta">In Migliorini & Poli, L'effimero tangibile. Ginevra Bentivoglio Editoria</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAPERS -->
+  <div class="pub-section" id="pub-papers">
+    <div class="pub-item reveal">
+      <div class="pub-year">2022</div>
+      <div>
+        <p class="pub-title">Towards a Decolonial Framework for IDN</p>
+        <p class="pub-meta">ICIDS 2022, Santa Cruz, CA · Silva, C., Reyes, M.C., & Koenitz, H. · Springer</p>
+        <a href="#" class="pub-link">↗ View paper</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2022</div>
+      <div>
+        <p class="pub-title">From Screenwriting to Space-Writing</p>
+        <p class="pub-meta">DISEGNO: A Designkultúra Folyóirata, 6(1), 86–103</p>
+        <a href="#" class="pub-link">↗ View paper</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2020</div>
+      <div>
+        <p class="pub-title">I-MOOC, un MOOC Interattivo Personalizzabile</p>
+        <p class="pub-meta">Italian Journal of Educational Technology · Dodici, S., Reyes, M.C., & Trentin, G. · doi: 10.17471/2499-4324/1154</p>
+        <a href="#" class="pub-link">↗ View paper</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2019</div>
+      <div>
+        <p class="pub-title">Combining Interactive Fiction with Cinematic Virtual Reality</p>
+        <p class="pub-meta">9th International Conference on Digital and Interactive Arts · Reyes, M.C., & Dettori, G.</p>
+        <a href="#" class="pub-link">↗ View paper</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2019</div>
+      <div>
+        <p class="pub-title">Developing a Media Hybridization Based on Interactive Narrative and Cinematic VR</p>
+        <p class="pub-meta">Ekphrasis (2067-631X), 22(2) · Reyes, M.C., & Dettori, G.</p>
+        <a href="#" class="pub-link">↗ View paper</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2019</div>
+      <div>
+        <p class="pub-title">Interactive Fiction in Cinematic Virtual Reality: An Interactive and Immersive Narrative</p>
+        <p class="pub-meta">ECHO, (1), 211–217</p>
+        <a href="#" class="pub-link">↗ View paper</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2018</div>
+      <div>
+        <p class="pub-title">Measuring User Experience on Interactive Fiction in Cinematic Virtual Reality</p>
+        <p class="pub-meta">ICIDS 2018, Dublin · Lecture Notes in Computer Science, vol 11318. Springer</p>
+        <a href="#" class="pub-link">↗ View paper</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2018</div>
+      <div>
+        <p class="pub-title">Shooting an Interactive VR Film: ZENA's Production Case Study</p>
+        <p class="pub-meta">Carnegie Mellon ETC Press · Reyes, M.C., Zampolli, S.</p>
+        <a href="#" class="pub-link">↗ View paper</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2017</div>
+      <div>
+        <p class="pub-title">An Epistemological Approach to the Creation of Interactive VR Fiction Films</p>
+        <p class="pub-meta">ICIDS 2017, Madeira · Lecture Notes in Computer Science, vol 10690. Springer</p>
+        <a href="#" class="pub-link">↗ View paper</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2017</div>
+      <div>
+        <p class="pub-title">Screenwriting Framework for an Interactive Virtual Reality Film</p>
+        <p class="pub-meta">3rd Immersive Research Network Conference iLRN · Reyes, M.C.</p>
+        <a href="http://castor.tugraz.at/doku/iLRN2017/iLRN2017OnlineProceedings.pdf" class="pub-link" target="_blank">↗ View paper</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="section-header reveal">
+    <span class="section-number">03</span>
+    <h2 class="section-title">Teaching</h2>
+  </div>
+
+  <p class="teaching-sub reveal">Courses &amp; Workshops</p>
+  <div class="courses-grid reveal">
+
+    <div class="course-card" onclick="openCourseModal('Master Course','Interactive Digital Storytelling','Università di Genova (Master Scrittura Creativa e Progettazione di Contenuti Digitali) · 2018–2019','A graduate course exploring the theory and practice of interactive digital storytelling — from branching narratives to transmedia projects. Students developed original IDN prototypes using a variety of platforms and tools.',[{name:'Student project A',note:'IDN prototype · 2019',img:''},{name:'Student project B',note:'Interactive documentary · 2019',img:''}])">
+      <p class="course-type">Master</p>
+      <h3 class="course-title">Interactive Digital Storytelling</h3>
+      <p class="course-meta">Università di Genova · 2018–2019</p>
+      <p class="course-hint">View course + student work ↗</p>
+    </div>
+
+    <div class="course-card" onclick="openCourseModal('Master Course','Interactive Editing of 360° Video','Università di Genova (Master Scrittura Creativa) · 2018–2019','A hands-on course on the production and interactive editing of 360° video, covering spatial storytelling, editing logics, and the specificities of immersive media.',[{name:'Student project A',note:'360° interactive edit · 2019',img:''}])">
+      <p class="course-type">Master</p>
+      <h3 class="course-title">Interactive Editing of 360° Video</h3>
+      <p class="course-meta">Università di Genova · 2018–2019</p>
+      <p class="course-hint">View course + student work ↗</p>
+    </div>
+
+    <div class="course-card" onclick="openCourseModal('Master Course','New Media and Museology','Università di Genova (Master Scrittura Creativa) · 2018–2019','Exploring the intersection of new media technologies and museum practices — from interactive installations to digital archives and narrative experiences in cultural heritage contexts.',[{name:'Student project A',note:'Digital museum experience · 2019',img:''}])">
+      <p class="course-type">Master</p>
+      <h3 class="course-title">New Media and Museology</h3>
+      <p class="course-meta">Università di Genova · 2018–2019</p>
+      <p class="course-hint">View course + student work ↗</p>
+    </div>
+
+    <div class="course-card" onclick="openCourseModal('Short Course','Shooting and Editing of 360° Video','Fassicomo — Scuola Grafica Genovese · 2021','A short professional course for students of the Fassicomo school covering the technical and narrative specificities of 360° video production and post-production.',[{name:'Student project A',note:'360° short film · 2021',img:''}])">
+      <p class="course-type">Short Course</p>
+      <h3 class="course-title">Shooting and Editing of 360° Video</h3>
+      <p class="course-meta">Fassicomo, Genova · 2021</p>
+      <p class="course-hint">View course + student work ↗</p>
+    </div>
+
+    <div class="course-card" onclick="openCourseModal('Short Course','Cinematic Montage Terminology','Fassicomo — Scuola Grafica Genovese · 2021','A bilingual (English–Spanish) course on cinematic montage terminology for students of audiovisual communication.',[{name:'Student project A',note:'Editing exercise · 2021',img:''}])">
+      <p class="course-type">Short Course</p>
+      <h3 class="course-title">Cinematic Montage Terminology</h3>
+      <p class="course-meta">Fassicomo, Genova · 2021</p>
+      <p class="course-hint">View course + student work ↗</p>
+    </div>
+
+    <div class="course-card" onclick="openCourseModal('Undergraduate Course','Audiovisual Narratives and New Technologies','Escuela Distrital de Artes de Barranquilla · 2014','Teaching audiovisual narrative and new media to young artists in Barranquilla\'s public arts school. Students developed short video projects exploring their city and community through the camera.',[{name:'Student project A',note:'Short documentary · 2014',img:'https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1566567284038-WTGFFV86O09USN87GFLU/1557129_10152862681767037_2868304511527261615_o.jpg'},{name:'Student project B',note:'Narrative short · 2014',img:''}])">
+      <p class="course-type">Undergraduate</p>
+      <h3 class="course-title">Audiovisual Narratives and New Technologies</h3>
+      <p class="course-meta">EDA Barranquilla · 2014</p>
+      <p class="course-hint">View course + student work ↗</p>
+    </div>
+
+    <div class="course-card" onclick="openCourseModal('Undergraduate Course','Screenwriting for Film','Escuela Distrital de Artes de Barranquilla · 2014','An introductory screenwriting course for visual arts students — covering story structure, character, dialogue, and the specificities of writing for the screen in a Colombian context.',[{name:'Student screenplay A',note:'Short film script · 2014',img:''},{name:'Student screenplay B',note:'Short film script · 2014',img:''}])">
+      <p class="course-type">Undergraduate</p>
+      <h3 class="course-title">Screenwriting for Film</h3>
+      <p class="course-meta">EDA Barranquilla · 2014</p>
+      <p class="course-hint">View course + student work ↗</p>
+    </div>
+
+    <div class="course-card" onclick="openCourseModal('Workshop','Who Is Behind the Cameras?','Mundo Libre ONLUS–CEPAM · Esmeraldas, Ecuador · 2012–2013','An audiovisual workshop financed by the Consejo Nacional de Cinematografía del Ecuador, working with local communities in Esmeraldas to teach filmmaking as a tool for self-representation and cultural sovereignty.',[{name:'Community filmmaker A',note:'Short documentary · 2013',img:'https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591805227304-0W0Y7NHHTLKKVJCZO128/midiendo_luz.jpg'}])">
+      <p class="course-type">Workshop</p>
+      <h3 class="course-title">Who Is Behind the Cameras?</h3>
+      <p class="course-meta">Esmeraldas, Ecuador · 2012–13</p>
+      <p class="course-hint">View course + student work ↗</p>
+    </div>
+
+  </div>
+
+  <!-- LAB -->
+  <div class="lab-block reveal" onclick="openCourseModal(
+    'Audiovisual Research + Creation Lab',
+    'uni5lab',
+    'Universidad del Norte · Barranquilla, Colombia',
+    'uni5lab is an audiovisual research and creation laboratory at Universidad del Norte, where students and collaborators explore the intersections of moving image, sound, and critical practice. The lab hosts workshops, screenings, and collaborative projects that bridge academic inquiry and artistic production — with a particular focus on interactive narrative, immersive media, and decolonial approaches to storytelling.',
+    [{name:'Lab project A',note:'Interactive installation · 2024',img:''},{name:'Lab project B',note:'360° narrative · 2024',img:''},{name:'Lab project C',note:'Documentary · 2023',img:''},{name:'Lab project D',note:'Performance · 2023',img:''}]
+  )">
+    <div class="lab-left">
+      <p class="lab-eyebrow">Lab Coordination</p>
+      <h3 class="lab-name">uni5lab</h3>
+      <p class="lab-tagline">Audiovisual Research + Creation Lab</p>
+    </div>
+    <div class="lab-right">
+      <p class="lab-desc">A laboratory at the intersection of moving image, sound, and critical practice — hosting workshops, screenings, and collaborative projects at Universidad del Norte, Barranquilla.</p>
+      <p class="lab-hint">View lab + starred projects ↗</p>
+    </div>
+  </div>
+</section>
+
+<!-- COURSE MODAL -->
+<div class="modal-overlay" id="course-modal-overlay" onclick="closeCourseModalOnOverlay(event)">
+  <div class="modal" id="course-modal">
+    <button class="modal-close" onclick="closeCourseModal()">Close ✕</button>
+    <div class="modal-body">
+      <p class="modal-tag" id="cm-type"></p>
+      <h2 class="modal-title" id="cm-title"></h2>
+      <p class="modal-year" id="cm-meta" style="font-family:var(--font-mono);font-size:0.65rem;color:var(--gray);margin-bottom:1.4rem;"></p>
+      <p class="course-modal-desc" id="cm-desc"></p>
+      <p class="course-students-label">★ Starred Student Projects</p>
+      <div class="course-student-grid" id="cm-students"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRESS + EVENTS -->
+<section id="chronicle">
+  <div class="section-header reveal">
+    <span class="section-number">04</span>
+    <h2 class="section-title">Current</h2>
+  </div>
+  <div class="chronicle-layout">
+    <div class="chronicle-main reveal">
+      <p class="press-sub">Press &amp; Coverage</p>
+      <a href="#" target="_blank" rel="noopener" class="press-item">
+        <span class="press-type-badge">Interview</span>
+        <span class="press-title">Add your press coverage here</span>
+        <span class="press-meta-right">Outlet · Month Year</span>
+        <span class="press-arrow">↗</span>
+      </a>
+    </div>
+    <div class="chronicle-aside reveal">
+      <p class="events-sub">Upcoming Events</p>
+      <a href="#" target="_blank" rel="noopener" class="event-item">
+        <div class="event-date-block">
+          <p class="event-month">—</p>
+          <p class="event-day">—</p>
+          <p class="event-year-small">2025</p>
+        </div>
+        <div>
+          <h3 class="event-title">Upcoming event title</h3>
+          <p class="event-venue">Venue · City, Country</p>
+          <span class="event-badge">Talk</span>
+          <span class="event-link-label">↗ Event info</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <div class="about-header reveal">
+      <span class="section-number">05</span>
+      <h2 class="section-title">Bio</h2>
+    </div>
+    <div class="headshot-wrapper reveal">
+      <img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/8af7b2d5-ce3e-4788-b0f9-2fae477bd976/2P3A7435c.jpeg" alt="María Cecilia Reyes — Photo: Davide Colombino @ilgiovanepink" />
+    </div>
+    <div class="about-bio reveal">
+      <p>I am a Colombian scholar and artist working at the intersection of narrative, immersion, and learning. I hold a double Ph.D. in Digital Humanities from the University of Genoa (Italy) and in Communication Sciences from Universidad del Norte (Colombia).</p>
+      <p>My research focuses on interactive digital narratives, immersive technologies, and film theory. I am a member of ARDIN, Virtual Networking Manager of CA18230 INDCOR (COST Action), Artist-in-Residence 2020–2021 at Schloss Solitude Akademie, and Artistic Research Fellow at Future Media Theaters Lab, University of Skövde (2022).</p>
+      <p>I am a member of the Colombian Academy of Cinematographic Arts. Moving between Europe and Colombia, working globally.</p>
+    </div>
+    <div class="about-links reveal">
+      <a href="https://orcid.org/0000-0001-8084-469X" target="_blank">ORCID 0000-0001-8084-469X</a>
+      <a href="https://www.researchgate.net/profile/Maria-Cecilia-Reyes" target="_blank">ResearchGate</a>
+      <a href="https://scholar.google.com/citations?hl=en&user=5dFD_mgAAAAJ" target="_blank">Google Scholar</a>
+      <a href="https://ardin.online/" target="_blank">ARDIN</a>
+      <a href="https://indcor.eu/" target="_blank">INDCOR / CA18230</a>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="about-fields reveal">
+      <div class="field-row"><span class="field-label">Position</span><span class="field-value">Assistant Professor of Media &amp; Communication</span></div>
+      <div class="field-row"><span class="field-label">Affiliation</span><span class="field-value">Universidad del Norte, Colombia</span></div>
+      <div class="field-row"><span class="field-label">Research</span><span class="field-value">Interactive Digital Narratives, Immersive Technologies, Film Theory, Digital Humanities</span></div>
+      <div class="field-row"><span class="field-label">Ph.D.</span><span class="field-value">Digital Humanities, Università di Genova (IT) &amp; Universidad del Norte (CO) · 2019</span></div>
+      <div class="field-row"><span class="field-label">Fellowships</span><span class="field-value">Schloss Solitude (2021), Future Media Theaters / Skövde (2022), CNR-ITD Post-Doc (2018–2020)</span></div>
+      <div class="field-row"><span class="field-label">Languages</span><span class="field-value">Spanish, English, Italian</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left">
+    <div class="section-header reveal">
+      <span class="section-number">06</span>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <p class="contact-intro reveal">For collaborations, speaking invitations, or inquiries about research and teaching. Moving between Europe and Colombia — working globally.</p>
+    <a href="/cdn-cgi/l/email-protection#abc6cad9c2cac8cec8c2c7c2cad9ced2ced8d9ebccc6cac2c785c8c4c6" class="contact-email reveal"><span class="__cf_email__" data-cfemail="375a56455e565452545e5b5e5645524e52444577505a565e5b1954585a">[email&#160;protected]</span></a>
+  </div>
+  <div class="contact-right">
+    <div class="contact-socials reveal">
+      <a href="https://scholar.google.com/citations?hl=en&user=5dFD_mgAAAAJ" target="_blank" class="social-link">Google Scholar <span class="arrow">↗</span></a>
+      <a href="https://www.researchgate.net/profile/Maria-Cecilia-Reyes" target="_blank" class="social-link">ResearchGate <span class="arrow">↗</span></a>
+      <a href="https://orcid.org/0000-0001-8084-469X" target="_blank" class="social-link">ORCID <span class="arrow">↗</span></a>
+      <a href="https://ardin.online/" target="_blank" class="social-link">ARDIN <span class="arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">María Cecilia Reyes, Ph.D. — Digital Humanist</span>
+  <span class="footer-copy">© 2025</span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  /* NAV */
+  function toggleNav() { var t=document.getElementById('nav-toggle'),d=document.getElementById('nav-dropdown'); t.classList.toggle('open'); d.classList.toggle('open'); document.body.style.overflow=d.classList.contains('open')?'hidden':''; }
+  function closeNav() { document.getElementById('nav-toggle').classList.remove('open'); document.getElementById('nav-dropdown').classList.remove('open'); document.body.style.overflow=''; }
+
+  /* COURSE MODAL */
+  var PH_SVG='<svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="2" y="5" width="32" height="26" rx="1" stroke="#0a0a0a" stroke-width="1.5"/><path d="M2 24l8-8 6 6 7-9 13 12" stroke="#0a0a0a" stroke-width="1.3" stroke-linejoin="round"/></svg>';
+  function openCourseModal(type,title,meta,desc,students) {
+    document.getElementById('cm-type').textContent=type;
+    document.getElementById('cm-title').textContent=title;
+    document.getElementById('cm-meta').textContent=meta;
+    document.getElementById('cm-desc').textContent=desc;
+    var grid=document.getElementById('cm-students'); grid.innerHTML='';
+    students.forEach(function(s){ var item=document.createElement('div'); item.className='course-student-item'; var imgDiv=document.createElement('div'); imgDiv.className='course-student-img'; imgDiv.innerHTML=s.img?'<img src="'+s.img+'" alt="'+s.name+'" />':`<div class="course-student-img-ph">${PH_SVG}</div>`; var cap=document.createElement('div'); cap.className='course-student-caption'; cap.innerHTML='<p class="course-student-name">'+s.name+'</p><p class="course-student-note">'+s.note+'</p>'; item.appendChild(imgDiv); item.appendChild(cap); grid.appendChild(item); });
+    document.getElementById('course-modal-overlay').classList.add('open'); document.body.style.overflow='hidden';
+  }
+  function closeCourseModal() { document.getElementById('course-modal-overlay').classList.remove('open'); document.body.style.overflow=''; }
+  function closeCourseModalOnOverlay(e) { if(e.target===document.getElementById('course-modal-overlay')) closeCourseModal(); }
+
+  /* FILTER */
+  function filterProjects(cat,btn) { document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.project-card').forEach(card=>{ card.classList.toggle('hidden', cat!=='all' && card.dataset.category!==cat); }); }
+
+  /* VIEW */
+  function setView(v) { var g=document.getElementById('projects-grid'); document.getElementById('grid-btn').classList.toggle('active',v==='grid'); document.getElementById('gallery-btn').classList.toggle('active',v==='gallery'); g.classList.toggle('gallery-view',v==='gallery'); }
+
+  /* PUB TABS */
+  function switchPub(id,btn) { document.querySelectorAll('.pub-tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.pub-section').forEach(s=>s.classList.remove('active')); document.getElementById('pub-'+id).classList.add('active'); }
+
+  /* PROJECT MODAL */
+  function openModal(tag,title,year,role,desc,mediaType,mediaSrc,links) {
+    document.getElementById('modal-tag').textContent=tag;
+    document.getElementById('modal-title').textContent=title;
+    document.getElementById('modal-year').textContent=year;
+    document.getElementById('modal-role').innerHTML=role;
+    document.getElementById('modal-desc').textContent=desc;
+    var mediaEl=document.getElementById('modal-media');
+    if(mediaType==='img'&&mediaSrc) mediaEl.innerHTML='<img src="'+mediaSrc+'" alt="'+title+'" />';
+    else if(mediaType==='video'&&mediaSrc) mediaEl.innerHTML='<iframe src="'+mediaSrc+'" allowfullscreen allow="autoplay"></iframe>';
+    else mediaEl.innerHTML='<div class="modal-media-placeholder"><svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="4" y="10" width="56" height="44" rx="1" stroke="#0a0a0a" stroke-width="1.5"/><path d="M4 44l14-14 10 10 12-16 20 20" stroke="#0a0a0a" stroke-width="1.5" stroke-linejoin="round"/></svg></div>';
+    var linksEl=document.getElementById('modal-links'); linksEl.innerHTML='';
+    if(links&&links.length) links.forEach(function(l){ if(l.url&&l.url!=='#'){ var a=document.createElement('a'); a.href=l.url; a.target='_blank'; a.rel='noopener'; a.className='modal-ext-link'; a.textContent=l.label; linksEl.appendChild(a); } });
+    document.getElementById('modal-overlay').classList.add('open'); document.body.style.overflow='hidden';
+  }
+  function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow=''; }
+  function closeModalOnOverlay(e) { if(e.target===document.getElementById('modal-overlay')) closeModal(); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeMod
