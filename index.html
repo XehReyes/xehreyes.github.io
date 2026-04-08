@@ -228,7 +228,20 @@
     .lang-btn:hover { color: var(--accent); background: var(--accent-light); }
     .lang-btn.active { background: var(--accent); color: var(--white); }
 
-    /* RESPONSIVE */
+
+    /* TEACHING TABLE */
+    .teach-table-wrap { overflow-x: auto; margin-bottom: 4rem; }
+    .teach-table { width: 100%; border-collapse: collapse; font-family: var(--font-serif); font-size: 0.95rem; }
+    .teach-table th { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-align: left; padding: 0.7rem 1rem 0.7rem 0; border-bottom: 2px solid var(--accent); }
+    .teach-table td { padding: 0.75rem 1rem 0.75rem 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .teach-table tr:last-child td { border-bottom: none; }
+    .teach-group-row td:first-child { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); padding-top: 1.2rem; }
+    .teach-table td:last-child { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray); white-space: nowrap; }
+    .teach-note { font-size: 0.82rem; color: #666; font-style: italic; padding-top: 0.2rem; padding-bottom: 0.9rem; }
+    .teach-alt td { background: var(--light-gray); }
+    @media (max-width: 640px) { .teach-table td, .teach-table th { padding: 0.6rem 0.5rem 0.6rem 0; } }
+
+        /* RESPONSIVE */
     @media (max-width: 1200px) { .projects-grid { grid-template-columns: repeat(4, 1fr); } }
     @media (max-width: 900px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 860px) {
@@ -251,9 +264,9 @@
     }
     @media (max-width: 480px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
 
-    /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
+    /* REVEAL — visible by default, animated when JS loads */
+    .js-loaded .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .js-loaded .reveal.visible { opacity: 1; transform: none; }
   </style>
 </head>
 <body>
@@ -297,10 +310,10 @@
   <div class="hero-right">
     <p class="hero-tagline">Working at the intersection of narrative, immersion, and learning.</p>
     <div class="hero-descriptor">
-      <span>Interactive Digital Narrative</span>
-      <span>Immersive Media</span>
-      <span>Digital Pedagogy</span>
-      <span>Film Theory</span>
+      <span>Interactive Narratives</span>
+      <span>Emergent Media</span>
+      <span>Critical Making</span>
+      <span>Moving Image &amp; Live Arts</span>
     </div>
   </div>
 </div>
@@ -330,19 +343,19 @@
   <div class="projects-grid" id="projects-grid">
 
     <div class="project-card reveal" data-category="Digital Pedagogy"
-      onclick="openModal('Digital Pedagogy','An Educator\'s Guide to Interactive Digital Narrative','2024','Editor & Co-Curator','A global, transdisciplinary, and continuously evolving collection dedicated to educators, scholars, and practitioners who teach IDN across diverse fields — storytelling, game development, journalism, AR/VR/XR, digital humanities, and more. 45 syllabi from university programs worldwide, this first edition offers a kaleidoscopic view of IDN as it solidifies into a recognized academic discipline.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/4ad1d2d5-0056-4bd5-a875-cfd65a31fe49/IDN-Book-Syllabi-1024x819.jpg',[{label:'idnsyllabi.com',url:'https://idnsyllabi.com/'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/4ad1d2d5-0056-4bd5-a875-cfd65a31fe49/IDN-Book-Syllabi-1024x819.jpg" alt="IDN Syllabi" /></div>
+      onclick="openModal('Digital Pedagogy','An Educator\'s Guide to Interactive Digital Narrative','2024','Editor & Co-Curator','A global, transdisciplinary, and continuously evolving open-access collection dedicated to educators, scholars, and practitioners who teach interactive digital narrative (IDN) across diverse fields — storytelling, game development, journalism, AR/VR/XR, digital humanities, and more. 45 syllabi from university programs worldwide offer a kaleidoscopic view of IDN as it solidifies into a recognized academic discipline.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/4ad1d2d5-0056-4bd5-a875-cfd65a31fe49/IDN-Book-Syllabi-1024x819.jpg',[{label:'idnsyllabi.com',url:'https://idnsyllabi.com/'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/4ad1d2d5-0056-4bd5-a875-cfd65a31fe49/IDN-Book-Syllabi-1024x819.jpg" alt="An Educator's Guide to Interactive Digital Narrative" /></div>
       <div class="card-body">
         <p class="project-tag">Digital Pedagogy</p>
-        <h3 class="project-title">An Educator's Guide to IDN: Syllabi from Around the World</h3>
+        <h3 class="project-title">An Educator's Guide to Interactive Digital Narrative</h3>
         <p class="project-year">2024</p>
         <p class="card-hint">Read more ↗</p>
       </div>
     </div>
 
     <div class="project-card reveal" data-category="Interactive Narrative"
-      onclick="openModal('Interactive Narrative','Chill Out! Interactive Cinema is not Dead!','2024','Lead Researcher & Workshop Director','A co-created interactive short film that uses a Brain-Computer Interface (BCI) — specifically the relaxation parameter of an EEG headset — to trigger the progression of the story. Developed at Universidad del Norte (Colombia) in a 3-day workshop entirely by students. Framed in interactive cinema, enactive cinema, and IDN studies.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1720982335154-DKR5VM9890GBG0CPPL6G/IMG_1239.jpeg',[{label:'View project',url:'https://www.xehreyes.net/projects/interactivecinema'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1720982335154-DKR5VM9890GBG0CPPL6G/IMG_1239.jpeg" alt="Chill Out!" /></div>
+      onclick="openModal('Interactive Narrative','Chill Out! Interactive Cinema is not Dead!','2024','Lead Researcher & Workshop Director','How to create an interactive narrative that integrates a Brain-Computer Interface (BCI)? This co-created interactive short film uses the relaxation parameter of an EEG headset to trigger story progression. The interactor must consciously relax to advance through a series of stressful situations. Developed in a 3-day workshop entirely by students at Universidad del Norte (Colombia), framed in interactive cinema (Hales, 2015), enactive cinema (Tikka, 2008), and IDN studies (Koenitz, 2023). Workshop led by professor Chris Hales. First tests demonstrated that narrative affects emotions and biological data — during the experience, stressed participants learned to relax to progress the story.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1720982335154-DKR5VM9890GBG0CPPL6G/IMG_1239.jpeg',[])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1720982335154-DKR5VM9890GBG0CPPL6G/IMG_1239.jpeg" alt="Chill Out! Interactive Cinema is not Dead!" /></div>
       <div class="card-body">
         <p class="project-tag">Interactive Narrative</p>
         <h3 class="project-title">Chill Out! Interactive Cinema is not Dead!</h3>
@@ -352,19 +365,19 @@
     </div>
 
     <div class="project-card reveal" data-category="Publication"
-      onclick="openModal('Publication','Interactive Fiction in Cinematic VR — Towards the Interactive Immersive Movie','2024','Author','A narrative model combining live-action 360° video with interactive fiction structure to create immersive and interactive narrative experiences. The book presents an epistemology of immersive interactive movies, the production workflow, and an evaluation methodology. Published by Mimesis International.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1711126599808-60DANPKMJFKHMKQSPX54/international-reyes-interactive-fiction-cinematic-virtual-reality.jpg',[{label:'Mimesis International',url:'https://mimesisinternational.com/interactive-fiction-in-cinematic-virtual-reality-towards-the-interactive-immersive-movie/'},{label:'Amazon',url:'https://www.amazon.com/Interactive-Fiction-Cinematic-Virtual-Reality/dp/8869773256'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1711126599808-60DANPKMJFKHMKQSPX54/international-reyes-interactive-fiction-cinematic-virtual-reality.jpg" alt="IFCVR Book" /></div>
+      onclick="openModal('Publication','Interactive Fiction in Cinematic VR — Towards the Interactive Immersive Movie','2024','Author','A narrative model combining live-action 360° video with interactive fiction structure to create immersive and interactive narrative experiences. The book presents an epistemology of immersive interactive movies — analyzing artistic, narrative, and interactive qualities — the production workflow, and an evaluation methodology. Proposes that all VR movies should be interactive, building a bridge between cinema and virtual reality. Published by Mimesis International (228 pp., ISBN 9788869773259).','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1711126599808-60DANPKMJFKHMKQSPX54/international-reyes-interactive-fiction-cinematic-virtual-reality.jpg',[{label:'Mimesis International',url:'https://mimesisinternational.com/interactive-fiction-in-cinematic-virtual-reality-towards-the-interactive-immersive-movie/'},{label:'Amazon',url:'https://www.amazon.com/Interactive-Fiction-Cinematic-Virtual-Reality/dp/8869773256'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1711126599808-60DANPKMJFKHMKQSPX54/international-reyes-interactive-fiction-cinematic-virtual-reality.jpg" alt="Interactive Fiction in Cinematic VR — Towards the Interactive Immersive Movie" /></div>
       <div class="card-body">
         <p class="project-tag">Publication</p>
-        <h3 class="project-title">Interactive Fiction in Cinematic VR</h3>
+        <h3 class="project-title">Interactive Fiction in Cinematic VR — Towards the Interactive Immersive Movie</h3>
         <p class="project-year">2024</p>
         <p class="card-hint">Read more ↗</p>
       </div>
     </div>
 
     <div class="project-card reveal" data-category="Immersive Media"
-      onclick="openModal('Immersive Media','Inverted Dreaming','2022','Artist','An immersive video installation that evokes the disjointed logic of dreams. Have you ever awakened trying to reconstruct the disconnected imagery of a long dream? Inverted Dreaming attempts to build that impossible logic line — creating an experience suspended between memory and imagination.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/7482f125-3c0b-4945-a1ad-53365ddc878b/Performance+3.png',[{label:'View project',url:'https://www.xehreyes.net/projects/inverted-dreaming-6her2'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1654360386355-0GM0E7QEJQFLFNZ0X5E6/Mountains+3.png" alt="Inverted Dreaming" /></div>
+      onclick="openModal('Immersive Media','Inverted Dreaming','2022','Artist','An immersive video installation born from footage shot at the Parco delle Alpi Marittime (Maritime Alps National Park) during the Le Marittime Irraggiungibili 360° workshop (2016). The installation evokes the disjointed logic of dreams: have you ever awakened trying to reconstruct the disconnected imagery of a long dream? Inverted Dreaming attempts to build that impossible logic line — suspended between memory and imagination, sometimes very clear, other times in non-natural colors, sometimes about people we know in the bodies of people we don\'t recognize.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/7482f125-3c0b-4945-a1ad-53365ddc878b/Performance+3.png',[])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/7482f125-3c0b-4945-a1ad-53365ddc878b/Performance+3.png" alt="Inverted Dreaming" /></div>
       <div class="card-body">
         <p class="project-tag">Immersive Media</p>
         <h3 class="project-title">Inverted Dreaming</h3>
@@ -374,8 +387,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Interactive Narrative"
-      onclick="openModal('Interactive Narrative','Pueblo Santo — A Cumbia Trip','2022','Creator & Director','An interactive musical experience for VR. The indigenous Amacumbié cosmogony intertwines with Colombia\'s history of violence. Pueblo Santo, where Cumbia originated, was submerged in an eternal fog after a massacre. Only the lost gaita player can bring the town back to life by playing Cumbia\'s original melody. Illustrated by Laura Ortiz. Work-in-progress.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/4037f522-3b29-4fab-b164-029b11e7798e/PuebloSanto-CumbiaTrip',[{label:'View project',url:'https://www.xehreyes.net/projects/pueblo-santo-a-cumbia-trip-b4spt'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1648667205869-YORUCV1N3S36BL5CCCT1/Screenshot+2022-03-30+at+21.46.12.png" alt="Pueblo Santo" /></div>
+      onclick="openModal('Interactive Narrative','Pueblo Santo — A Cumbia Trip','2022','Creator & Director','A multi-reality interactive musical experience for VR. Pueblo Santo, the place where Cumbia music originated, suffered a horrible massacre that submerged the town in an eternal fog. Only the lost gaita player can bring the town back to life by playing Cumbia\'s original melody. The indigenous Amacumbié cosmogony intertwines with Colombia\'s history of violence, challenging the interactor to explore the town and restore life by learning to play Cumbia. Based on Historias Cantadas, a concept album by Gaiteros de Pueblo Santo (nominated for best folklore album at the 2021 Latin Grammys). Available for stand-alone VR headsets and as a physical multi-sensorial installation. Work-in-progress. Illustration by Laura Ortiz.\n\nDirector: María Cecilia Reyes · Producer: Laura Casadiego · Storyworld & Music: Marlon Peroza','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1648667205869-YORUCV1N3S36BL5CCCT1/Screenshot+2022-03-30+at+21.46.12.png',[])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1648667205869-YORUCV1N3S36BL5CCCT1/Screenshot+2022-03-30+at+21.46.12.png" alt="Pueblo Santo — A Cumbia Trip" /></div>
       <div class="card-body">
         <p class="project-tag">Interactive Narrative</p>
         <h3 class="project-title">Pueblo Santo — A Cumbia Trip</h3>
@@ -385,7 +398,7 @@
     </div>
 
     <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal('Documentary','Same Different','2022','Director & Editor','A rare encounter between the Khoekhoegowab language and a still camera. A poetry short film that explores language, identity, and the body through the lens of an indigenous tongue that few cameras have ever met.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1651337730179-YVI1YT3K84MAJ88S8RBQ/IMG_3811.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/same-different-ggcpe'}])">
+      onclick="openModal('Documentary','Same Different','2022','Co-Director','A poetry short film — a rare encounter between Khoekhoegowab and a still camera. The poem, written and performed by Ques (Nesindano Namises), together with the sounds of the bow and the forest, move along the sun, the wind, and the spirit of the poet herself. All Khoekhoegowab is also spoken in English. Subtitling is intentionally absent so as not to interrupt the rhythm of the poem and to create a sense of relation with Khoekhoegowab. Poster art by Namibian artist Vitjitua Ndjiharine.\n\nCo-directed by Ques (Nesindano Namises) & María Cecilia Reyes. Selected: 10th International Video Poetry Festival · International Poetry Film Festival of Thuringia (Germany) · Future Media Theaters, University of Skövde.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1651337730179-YVI1YT3K84MAJ88S8RBQ/IMG_3811.jpg',[])">
       <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1651337730179-YVI1YT3K84MAJ88S8RBQ/IMG_3811.jpg" alt="Same Different" /></div>
       <div class="card-body">
         <p class="project-tag">Documentary</p>
@@ -396,7 +409,7 @@
     </div>
 
     <div class="project-card reveal" data-category="Performance"
-      onclick="openModal('Performance','En el Principio Todo Era Cumbia','2021','Creator & Performer','A storytelling and musical performance exploring the cosmogonies of Cumbia — its meanings, instruments, songs, and dance. A journey to the pre-Columbian Caribbean coast of Colombia. Presented at Expomotricidad 2021, Universidad de Antioquia.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1633098814083-HR7R0PDQI4K5RRBMI3IS/Screenshot%2B2021-10-01%2Bat%2B16.25.14.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/cumbia-g3xyd'}])">
+      onclick="openModal('Performance','En el Principio Todo Era Cumbia','2021','Co-Creator & Performer','A storytelling and musical performance that explores the cosmogonies of Cumbia music — the meanings and stories in this ancient rhythm, its instruments, its songs, and its dance. A trip to the pre-Columbian Caribbean coast of the land today called Colombia. Through narration, dance, and live-streamed music connecting Barranquilla\'s downtown to Schloss Solitude, Marlon Peroza, Carlos Monroy and María Cecilia Reyes explore Cumbia as the original heartbeat: being Native American, African, colonized, enslaved; being feminine, masculine and everything in the spectrum; being water, earth, air, and fire.\n\nWith Marlon Peroza & Carlos Monroy. Developed at Schloss Solitude Akademie, Germany.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1633098814083-HR7R0PDQI4K5RRBMI3IS/Screenshot%2B2021-10-01%2Bat%2B16.25.14.jpg',[])">
       <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1633098814083-HR7R0PDQI4K5RRBMI3IS/Screenshot%2B2021-10-01%2Bat%2B16.25.14.jpg" alt="En el Principio Todo Era Cumbia" /></div>
       <div class="card-body">
         <p class="project-tag">Performance</p>
@@ -407,8 +420,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Publication"
-      onclick="openModal('Publication','Texts of Discomfort: Interactive Storytelling Art','2021','Co-Editor','Edited with James Pope. Published by Carnegie Mellon University ETC Press. A collection arising from the ICIDS 2020 art exhibition curated around Barthes\'s concept of the Text of Bliss — interactive digital artworks that generate discomfort through form and content, inspiring radical changes in the way we perceive the world.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1639101320540-QPILSUFYLNUS5BMA8QZN/750px+Wide+-+519px+Tall.jpg',[{label:'CMU ETC Press',url:'https://press.etc.cmu.edu/index.php/product/texts-of-discomfort/'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1639101320540-QPILSUFYLNUS5BMA8QZN/750px+Wide+-+519px+Tall.jpg" alt="Texts of Discomfort Book" /></div>
+      onclick="openModal('Publication','Texts of Discomfort: Interactive Storytelling Art','2021','Co-Editor','Can discomfort be blissful? This volume presents an in-depth reflection on the selected artworks for the Art Exhibition of ICIDS 2020 (13th International Conference on Interactive Digital Storytelling, Bournemouth University, UK). The curatorial theme follows Barthes\'s concept of the Text of Bliss: \'the text that imposes a state of loss, the text that discomforts... unsettles the reader\'s historical, cultural, psychological assumptions.\' Interactive digital artworks that generate discomfort through form and content can inspire radical changes in the way we perceive the world.\n\nCo-edited with James Pope. CMU ETC Press.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1639101320540-QPILSUFYLNUS5BMA8QZN/750px+Wide+-+519px+Tall.jpg',[{label:'CMU ETC Press',url:'https://press.etc.cmu.edu/index.php/product/texts-of-discomfort/'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1639101320540-QPILSUFYLNUS5BMA8QZN/750px+Wide+-+519px+Tall.jpg" alt="Texts of Discomfort: Interactive Storytelling Art" /></div>
       <div class="card-body">
         <p class="project-tag">Publication</p>
         <h3 class="project-title">Texts of Discomfort: Interactive Storytelling Art</h3>
@@ -418,18 +431,18 @@
     </div>
 
     <div class="project-card reveal" data-category="Interactive Narrative"
-      onclick="openModal('Interactive Narrative','Texts of Discomfort — ICIDS 2020 Art Exhibition','2020','Creative Co-Chair','Co-curated art exhibition for the 13th International Conference on Interactive Digital Storytelling (ICIDS 2020, Bournemouth). Gathered interactive digital artworks exploring Barthes\'s concept of the Text of Bliss: works that discomfort, unsettle assumptions, and inspire radical change in perception.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1603807532598-CTPVF6FJFRPNLQEU07EM/ArtExhibitionWroks.png',[{label:'ICIDS 2020',url:'https://icids2020.bournemouth.ac.uk/exhibition/'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1603807532598-CTPVF6FJFRPNLQEU07EM/ArtExhibitionWroks.png" alt="Texts of Discomfort Exhibition" /></div>
+      onclick="openModal('Interactive Narrative','Texts of Discomfort — ICIDS 2020 Art Exhibition','2020','Co-Creative Chair','The ICIDS 2020 Art Exhibition presenting interactive digital artworks that explore discomfort as aesthetic principle, following Barthes\'s concept of the Text of Bliss. Curated to present works in which discomfort through form and/or content inspires radical changes in the way we perceive the world. Co-curated with James Pope for the 13th International Conference on Interactive Digital Storytelling, Bournemouth University, UK.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1603807532598-CTPVF6FJFRPNLQEU07EM/ArtExhibitionWroks.png',[])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1603807532598-CTPVF6FJFRPNLQEU07EM/ArtExhibitionWroks.png" alt="Texts of Discomfort — ICIDS 2020 Art Exhibition" /></div>
       <div class="card-body">
         <p class="project-tag">Interactive Narrative</p>
-        <h3 class="project-title">Texts of Discomfort — ICIDS 2020 Exhibition</h3>
+        <h3 class="project-title">Texts of Discomfort — ICIDS 2020 Art Exhibition</h3>
         <p class="project-year">2020</p>
         <p class="card-hint">Read more ↗</p>
       </div>
     </div>
 
     <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal('Documentary','NIJOLE','2020','Screenwriter & Editor','An intimate portrait of Lithuanian/Colombian artist Nijole Sivickas and her unusual relationship with her son, philosopher and politician Antanas Mockus. Exhibited at FICCI, DOKLeipzig, DOCSBarcelona, and others.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1609175748826-XF5VF1F4K2VAFT6ZZBL9/Untitled2_1.250.1.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/nijole-xxf8z'}])">
+      onclick="openModal('Documentary','NIJOLE','2020','Screenwriter & Editor','An intimate portrait of Lithuanian-Colombian artist Nijolė Sivickas (1925–2018) and her unusual relationship with her son, philosopher, mathematician and politician Antanas Mockus. Through Baltic landscapes and the streets of Bogotá, Nijolė and Antanas explore art, politics, migration, independence, the emancipation of women, and the concept of family. A film about the relationship between art and love, and about freedom.\n\nDirector: Sandro Bozzolo · Screenwriter & Editor: María Cecilia Reyes · Producers: Sandro Bozzolo, Max Chicco\n\nWorld Premiere: DOK.Leipzig 61st edition — Next Masters Competition · FICCI (Colombia) — Muestra Migración y Mestizaje · DOCSBarcelona — Selección Oficial Panorama · BiografilmFEST — Celebration of Lives Award · VDFF Vilnius — Opening Film','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1609175748826-XF5VF1F4K2VAFT6ZZBL9/Untitled2_1.250.1.jpg',[{label:'Watch on Vimeo',url:'https://vimeo.com/ondemand/nijole'}])">
       <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1609175748826-XF5VF1F4K2VAFT6ZZBL9/Untitled2_1.250.1.jpg" alt="NIJOLE" /></div>
       <div class="card-body">
         <p class="project-tag">Documentary</p>
@@ -440,19 +453,19 @@
     </div>
 
     <div class="project-card reveal" data-category="Interactive Narrative"
-      onclick="openModal('Interactive Narrative','ZENA — An Interactive VR Film','2018','Co-Creator & Screenwriter','Lorenzo, a young apprentice of Alchemy, receives a call from the future through a dream. The one choosing the path won\'t be Lorenzo — but the interactor. An interactive VR film exploring branching narrative in 360° cinematic space. Production case study published at ICIDS 2018.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623154143659-YAUYVSLVY2UHHUESIWVJ/ZENA%2BICIDS%2B%25281%2529.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/zena-2k24d'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623154143659-YAUYVSLVY2UHHUESIWVJ/ZENA%2BICIDS%2B%25281%2529.jpg" alt="ZENA" /></div>
+      onclick="openModal('Interactive Narrative','ZENA — Interactive VR Film','2018','Director & Camera','"The one choosing the path won\'t be Lorenzo, but you." Lorenzo, a young apprentice of Alchemy, receives a call from the future through a dream: the magic clepsydra of his congregation is about to be destroyed. To save it he must travel 500 years into the future, to modern Zena (Genoa in the Genoese dialect). Through the journey he discovers how his city changed over centuries, finding new alleys and old enemies. To save the clepsydra he must pay close attention to details — because in Zena, things are not always what they seem.\n\nDirector & Camera: María Cecilia Reyes. First interactive VR film set in Genoa. Developed at the University of Genoa e-learning division.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1547584878478-RWU4CIT0MRKLJGM85ZM2/ZENA_foto1.jpg',[])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1547584878478-RWU4CIT0MRKLJGM85ZM2/ZENA_foto1.jpg" alt="ZENA — Interactive VR Film" /></div>
       <div class="card-body">
         <p class="project-tag">Interactive Narrative</p>
-        <h3 class="project-title">ZENA — An Interactive VR Film</h3>
+        <h3 class="project-title">ZENA — Interactive VR Film</h3>
         <p class="project-year">2018</p>
         <p class="card-hint">Read more ↗</p>
       </div>
     </div>
 
     <div class="project-card reveal" data-category="Interactive Narrative"
-      onclick="openModal('Interactive Narrative','What Would an Artist Do?','2020','Artist & Curator','A transmedia art exhibition opened at the Ceramics Museum in Mondovì, dedicated to the unusual artistic-existential approach of a contemporary artist. Produced during residency at Schloss Solitude Akademie.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591800984380-XV92K8SUXRH0ZD56CXIJ/Screen%2BShot%2B2018-11-30%2Bat%2B13.03.10.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/what-would-an-artist-do-srazy'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591800984380-XV92K8SUXRH0ZD56CXIJ/Screen%2BShot%2B2018-11-30%2Bat%2B13.03.10.jpg" alt="What Would an Artist Do" /></div>
+      onclick="openModal('Interactive Narrative','What Would an Artist Do?','2020','Creator & Curator','A transmedia art exhibition at the Ceramics Museum of Mondovì (Italy), dedicated to the unusual artistic-existential approach of Antanas Mockus and Nijolė Šivickas. Emigrated from Lithuania to Colombia in 1950, Nijolė transmitted to her son extraordinary instruments of contemporary and performative art — instruments Mockus put into practice as Mayor of Bogotá, involving eight million citizens.\n\nThe exhibition comprised 4 screens, 1 video installation, 1 virtual reality station, and 1 block of clay for the visitor to manipulate.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155081375-GZ6XK2N6B4COH2N0KXHT/unsplash-image-tZc3vjPCk-Q.jpg',[])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155081375-GZ6XK2N6B4COH2N0KXHT/unsplash-image-tZc3vjPCk-Q.jpg" alt="What Would an Artist Do?" /></div>
       <div class="card-body">
         <p class="project-tag">Interactive Narrative</p>
         <h3 class="project-title">What Would an Artist Do?</h3>
@@ -462,29 +475,29 @@
     </div>
 
     <div class="project-card reveal" data-category="Immersive Media"
-      onclick="openModal('Immersive Media','Yona Friedman Ceramic City — VR','2021','VR Director','In 2002, architect Yona Friedman created his ideal city for the Biennale of Ceramics. This city was brought to life in VR, allowing visitors to wander through Friedman\'s utopian vision created from ceramic pieces by artists of Albissola Marina.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155137391-WSVWPI0D7T751DNHCFMW/img703%25281%2529.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/ceramic-city-vr-7f4et'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155137391-WSVWPI0D7T751DNHCFMW/img703%25281%2529.jpg" alt="Ceramic City VR" /></div>
+      onclick="openModal('Immersive Media','Yona Friedman — Ceramic City VR','2021','VR Developer','Yona Friedman\'s Ceramic City brought to life in virtual reality. In 2002, during the second Biennale of Ceramics, architect Yona Friedman (Budapest, 1923) created his ideal city from ceramics, to inspire young generations of artists, architects, musicians, and designers. This VR experience — created through an interpretation by Omar Tonella — allows the user to activate choices that change scenery. The journey begins at the Savona Ceramics Museum and enters its virtual reproduction; the user activates Friedman\'s voice, which mixes with a 360° sound setting by ceramist Jorge Fernandez playing musical instruments made of ceramic.\n\nA project by the Ceramics Museum of Savona and the Department of Architecture and Design, University of Genoa. Conceived by Tiziana Casapietra.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155081375-GZ6XK2N6B4COH2N0KXHT/unsplash-image-tZc3vjPCk-Q.jpg',[{label:'Savona Ceramics Museum',url:'http://musa.savona.it/museodellaceramica/en/inside-yona-friedmans-ceramic-city/'}])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155081375-GZ6XK2N6B4COH2N0KXHT/unsplash-image-tZc3vjPCk-Q.jpg" alt="Yona Friedman — Ceramic City VR" /></div>
       <div class="card-body">
         <p class="project-tag">Immersive Media</p>
-        <h3 class="project-title">Yona Friedman Ceramic City — VR</h3>
+        <h3 class="project-title">Yona Friedman — Ceramic City VR</h3>
         <p class="project-year">2021</p>
         <p class="card-hint">Read more ↗</p>
       </div>
     </div>
 
     <div class="project-card reveal" data-category="Digital Pedagogy"
-      onclick="openModal('Digital Pedagogy','Interactive MOOC','2020','Researcher & Designer','An open platform for online training enabling large-scale transfer of knowledge using the TRIS model. Developed at CNR-ITD (Italian National Research Council), designed for students who cannot physically attend school. The I-MOOC breaks sequentiality and adapts to each learner\'s path.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623142796394-42R1SMHWNA6N64HRMD11/Screenshot%2B2021-06-08%2Bat%2B10.58.41.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/interactive-mooc-zxzey'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623142796394-42R1SMHWNA6N64HRMD11/Screenshot%2B2021-06-08%2Bat%2B10.58.41.jpg" alt="Interactive MOOC" /></div>
+      onclick="openModal('Digital Pedagogy','Interactive MOOC — CNR-ITD','2020','Developer & Researcher','An interactive massive open online course (I-MOOC) developed at the Italian National Research Council — Institute for Educational Technologies (CNR-ITD) for the TRIS model: the inclusive hybrid classroom, which allows students to attend school classes and socialize with peers from home. The I-MOOC breaks the sequential structure of traditional MOOCs, allowing learners to freely explore components, customize browsing sequences, and interact with content through videos, stories, and multimedia materials. Research published in the Italian Journal of Educational Technology (2020).','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1619609705037-DTQPGP12GJE6JY0CWTJK/schermata-I-MOOC.png',[])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1619609705037-DTQPGP12GJE6JY0CWTJK/schermata-I-MOOC.png" alt="Interactive MOOC — CNR-ITD" /></div>
       <div class="card-body">
         <p class="project-tag">Digital Pedagogy</p>
-        <h3 class="project-title">Interactive MOOC</h3>
+        <h3 class="project-title">Interactive MOOC — CNR-ITD</h3>
         <p class="project-year">2020</p>
         <p class="card-hint">Read more ↗</p>
       </div>
     </div>
 
     <div class="project-card reveal" data-category="Publication"
-      onclick="openModal('Publication','Come Disegnare un Corso Online','2020','Co-Author','Authored with Valeria Piras and Guglielmo Trentin. Published by Franco Angeli, Milan. A guide for both educational design and communication design of online video-based courses, born from the mutual contamination of skills across online-education and communication design.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155081375-GZ6XK2N6B4COH2N0KXHT/unsplash-image-tZc3vjPCk-Q.jpg',[{label:'Franco Angeli',url:'https://www.francoangeli.it/Libro/Come-disegnare-un-corso-online-Criteri-di-progettazione-didattica-e-della-comunicazione?Id=26822'}])">
+      onclick="openModal('Publication','Come Disegnare un Corso Online','2020','Co-Author','A guide for the educational and communication design of online video-based courses, born from the mutual contamination of skills across online education and communication design. Covers criteria for didactic design, content organization, and communication strategies for digital learning environments.\n\nAuthored with Valeria Piras and Guglielmo Trentin. Published by Franco Angeli, Milan. ISBN 9788835103059.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155081375-GZ6XK2N6B4COH2N0KXHT/unsplash-image-tZc3vjPCk-Q.jpg',[{label:'Franco Angeli',url:'https://www.francoangeli.it/Libro/Come-disegnare-un-corso-online-Criteri-di-progettazione-didattica-e-della-comunicazione?Id=26822'}])">
       <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155081375-GZ6XK2N6B4COH2N0KXHT/unsplash-image-tZc3vjPCk-Q.jpg" alt="Come Disegnare un Corso Online" /></div>
       <div class="card-body">
         <p class="project-tag">Publication</p>
@@ -495,8 +508,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal('Documentary','7 Lune e Un Palmo di Neve','2020','Editor','A feature film following 8 pre-teenagers on a winter morning. In their moods we perceive ambiguous events, small misunderstandings, anomalies challenging everyday life. The approach of adolescence is not the point — these are moments of barely perceptible rupture.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1609175463480-E6OBWEK11SYT95R8KJ5K/Captura%2Bde%2Bpantalla%2B2020-12-28%2Ba%2Blas%2B17.59.23.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/7lune-pk6xl'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1609175463480-E6OBWEK11SYT95R8KJ5K/Captura%2Bde%2Bpantalla%2B2020-12-28%2Ba%2Blas%2B17.59.23.jpg" alt="7 Lune" /></div>
+      onclick="openModal('Documentary','7 Lune e Un Palmo di Neve','2020','Editor','A documentary about the life of a small village in the Italian Alps on the brink of disappearing. The film captures the rhythms, memories, and daily life of a community caught between tradition and abandonment in the alpine landscape.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1609175748826-XF5VF1F4K2VAFT6ZZBL9/Untitled2_1.250.1.jpg',[])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1609175748826-XF5VF1F4K2VAFT6ZZBL9/Untitled2_1.250.1.jpg" alt="7 Lune e Un Palmo di Neve" /></div>
       <div class="card-body">
         <p class="project-tag">Documentary</p>
         <h3 class="project-title">7 Lune e Un Palmo di Neve</h3>
@@ -506,8 +519,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal('Documentary','L\'Isola','2021','Editor','A mosaic film about the city of Taranto — which Pasolini called \"a giant chipped diamond\" — caught between an enormous urban renewal project and its contradictions. Directed by Mark Jhon Ostrowski.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1622827711748-RBADMZ19N110CS9GNJGU/Screenshot%2B2021-06-04%2Bat%2B16.07.56.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/lisola-cjc8s'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1622827711748-RBADMZ19N110CS9GNJGU/Screenshot%2B2021-06-04%2Bat%2B16.07.56.jpg" alt="L'Isola" /></div>
+      onclick="openModal('Documentary','L\'Isola','2021','Editor','A mosaic film about the city of Taranto, which according to Pasolini \'glittered like a giant chipped diamond\' — a city in the midst of a colossal urban renewal project and at odds with the steel mill that emits tons of toxic substances each year. The film weaves together the city\'s contradictions: industrial heritage, ecological crisis, and the resilience of its communities.\n\nDirector: Mark Jhon Ostrowski · Editor: María Cecilia Reyes','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1609175748826-XF5VF1F4K2VAFT6ZZBL9/Untitled2_1.250.1.jpg',[])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1609175748826-XF5VF1F4K2VAFT6ZZBL9/Untitled2_1.250.1.jpg" alt="L'Isola" /></div>
       <div class="card-body">
         <p class="project-tag">Documentary</p>
         <h3 class="project-title">L'Isola</h3>
@@ -517,8 +530,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Immersive Media"
-      onclick="openModal('Immersive Media','Le Marittime Irraggiungibili: Scenari Alpini a 360°','2016','Director','A 360° interactive video project exploring the unreachable Maritime Alps. Produced during a workshop at Parco delle Alpi Marittime, Valdieri, Italy. One of the first interactive 360° documentary experiences developed in the Italian context.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1482542512692-AVPZMUOTAWGM74QHAEZ2/Asset+0',[{label:'View project',url:'https://www.xehreyes.net/projects/le-marittime-irraggiungibili-88hd8'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1482542512692-AVPZMUOTAWGM74QHAEZ2/Asset+0" alt="Le Marittime Irraggiungibili" /></div>
+      onclick="openModal('Immersive Media','Le Marittime Irraggiungibili','2016','Director & Camera','LMI360 offers the possibility of living and exploring the most iconic places of the Maritime Alps Park and Marguareis Park through 360° video virtual reality. The project mixes storytelling, music, theater, video-making and performing arts with one objective: to destroy physical and temporal frontiers and give life to the scenarios of these alpine parks. Coordinated by the Protected Area of Maritime Alps and financed by Compagnia di San Paolo within the Festival Torino and the Alps 2016.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1654360386355-0GM0E7QEJQFLFNZ0X5E6/Mountains+3.png',[])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1654360386355-0GM0E7QEJQFLFNZ0X5E6/Mountains+3.png" alt="Le Marittime Irraggiungibili" /></div>
       <div class="card-body">
         <p class="project-tag">Immersive Media</p>
         <h3 class="project-title">Le Marittime Irraggiungibili</h3>
@@ -528,8 +541,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Digital Pedagogy"
-      onclick="openModal('Digital Pedagogy','Who Is Behind the Cameras?','2013','Workshop Coordinator','An audiovisual workshop coordinated by Mundo Libre ONLUS–CEPAM, financed by the Consejo Nacional de Cinematografía del Ecuador. Held in Esmeraldas, Ecuador (2012–13). Teaching local communities filmmaking as a tool for self-representation and cultural agency.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591805227304-0W0Y7NHHTLKKVJCZO128/midiendo_luz.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/mundolibre-y5kzx'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591805227304-0W0Y7NHHTLKKVJCZO128/midiendo_luz.jpg" alt="Who is behind the cameras" /></div>
+      onclick="openModal('Digital Pedagogy','Who Is Behind the Cameras?','2013','Workshop Coordinator','An audiovisual workshop coordinated by Mundo Libre ONLUS–CEPAM, financed by the Consejo Nacional de Cinematografía del Ecuador. Held in Esmeraldas, Ecuador (2012–13), teaching local communities filmmaking as a tool for self-representation and cultural agency. The workshop resulted in short documentaries created by young people from the CODESA neighborhood, exploring their city and community through the camera.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591805227304-0W0Y7NHHTLKKVJCZO128/midiendo_luz.jpg',[])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591805227304-0W0Y7NHHTLKKVJCZO128/midiendo_luz.jpg" alt="Who Is Behind the Cameras?" /></div>
       <div class="card-body">
         <p class="project-tag">Digital Pedagogy</p>
         <h3 class="project-title">Who Is Behind the Cameras?</h3>
@@ -539,7 +552,7 @@
     </div>
 
     <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal('Documentary','Amazonia 2.0','2012','Director & Editor','In Sarayaku, an Ecuadorian indigenous community uses the Internet as a tool for sovereignty. Creativity vs. arms, respect for Mother Earth vs. petroleum, communal solidarity vs. Western individualism — and the Internet as the first great network that can overturn the hierarchy.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646008809-SPSMN3L1T1WJHORJ0QFL/Captura+de+pantalla+2020-06-08+a+las+21.53.19.png',[{label:'View project',url:'https://www.xehreyes.net/projects/amazzonia-20-meprp'}])">
+      onclick="openModal('Documentary','Amazonia 2.0','2012','Director & Editor','In Sarayaku, an Ecuadorian indigenous community uses the Internet as a tool for sovereignty. Creativity vs. arms, respect for Mother Earth vs. petroleum, communal solidarity vs. Western individualism — and the Internet as the first great network that can overturn hierarchy. A documentary about how the Kichwa people of Sarayaku use digital technology to defend their territory and cultural identity.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646008809-SPSMN3L1T1WJHORJ0QFL/Captura+de+pantalla+2020-06-08+a+las+21.53.19.png',[])">
       <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646008809-SPSMN3L1T1WJHORJ0QFL/Captura+de+pantalla+2020-06-08+a+las+21.53.19.png" alt="Amazonia 2.0" /></div>
       <div class="card-body">
         <p class="project-tag">Documentary</p>
@@ -550,8 +563,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal('Documentary','Autunno Viola','2011','Director & Editor','In autumn 2010, the ancient balances of Viola Castello — a community among the chestnut groves of the Piedmontese Ligurian Alps — approach their end. Abandonment, globalization, and radical changes in values mark the condemnation of a centuries-old ecosystem.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646173490-XV3F9MBJ9G2ARQVPU27H/5120814296_501a77686b_b.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/autunno-viola-rgrhe'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646173490-XV3F9MBJ9G2ARQVPU27H/5120814296_501a77686b_b.jpg" alt="Autunno Viola" /></div>
+      onclick="openModal('Documentary','Autunno Viola','2011','Director','A documentary short set in the Italian Alps, portraying life and landscape in late autumn. An early work exploring the cinematic language of documentary as a form of intimate observation.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646008809-SPSMN3L1T1WJHORJ0QFL/Captura+de+pantalla+2020-06-08+a+las+21.53.19.png',[])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646008809-SPSMN3L1T1WJHORJ0QFL/Captura+de+pantalla+2020-06-08+a+las+21.53.19.png" alt="Autunno Viola" /></div>
       <div class="card-body">
         <p class="project-tag">Documentary</p>
         <h3 class="project-title">Autunno Viola</h3>
@@ -561,8 +574,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal('Documentary','Las Farotas de Talaigua','2009','Director','José Ospino Turizzo searches for the true story of Las Farotas — a traditional Colombian dance where men dress as women to remember when Spanish colonists abused their wives. A documentary about resistance, memory, and the body as archive of colonial history.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591806032468-LQ9XMVARTP9N3N7K76GG/12517_327263350767243_6590389956199639729_n.jpg',[{label:'View project',url:'https://www.xehreyes.net/projects/las-farotas-de-talaigua-ngfcs'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591806032468-LQ9XMVARTP9N3N7K76GG/12517_327263350767243_6590389956199639729_n.jpg" alt="Las Farotas de Talaigua" /></div>
+      onclick="openModal('Documentary','Las Farotas de Talaigua','2009','Research & Production','Research and production for the documentary directed by José Ospino Turizzo, exploring the Farotas de Talaigua — a traditional Colombian Caribbean festivity in which men dress as women in an act of cultural syncretism, blending indigenous, African, and Spanish traditions. A deep dive into cultural identity, ritual, and collective memory on the Colombian Caribbean coast.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646008809-SPSMN3L1T1WJHORJ0QFL/Captura+de+pantalla+2020-06-08+a+las+21.53.19.png',[])">
+      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646008809-SPSMN3L1T1WJHORJ0QFL/Captura+de+pantalla+2020-06-08+a+las+21.53.19.png" alt="Las Farotas de Talaigua" /></div>
       <div class="card-body">
         <p class="project-tag">Documentary</p>
         <h3 class="project-title">Las Farotas de Talaigua</h3>
@@ -602,6 +615,7 @@
     <button class="pub-tab active" onclick="switchPub('books',this)">Books</button>
     <button class="pub-tab" onclick="switchPub('chapters',this)">Chapters</button>
     <button class="pub-tab" onclick="switchPub('papers',this)">Papers</button>
+    <button class="pub-tab" onclick="switchPub('literary',this)">Literary</button>
   </div>
 
   <!-- BOOKS -->
@@ -612,6 +626,22 @@
         <p class="pub-title">Interactive Fiction in Cinematic Virtual Reality: Towards the Interactive Immersive Movie</p>
         <p class="pub-meta">Mimesis International · ISBN 9788869773</p>
         <a href="https://mimesisinternational.com/interactive-fiction-in-cinematic-virtual-reality/" class="pub-link" target="_blank">↗ View book</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2025</div>
+      <div>
+        <p class="pub-title">Interactive Storytelling — ICIDS 2025 Proceedings, Parts I &amp; II</p>
+        <p class="pub-meta">Lecture Notes in Computer Science 16374–16375 · Springer · Eds. Reyes, M.C. &amp; Nack, F. (Parts I &amp; II) · Saint Julian, Malta</p>
+        <a href="https://link.springer.com/book/10.1007/978-3-032-12408-1" class="pub-link" target="_blank">↗ View proceedings</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2025</div>
+      <div>
+        <p class="pub-title">Interactive Storytelling — ICIDS 2024 Proceedings, Parts I &amp; II</p>
+        <p class="pub-meta">Lecture Notes in Computer Science 15467–15468 · Springer · Eds. Murray, J.T. &amp; Reyes, M.C. · Barranquilla, Colombia</p>
+        <a href="https://link.springer.com/book/9783031784521" class="pub-link" target="_blank">↗ View proceedings</a>
       </div>
     </div>
     <div class="pub-item reveal">
@@ -749,6 +779,34 @@
       </div>
     </div>
   </div>
+
+  <!-- LITERARY -->
+  <div class="pub-section" id="pub-literary">
+    <div class="pub-item reveal">
+      <div class="pub-year">2023</div>
+      <div>
+        <p class="pub-title">AI Creative Writing Anthology — <em>contributor</em></p>
+        <p class="pub-meta">Leopard Print Publishing · Ed. Geoff Davis · Computer Arts Society / BCS · ISBN B0BZQKV92T</p>
+        <a href="https://www.amazon.com/AI-Creative-Writing-Anthology-Computer-ebook/dp/B0BZQKV92T" class="pub-link" target="_blank">↗ View on Amazon</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2020</div>
+      <div>
+        <p class="pub-title">Lingua Madre Duemilaventi — <em>Granchi azzurri</em></p>
+        <p class="pub-meta">Edizioni SEB27 / Tamburi di Carta · A cura di Daniela Finocchi · ISBN 978-88-98670-49-9 · Torino</p>
+        <a href="https://www.seb27.it/content/lingua-madre-duemilaventi/" class="pub-link" target="_blank">↗ View book</a>
+      </div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-year">2026</div>
+      <div>
+        <p class="pub-title">Huellas Nº 114–115 — <em>Poemas</em></p>
+        <p class="pub-meta">Revista Huellas · Universidad del Norte · Barranquilla, Colombia</p>
+        <a href="https://manglar.uninorte.edu.co/calamari/handle/10738/6758" class="pub-link" target="_blank">↗ View journal</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- TEACHING -->
@@ -758,7 +816,68 @@
     <h2 class="section-title">Teaching</h2>
   </div>
 
-  <p class="teaching-sub reveal">Courses &amp; Workshops</p>
+  <p class="teaching-sub reveal">Universidad del Norte · Barranquilla, Colombia</p>
+
+  <!-- UNINORTE TABLE -->
+  <div class="teach-table-wrap reveal">
+    <table class="teach-table">
+      <thead>
+        <tr>
+          <th>Programme</th>
+          <th>Course</th>
+          <th>Years</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="teach-group-row">
+          <td rowspan="2">Master's in Journalism</td>
+          <td>Journalism and New Technologies</td>
+          <td>2024</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="teach-note">Graduate seminar exploring digital tools, data journalism, and interactive formats in contemporary news media.</td>
+        </tr>
+
+        <tr class="teach-group-row">
+          <td rowspan="8">B.A. Communication</td>
+          <td>Audiovisual Media Production I &amp; III</td>
+          <td>2023–2026</td>
+        </tr>
+        <tr><td colspan="2" class="teach-note">Production studio courses covering pre-production, shooting, editing and post-production of audiovisual content across documentary and fiction formats.</td></tr>
+        <tr class="teach-alt">
+          <td>Film Analysis</td>
+          <td>2025</td>
+        </tr>
+        <tr class="teach-alt"><td colspan="2" class="teach-note">Critical reading of cinematic form, narrative structure, and moving image aesthetics across film history.</td></tr>
+        <tr>
+          <td>Communication Theory I &amp; II</td>
+          <td>2023</td>
+        </tr>
+        <tr><td colspan="2" class="teach-note">Foundational theoretical frameworks in communication — from classical models to contemporary media theory.</td></tr>
+        <tr class="teach-alt">
+          <td>Semiotics &amp; Communication</td>
+          <td>2023</td>
+        </tr>
+        <tr class="teach-alt"><td colspan="2" class="teach-note">Sign systems, meaning-making, and semiotic analysis applied to media texts and communication practices.</td></tr>
+
+        <tr class="teach-group-row">
+          <td rowspan="2">B.A. Communication</td>
+          <td>Thesis Project</td>
+          <td>2024</td>
+        </tr>
+        <tr><td colspan="2" class="teach-note">Supervision of undergraduate research and creative theses in communication, media, and audiovisual production.</td></tr>
+
+        <tr class="teach-group-row">
+          <td rowspan="2">Elective · Humanities</td>
+          <td>Electronic and New Media Arts</td>
+          <td>2024–2026</td>
+        </tr>
+        <tr><td colspan="2" class="teach-note">An interdisciplinary elective exploring electronic arts, interactive installations, and new media practices at the intersection of art and technology.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="teaching-sub reveal" style="margin-top:3.5rem;">Previous Courses &amp; Workshops</p>
   <div class="courses-grid reveal">
 
     <div class="course-card" onclick="openCourseModal('Master Course','Interactive Digital Storytelling','Università di Genova (Master Scrittura Creativa e Progettazione di Contenuti Digitali) · 2018–2019','A graduate course exploring the theory and practice of interactive digital storytelling — from branching narratives to transmedia projects. Students developed original IDN prototypes using a variety of platforms and tools.',[{name:'Student project A',note:'IDN prototype · 2019',img:''},{name:'Student project B',note:'Interactive documentary · 2019',img:''}])">
@@ -782,40 +901,6 @@
       <p class="course-hint">View course + student work ↗</p>
     </div>
 
-    <div class="course-card" onclick="openCourseModal('Short Course','Shooting and Editing of 360° Video','Fassicomo — Scuola Grafica Genovese · 2021','A short professional course for students of the Fassicomo school covering the technical and narrative specificities of 360° video production and post-production.',[{name:'Student project A',note:'360° short film · 2021',img:''}])">
-      <p class="course-type">Short Course</p>
-      <h3 class="course-title">Shooting and Editing of 360° Video</h3>
-      <p class="course-meta">Fassicomo, Genova · 2021</p>
-      <p class="course-hint">View course + student work ↗</p>
-    </div>
-
-    <div class="course-card" onclick="openCourseModal('Short Course','Cinematic Montage Terminology','Fassicomo — Scuola Grafica Genovese · 2021','A bilingual (English–Spanish) course on cinematic montage terminology for students of audiovisual communication.',[{name:'Student project A',note:'Editing exercise · 2021',img:''}])">
-      <p class="course-type">Short Course</p>
-      <h3 class="course-title">Cinematic Montage Terminology</h3>
-      <p class="course-meta">Fassicomo, Genova · 2021</p>
-      <p class="course-hint">View course + student work ↗</p>
-    </div>
-
-    <div class="course-card" onclick="openCourseModal('Undergraduate Course','Audiovisual Narratives and New Technologies','Escuela Distrital de Artes de Barranquilla · 2014','Teaching audiovisual narrative and new media to young artists in Barranquilla\'s public arts school. Students developed short video projects exploring their city and community through the camera.',[{name:'Student project A',note:'Short documentary · 2014',img:'https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1566567284038-WTGFFV86O09USN87GFLU/1557129_10152862681767037_2868304511527261615_o.jpg'},{name:'Student project B',note:'Narrative short · 2014',img:''}])">
-      <p class="course-type">Undergraduate</p>
-      <h3 class="course-title">Audiovisual Narratives and New Technologies</h3>
-      <p class="course-meta">EDA Barranquilla · 2014</p>
-      <p class="course-hint">View course + student work ↗</p>
-    </div>
-
-    <div class="course-card" onclick="openCourseModal('Undergraduate Course','Screenwriting for Film','Escuela Distrital de Artes de Barranquilla · 2014','An introductory screenwriting course for visual arts students — covering story structure, character, dialogue, and the specificities of writing for the screen in a Colombian context.',[{name:'Student screenplay A',note:'Short film script · 2014',img:''},{name:'Student screenplay B',note:'Short film script · 2014',img:''}])">
-      <p class="course-type">Undergraduate</p>
-      <h3 class="course-title">Screenwriting for Film</h3>
-      <p class="course-meta">EDA Barranquilla · 2014</p>
-      <p class="course-hint">View course + student work ↗</p>
-    </div>
-
-    <div class="course-card" onclick="openCourseModal('Workshop','Who Is Behind the Cameras?','Mundo Libre ONLUS–CEPAM · Esmeraldas, Ecuador · 2012–2013','An audiovisual workshop financed by the Consejo Nacional de Cinematografía del Ecuador, working with local communities in Esmeraldas to teach filmmaking as a tool for self-representation and cultural sovereignty.',[{name:'Community filmmaker A',note:'Short documentary · 2013',img:'https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591805227304-0W0Y7NHHTLKKVJCZO128/midiendo_luz.jpg'}])">
-      <p class="course-type">Workshop</p>
-      <h3 class="course-title">Who Is Behind the Cameras?</h3>
-      <p class="course-meta">Esmeraldas, Ecuador · 2012–13</p>
-      <p class="course-hint">View course + student work ↗</p>
-    </div>
 
   </div>
 
@@ -863,10 +948,46 @@
   <div class="chronicle-layout">
     <div class="chronicle-main reveal">
       <p class="press-sub">Press &amp; Coverage</p>
-      <a href="#" target="_blank" rel="noopener" class="press-item">
+
+      <a href="https://www.uninorte.edu.co/en/web/grupo-prensa/w/el-legado-formativo-de-maria-cecilia-reyes-desde-la-comunicacion" target="_blank" rel="noopener" class="press-item">
+        <span class="press-type-badge">Feature</span>
+        <span class="press-title">El legado formativo de María Cecilia Reyes desde la comunicación</span>
+        <span class="press-meta-right">Uninorte · 2024</span>
+        <span class="press-arrow">↗</span>
+      </a>
+
+      <a href="https://iti.larsys.pt/best-papers-at-icids-2023-conference/" target="_blank" rel="noopener" class="press-item">
+        <span class="press-type-badge">Award</span>
+        <span class="press-title">Best Full Paper — ICIDS 2023: Decolonizing IDN Pedagogy From and with Global South</span>
+        <span class="press-meta-right">ITI / ICIDS · Kobe, 2023</span>
+        <span class="press-arrow">↗</span>
+      </a>
+
+      <a href="https://www.akademie-solitude.de/en/person/maria-cecilia-reyes/" target="_blank" rel="noopener" class="press-item">
+        <span class="press-type-badge">Profile</span>
+        <span class="press-title">Artist in Residence — Fellow Profile</span>
+        <span class="press-meta-right">Schloss Solitude · 2021</span>
+        <span class="press-arrow">↗</span>
+      </a>
+
+      <a href="https://indcor.eu/members/core-group/" target="_blank" rel="noopener" class="press-item">
         <span class="press-type-badge">Interview</span>
-        <span class="press-title">Add your press coverage here</span>
-        <span class="press-meta-right">Outlet · Month Year</span>
+        <span class="press-title">My career has always been a negotiation between the artistic path and academia</span>
+        <span class="press-meta-right">INDCOR / CA18230 · 2022</span>
+        <span class="press-arrow">↗</span>
+      </a>
+
+      <a href="https://www.bcs.org/events-calendar/2023/april/webinar-text-based-ai-computer-arts-society/" target="_blank" rel="noopener" class="press-item">
+        <span class="press-type-badge">Talk</span>
+        <span class="press-title">Nothing Artificial Here — Text-based AI, Computer Arts Society (BCS)</span>
+        <span class="press-meta-right">UAL / CAS · London, 2023</span>
+        <span class="press-arrow">↗</span>
+      </a>
+
+      <a href="https://icids2024.ardin.online/" target="_blank" rel="noopener" class="press-item">
+        <span class="press-type-badge">Conference</span>
+        <span class="press-title">ICIDS 2024 — Program Chair, Barranquilla (first ICIDS in Latin America)</span>
+        <span class="press-meta-right">ARDIN · Colombia, 2024</span>
         <span class="press-arrow">↗</span>
       </a>
     </div>
@@ -874,14 +995,14 @@
       <p class="events-sub">Upcoming Events</p>
       <a href="#" target="_blank" rel="noopener" class="event-item">
         <div class="event-date-block">
-          <p class="event-month">—</p>
-          <p class="event-day">—</p>
+          <p class="event-month">May</p>
+          <p class="event-day">19</p>
           <p class="event-year-small">2025</p>
         </div>
         <div>
-          <h3 class="event-title">Upcoming event title</h3>
-          <p class="event-venue">Venue · City, Country</p>
-          <span class="event-badge">Talk</span>
+          <h3 class="event-title">Electronic and New Media Arts — Final Course Exhibition</h3>
+          <p class="event-venue">Universidad del Norte · Barranquilla, Colombia</p>
+          <span class="event-badge">Exhibition</span>
           <span class="event-link-label">↗ Event info</span>
         </div>
       </a>
@@ -904,13 +1025,7 @@
       <p>My research focuses on interactive digital narratives, immersive technologies, and film theory. I am a member of ARDIN, Virtual Networking Manager of CA18230 INDCOR (COST Action), Artist-in-Residence 2020–2021 at Schloss Solitude Akademie, and Artistic Research Fellow at Future Media Theaters Lab, University of Skövde (2022).</p>
       <p>I am a member of the Colombian Academy of Cinematographic Arts. Moving between Europe and Colombia, working globally.</p>
     </div>
-    <div class="about-links reveal">
-      <a href="https://orcid.org/0000-0001-8084-469X" target="_blank">ORCID 0000-0001-8084-469X</a>
-      <a href="https://www.researchgate.net/profile/Maria-Cecilia-Reyes" target="_blank">ResearchGate</a>
-      <a href="https://scholar.google.com/citations?hl=en&user=5dFD_mgAAAAJ" target="_blank">Google Scholar</a>
-      <a href="https://ardin.online/" target="_blank">ARDIN</a>
-      <a href="https://indcor.eu/" target="_blank">INDCOR / CA18230</a>
-    </div>
+
   </div>
   <div class="about-right">
     <div class="about-fields reveal">
@@ -939,6 +1054,8 @@
       <a href="https://scholar.google.com/citations?hl=en&user=5dFD_mgAAAAJ" target="_blank" class="social-link">Google Scholar <span class="arrow">↗</span></a>
       <a href="https://www.researchgate.net/profile/Maria-Cecilia-Reyes" target="_blank" class="social-link">ResearchGate <span class="arrow">↗</span></a>
       <a href="https://orcid.org/0000-0001-8084-469X" target="_blank" class="social-link">ORCID <span class="arrow">↗</span></a>
+      <a href="https://www.linkedin.com/in/xehreyes/" target="_blank" class="social-link">LinkedIn <span class="arrow">↗</span></a>
+      <a href="https://www.instagram.com/xehreyes/" target="_blank" class="social-link">Instagram <span class="arrow">↗</span></a>
       <a href="https://ardin.online/" target="_blank" class="social-link">ARDIN <span class="arrow">↗</span></a>
     </div>
   </div>
@@ -994,4 +1111,13 @@
   }
   function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow=''; }
   function closeModalOnOverlay(e) { if(e.target===document.getElementById('modal-overlay')) closeModal(); }
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeMod
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeModal(); closeCourseModal(); closeNav(); } });
+
+  /* REVEAL */
+  document.body.classList.add('js-loaded');
+  var reveals=document.querySelectorAll('.reveal');
+  var observer=new IntersectionObserver(function(entries){ entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); },{threshold:0.02,rootMargin:'0px 0px -20px 0px'});
+  reveals.forEach(function(el){ observer.observe(el); });
+</script>
+</body>
+</html>
