@@ -251,10 +251,6 @@
       #networks > div > div[style*="display:grid"] > div { border-right:none !important; border-bottom:1px solid var(--border); padding-left:0 !important; padding-right:0 !important; }
     }
     /* CALENDAR */
-    .cal-open-btn { display:flex; align-items:center; gap:.8rem; background:none; border:1px solid var(--border); padding:.8rem 1.2rem; cursor:pointer; font-family:var(--font-mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--black); width:100%; transition:border-color .2s,color .2s; }
-    .cal-open-btn:hover { border-color:var(--accent); color:var(--accent); }
-    .cal-icon { display:flex; align-items:center; color:var(--accent); }
-    .cal-year { margin-left:auto; color:var(--gray); }
     .cal-preview { margin-top:1.5rem; display:flex; flex-direction:column; gap:1rem; }
     .cal-event-row { display:flex; gap:.8rem; align-items:flex-start; }
     .cal-dot { width:6px; height:6px; background:var(--accent); border-radius:50%; margin-top:.45rem; flex-shrink:0; }
@@ -520,19 +516,8 @@
       </div>
     </div>
 
-    <div class="project-card reveal" data-category="Interactive Narrative"
-      onclick="openModal(MODAL_DATA[13])">
-      <div class="card-image"><img src="images/textsofd.jpg" alt="Texts of Discomfort — ICIDS 2020 Art Exhibition" /></div>
-      <div class="card-body">
-        <p class="project-tag">Interactive Narrative</p>
-        <h3 class="project-title">Texts of Discomfort — ICIDS 2020 Art Exhibition</h3>
-        <p class="project-year">2020</p>
-        <p class="card-hint">Read more ↗</p>
-      </div>
-    </div>
-
     <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal(MODAL_DATA[14])">
+      onclick="openModal(MODAL_DATA[13])">
       <div class="card-image"><img src="images/nijole.jpg" alt="NIJOLE" /></div>
       <div class="card-body">
         <p class="project-tag">Documentary</p>
@@ -543,7 +528,7 @@
     </div>
 
     <div class="project-card reveal" data-category="Interactive Narrative"
-      onclick="openModal(MODAL_DATA[15])">
+      onclick="openModal(MODAL_DATA[14])">
       <div class="card-image"><img src="images/whatwouldanartist.jpg" alt="What Would an Artist Do?" /></div>
       <div class="card-body">
         <p class="project-tag">Interactive Narrative</p>
@@ -554,7 +539,7 @@
     </div>
 
     <div class="project-card reveal" data-category="Digital Pedagogy"
-      onclick="openModal(MODAL_DATA[16])">
+      onclick="openModal(MODAL_DATA[15])">
       <div class="card-image"><img src="images/imooc.png" alt="Interactive MOOC — CNR-ITD" /></div>
       <div class="card-body">
         <p class="project-tag">Digital Pedagogy</p>
@@ -565,7 +550,7 @@
     </div>
 
     <div class="project-card reveal" data-category="Interactive Narrative"
-      onclick="openModal(MODAL_DATA[17])">
+      onclick="openModal(MODAL_DATA[16])">
       <div class="card-image"><img src="images/zena.jpg" alt="ZENA — Interactive VR Film" /></div>
       <div class="card-body">
         <p class="project-tag">Interactive Narrative</p>
@@ -579,7 +564,7 @@
 
   
     <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal(MODAL_DATA[18])">
+      onclick="openModal(MODAL_DATA[17])">
       <div class="card-image"><img src="images/salonolimpia2.jpg" alt="Salón Olimpia" /></div>
       <div class="card-body">
         <p class="project-tag">Documentary</p>
@@ -590,7 +575,7 @@
     </div>
 
     <div class="project-card reveal" data-category="Immersive Media"
-      onclick="openModal(MODAL_DATA[19])">
+      onclick="openModal(MODAL_DATA[18])">
       <div class="card-image"><img src="images/Le_marittime.png" alt="Le Marittime Irraggiungibili" /></div>
       <div class="card-body">
         <p class="project-tag">Immersive Media</p>
@@ -601,7 +586,7 @@
     </div>
 
     <div class="project-card reveal" data-category="Digital Pedagogy"
-      onclick="openModal(MODAL_DATA[20])">
+      onclick="openModal(MODAL_DATA[19])">
       <div class="card-image"><img src="images/quienestadetras.jpg" alt="Who Is Behind the Cameras?" /></div>
       <div class="card-body">
         <p class="project-tag">Digital Pedagogy</p>
@@ -612,7 +597,7 @@
     </div>
 
     <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal(MODAL_DATA[21])">
+      onclick="openModal(MODAL_DATA[20])">
       <div class="card-image"><img src="images/2amazonia.png" alt="Amazonia 2.0" /></div>
       <div class="card-body">
         <p class="project-tag">Documentary</p>
@@ -623,7 +608,7 @@
     </div>
 
     <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal(MODAL_DATA[22])">
+      onclick="openModal(MODAL_DATA[21])">
       <div class="card-image"><img src="images/Autunnoviola.png" alt="Autunno Viola" /></div>
       <div class="card-body">
         <p class="project-tag">Documentary</p>
@@ -912,15 +897,22 @@
   </div>
 
   <!-- LAB -->
-  <div class="lab-block reveal" onclick="openCourseModal(COURSE_DATA[0])">
-    <div class="lab-left">
-      <p class="lab-eyebrow">Lab Coordination</p>
-      <h3 class="lab-name">uni5lab</h3>
-      <p class="lab-tagline">Audiovisual Research + Creation Lab</p>
+  <div class="lab-block reveal" onclick="openCourseModal(COURSE_DATA[0])" style="position:relative;">
+    <div class="lab-left" style="display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;">
+      <div>
+        <p class="lab-eyebrow">Lab Coordination</p>
+        <img src="images/uni5lab-logo.png" alt="uni5lab logo" style="height:56px;width:auto;margin:0.8rem 0 0.4rem;display:block;filter:invert(1);" />
+        <p class="lab-tagline">Audiovisual Research + Creation Lab</p>
+      </div>
+      <a href="https://www.youtube.com/@uni5lab" target="_blank" rel="noopener"
+         onclick="event.stopPropagation();"
+         style="display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:0.45rem 0.9rem;width:fit-content;transition:background 0.15s,color 0.15s;">
+        Visit YouTube channel ↗
+      </a>
     </div>
     <div class="lab-right">
       <p class="lab-desc">A laboratory at the intersection of moving image, sound, and critical practice — hosting workshops, screenings, and collaborative projects at Universidad del Norte, Barranquilla.</p>
-      <p class="lab-hint">View lab + starred projects ↗</p>
+      <p class="lab-hint">Open lab info ↗</p>
     </div>
   </div>
 
@@ -1043,7 +1035,6 @@
       <h2 class="modal-title" id="cm-title"></h2>
       <p class="modal-year" id="cm-meta" style="font-family:var(--font-mono);font-size:0.65rem;color:var(--gray);margin-bottom:1.4rem;"></p>
       <p class="course-modal-desc" id="cm-desc"></p>
-      <p class="course-students-label">★ Starred Student Projects</p>
       <div class="course-student-grid" id="cm-students"></div>
     </div>
   </div>
@@ -1152,21 +1143,8 @@
     </div>
     <div class="chronicle-aside reveal">
       <p class="events-sub">Calendar</p>
-      <button class="cal-open-btn" onclick="openCalendar()">
-        <span class="cal-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="1"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        </span>
-        <span>View full calendar</span>
-        <span class="cal-year" id="cal-year-label">2025</span>
-      </button>
-      <div class="cal-preview">
-        <div class="cal-event-row">
-          <span class="cal-dot"></span>
-          <div>
-            <p class="cal-ev-title">Electronic and New Media Arts — Final Exhibition</p>
-            <p class="cal-ev-meta">May 19, 2025 · Universidad del Norte, Barranquilla</p>
-          </div>
-        </div>
+      <div class="cal-preview" id="cal-upcoming"></div>
+      </div>
       </div>
     </div>
 
@@ -1175,18 +1153,7 @@
   </div>
 </section>
 
-<!-- CALENDAR OVERLAY (outside section to ensure fixed positioning works) -->
-<div id="cal-overlay" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(10,10,10,.7);overflow-y:auto;" onclick="if(event.target===this)closeCalendar()">
-      <div id="cal-modal" style="background:#fff;margin:2rem auto;max-width:900px;padding:3rem;position:relative;">
-        <button onclick="closeCalendar()" style="position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;cursor:pointer;font-family:var(--font-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);">Close ✕</button>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;">
-          <h2 style="font-family:var(--font-serif);font-size:2rem;font-weight:400;">Calendar</h2>
-          <div style="display:flex;align-items:center;gap:1rem;">
-            <button onclick="calChangeYear(-1)" style="background:none;border:1px solid var(--border);width:2rem;height:2rem;cursor:pointer;font-size:1rem;">‹</button>
-            <span id="cal-modal-year" style="font-family:var(--font-mono);font-size:.75rem;letter-spacing:.1em;">2025</span>
-            <button onclick="calChangeYear(1)" style="background:none;border:1px solid var(--border);width:2rem;height:2rem;cursor:pointer;font-size:1rem;">›</button>
-          </div>
-        </div>
+</div>
         <div id="cal-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;"></div>
       </div>
     </div>
@@ -1258,7 +1225,18 @@ document.addEventListener('DOMContentLoaded', function() {
     "title": "uni5lab",
     "meta": "Universidad del Norte · Barranquilla, Colombia",
     "desc": "uni5lab is an audiovisual research and creation laboratory at Universidad del Norte, where students and collaborators explore the intersections of moving image, sound, and critical practice. The lab hosts workshops, screenings, and collaborative projects that bridge academic inquiry and artistic production — with a particular focus on interactive narrative, immersive media, and decolonial approaches to storytelling.",
-    "students": []
+    "students": [
+      {
+        "name": "Tutti Frutti / Relájate — Interactive Short Films",
+        "note": "Tangible & brain interfaces · 2024",
+        "img": ""
+      },
+      {
+        "name": "Chill Out! Interactive Cinema is not Dead!",
+        "note": "BCI interactive film · 2024",
+        "img": "images/chillout.png"
+      }
+    ]
   },
   {
     "type": "B.A. Communication · Universidad del Norte",
@@ -1388,7 +1366,16 @@ document.addEventListener('DOMContentLoaded', function() {
     "desc": "The 17th International Conference on Interactive Digital Storytelling — the first ICIDS ever held in Latin America. Hosted at Universidad del Norte, Barranquilla, Colombia (December 2–6, 2024). The theme STREAMS / CORRIENTES drew from Barranquillas geography — surrounded by the Caribbean Sea",
     "mediaType": "img",
     "mediaSrc": "images/icids2024-banner.jpg",
-    "links": []
+    "links": [
+      {
+        "label": "Conference website",
+        "url": "https://icids2024.ardin.online/"
+      },
+      {
+        "label": "Springer proceedings",
+        "url": "https://link.springer.com/book/9783031784521"
+      }
+    ]
   },
   {
     "tag": "Interactive Narrative",
@@ -1396,8 +1383,8 @@ document.addEventListener('DOMContentLoaded', function() {
     "year": "2024",
     "role": "Lead Researcher & Workshop Director",
     "desc": "How to create an interactive narrative that integrates a Brain-Computer Interface (BCI)? This co-created interactive short film uses the relaxation parameter of an EEG headset to trigger story progression. The interactor must consciously relax to advance through a series of stressful situations. Developed in a 3-day workshop entirely by students at Universidad del Norte (Colombia), framed in interactive cinema (Hales, 2015), enactive cinema (Tikka, 2008), and IDN studies (Koenitz, 2023). Workshop led by professor Chris Hales. First tests demonstrated that narrative affects emotions and biological data — during the experience, stressed participants learned to relax to progress the story.",
-    "mediaType": "img",
-    "mediaSrc": "images/chillout.png",
+    "mediaType": "video",
+    "mediaSrc": "https://player.vimeo.com/video/984427632#t=14.898",
     "links": []
   },
   {
@@ -1480,24 +1467,18 @@ document.addEventListener('DOMContentLoaded', function() {
     "year": "2021",
     "role": "VR Developer",
     "desc": "Yona Friedman's Ceramic City brought to life in virtual reality. In 2002, during the second Biennale of Ceramics, architect Yona Friedman (Budapest, 1923) created his ideal city from ceramics, to inspire young generations of artists, architects, musicians, and designers. This VR experience — created through an interpretation by Omar Tonella — allows the user to activate choices that change scenery. The journey begins at the Savona Ceramics Museum and enters its virtual reproduction; the user activates Friedman's voice, which mixes with a 360° sound setting by ceramist Jorge Fernandez playing musical instruments made of ceramic.\n\nA project by the Ceramics Museum of Savona and the Department of Architecture and Design, University of Genoa. Conceived by Tiziana Casapietra.",
-    "mediaType": "img",
-    "mediaSrc": "images/yonafriedman.jpg",
+    "mediaType": "video",
+    "mediaSrc": "https://player.vimeo.com/video/477139461",
     "links": [
       {
         "label": "Savona Ceramics Museum",
         "url": "http://musa.savona.it/museodellaceramica/en/inside-yona-friedmans-ceramic-city/"
+      },
+      {
+        "label": "Watch on Vimeo",
+        "url": "https://vimeo.com/477139461"
       }
     ]
-  },
-  {
-    "tag": "Interactive Narrative",
-    "title": "Texts of Discomfort — ICIDS 2020 Art Exhibition",
-    "year": "2020",
-    "role": "Co-Creative Chair",
-    "desc": "The ICIDS 2020 Art Exhibition presenting interactive digital artworks that explore discomfort as aesthetic principle, following Barthes's concept of the Text of Bliss. Curated to present works in which discomfort through form and/or content inspires radical changes in the way we perceive the world. Co-curated with James Pope for the 13th International Conference on Interactive Digital Storytelling, Bournemouth University, UK.",
-    "mediaType": "img",
-    "mediaSrc": "images/textsofd.jpg",
-    "links": []
   },
   {
     "tag": "Documentary",
@@ -1505,8 +1486,8 @@ document.addEventListener('DOMContentLoaded', function() {
     "year": "2020",
     "role": "Screenwriter & Editor",
     "desc": "An intimate portrait of Lithuanian-Colombian artist Nijolė Sivickas (1925–2018) and her unusual relationship with her son, philosopher, mathematician and politician Antanas Mockus. Through Baltic landscapes and the streets of Bogotá, Nijolė and Antanas explore art, politics, migration, independence, the emancipation of women, and the concept of family. A film about the relationship between art and love, and about freedom.\n\nDirector: Sandro Bozzolo · Screenwriter & Editor: María Cecilia Reyes · Producers: Sandro Bozzolo, Max Chicco\n\nWorld Premiere: DOK.Leipzig 61st edition — Next Masters Competition · FICCI (Colombia) — Muestra Migración y Mestizaje · DOCSBarcelona — Selección Oficial Panorama · BiografilmFEST — Celebration of Lives Award · VDFF Vilnius — Opening Film",
-    "mediaType": "img",
-    "mediaSrc": "images/nijole.jpg",
+    "mediaType": "video",
+    "mediaSrc": "https://www.youtube.com/embed/WKNonQ6BWyY",
     "links": [
       {
         "label": "Watch on RTVCplay",
@@ -1515,6 +1496,10 @@ document.addEventListener('DOMContentLoaded', function() {
       {
         "label": "Watch on Vimeo",
         "url": "https://vimeo.com/ondemand/nijole"
+      },
+      {
+        "label": "Watch on YouTube",
+        "url": "https://www.youtube.com/watch?v=WKNonQ6BWyY"
       }
     ]
   },
@@ -1536,7 +1521,12 @@ document.addEventListener('DOMContentLoaded', function() {
     "desc": "An interactive massive open online course (I-MOOC) developed at the Italian National Research Council — Institute for Educational Technologies (CNR-ITD) for the TRIS model: the inclusive hybrid classroom, which allows students to attend school classes and socialize with peers from home. The I-MOOC breaks the sequential structure of traditional MOOCs, allowing learners to freely explore components, customize browsing sequences, and interact with content through videos, stories, and multimedia materials. Research published in the Italian Journal of Educational Technology (2020).",
     "mediaType": "img",
     "mediaSrc": "images/imooc.png",
-    "links": []
+    "links": [
+      {
+        "label": "progettotris.it",
+        "url": "https://progettotris.it/"
+      }
+    ]
   },
   {
     "tag": "Interactive Narrative",
@@ -1591,7 +1581,12 @@ document.addEventListener('DOMContentLoaded', function() {
     "desc": "In Sarayaku, an Ecuadorian indigenous community uses the Internet as a tool for sovereignty. Creativity vs. arms, respect for Mother Earth vs. petroleum, communal solidarity vs. Western individualism — and the Internet as the first great network that can overturn hierarchy. A documentary about how the Kichwa people of Sarayaku use digital technology to defend their territory and cultural identity.",
     "mediaType": "img",
     "mediaSrc": "images/2amazonia.png",
-    "links": []
+    "links": [
+      {
+        "label": "Watch online",
+        "url": "https://www.cultureunplugged.com/documentary/watch-online/play/53583/amazonia-2-0"
+      }
+    ]
   },
   {
     "tag": "Documentary",
@@ -1599,9 +1594,14 @@ document.addEventListener('DOMContentLoaded', function() {
     "year": "2011",
     "role": "Director",
     "desc": "A documentary short set in the Italian Alps, portraying life and landscape in late autumn. An early work exploring the cinematic language of documentary as a form of intimate observation.",
-    "mediaType": "img",
-    "mediaSrc": "images/Autunnoviola.png",
-    "links": []
+    "mediaType": "video",
+    "mediaSrc": "https://www.youtube.com/embed/0PaNLoycWzw",
+    "links": [
+      {
+        "label": "Watch on YouTube",
+        "url": "https://www.youtube.com/watch?v=0PaNLoycWzw"
+      }
+    ]
   }
 ];
 
@@ -1714,74 +1714,40 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e.key === 'Escape') { closeModal(); closeCourseModal(); closeNav(); }
   });
 
-  /* CALENDAR */
+
+  /* CALENDAR — upcoming events only */
   var CAL_EVENTS  = [
     {date:'2025-05-19', title:'Electronic and New Media Arts — Final Course Exhibition', venue:'Universidad del Norte · Barranquilla, Colombia', badge:'Exhibition'},
   ];
-  var calYear     = new Date().getFullYear();
   var MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var DAY_NAMES   = ['Su','Mo','Tu','We','Th','Fr','Sa'];
 
-  function openCalendar() {
-    calYear = new Date().getFullYear();
-    document.getElementById('cal-overlay').style.display = 'block';
-    document.body.style.overflow = 'hidden';
-    renderCalendar();
-  }
-  function closeCalendar() {
-    document.getElementById('cal-overlay').style.display = 'none';
-    document.body.style.overflow = '';
-  }
-  function calChangeYear(dir) {
-    calYear += dir;
-    renderCalendar();
-  }
-  function renderCalendar() {
-    document.getElementById('cal-modal-year').textContent = calYear;
-    document.getElementById('cal-year-label').textContent = calYear;
-    var grid = document.getElementById('cal-grid');
-    grid.innerHTML = '';
-    for (var m = 0; m < 12; m++) {
-      var div   = document.createElement('div'); div.className = 'cal-month';
-      var nameP = document.createElement('p');   nameP.className = 'cal-month-name'; nameP.textContent = MONTH_NAMES[m];
-      div.appendChild(nameP);
-      var dg = document.createElement('div'); dg.className = 'cal-days-grid';
-      DAY_NAMES.forEach(function(d) { var h = document.createElement('div'); h.className = 'cal-day-hdr'; h.textContent = d; dg.appendChild(h); });
-      var first = new Date(calYear, m, 1).getDay();
-      var days  = new Date(calYear, m + 1, 0).getDate();
-      for (var i = 0; i < first; i++) { var emp = document.createElement('div'); emp.className = 'cal-day other-month'; dg.appendChild(emp); }
-      for (var day = 1; day <= days; day++) {
-        var cell = document.createElement('div'); cell.className = 'cal-day'; cell.textContent = day;
-        var ds   = calYear + '-' + (m + 1 < 10 ? '0' + (m + 1) : m + 1) + '-' + (day < 10 ? '0' + day : day);
-        var evs  = CAL_EVENTS.filter(function(ev) { return ev.date === ds; });
-        if (evs.length) {
-          cell.classList.add('has-event');
-          cell.title = evs[0].title;
-          (function(evList) {
-            cell.onclick = function() { alert(evList.map(function(ev) { return ev.title + '\n' + ev.venue; }).join('\n\n')); };
-          })(evs);
-        }
-        dg.appendChild(cell);
-      }
-      div.appendChild(dg);
-      var monthEvs = CAL_EVENTS.filter(function(ev) { return ev.date.startsWith(calYear + '-' + (m + 1 < 10 ? '0' + (m + 1) : m + 1)); });
-      if (monthEvs.length) {
-        var el = document.createElement('div'); el.className = 'cal-event-list';
-        monthEvs.forEach(function(ev) {
-          var row = document.createElement('div'); row.className = 'cal-event-chip';
-          var dt  = new Date(ev.date + 'T12:00:00');
-          var dc  = document.createElement('div'); dc.className = 'cal-chip-date';
-          dc.textContent = dt.getDate() + ' ' + MONTH_NAMES[dt.getMonth()].substring(0, 3);
-          var info = document.createElement('div');
-          var t2   = document.createElement('p'); t2.className = 'cal-chip-title'; t2.textContent = ev.title;
-          var v2   = document.createElement('p'); v2.className = 'cal-chip-venue'; v2.textContent = ev.venue;
-          info.appendChild(t2); info.appendChild(v2); row.appendChild(dc); row.appendChild(info); el.appendChild(row);
-        });
-        div.appendChild(el);
-      }
-      grid.appendChild(div);
+  function renderUpcoming() {
+    var container = document.getElementById('cal-upcoming');
+    if (!container) return;
+    var today = new Date(); today.setHours(0,0,0,0);
+    var upcoming = CAL_EVENTS.filter(function(ev) {
+      return new Date(ev.date + 'T12:00:00') >= today;
+    }).sort(function(a,b){ return a.date < b.date ? -1 : 1; });
+    container.innerHTML = '';
+    if (!upcoming.length) {
+      container.innerHTML = '<p style="font-family:var(--font-mono);font-size:0.6rem;color:var(--gray);letter-spacing:0.08em;">No upcoming events.</p>';
+      return;
     }
+    upcoming.forEach(function(ev) {
+      var dt  = new Date(ev.date + 'T12:00:00');
+      var row = document.createElement('div'); row.className = 'cal-event-row';
+      var dot = document.createElement('span'); dot.className = 'cal-dot';
+      var info = document.createElement('div');
+      var t = document.createElement('p'); t.className = 'cal-ev-title'; t.textContent = ev.title;
+      var m = document.createElement('p'); m.className = 'cal-ev-meta';
+      m.textContent = MONTH_NAMES[dt.getMonth()] + ' ' + dt.getDate() + ', ' + dt.getFullYear() + ' · ' + ev.venue;
+      info.appendChild(t); info.appendChild(m);
+      row.appendChild(dot); row.appendChild(info);
+      container.appendChild(row);
+    });
   }
+  renderUpcoming();
+
 
   /* REVEAL ON SCROLL */
   document.body.classList.add('js-loaded');
@@ -1805,9 +1771,6 @@ document.addEventListener('DOMContentLoaded', function() {
   window.openCourseModal         = openCourseModal;
   window.closeCourseModal        = closeCourseModal;
   window.closeCourseModalOnOverlay = closeCourseModalOnOverlay;
-  window.openCalendar            = openCalendar;
-  window.closeCalendar           = closeCalendar;
-  window.calChangeYear           = calChangeYear;
   window.MODAL_DATA              = MODAL_DATA;
   window.COURSE_DATA             = COURSE_DATA;
 
