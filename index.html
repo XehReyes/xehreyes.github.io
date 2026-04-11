@@ -51,8 +51,8 @@
     .hero-descriptor span { display: block; border-top: 1px solid var(--border); padding-top: 0.6rem; margin-top: 0.6rem; }
 
     /* SECTION BASE */
-    section { padding: 5rem 3rem; border-top: 1px solid var(--border); }
-    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem; }
+    section { padding: 7rem 3rem; border-top: 1px solid var(--border); }
+    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 5rem; }
     .section-number { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.1em; }
     .section-title { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 400; letter-spacing: -0.01em; }
 
@@ -126,7 +126,7 @@
     .pub-link:hover { border-color: var(--accent); }
 
     /* TEACHING */
-    #teaching { padding: 5rem 3rem; border-top: 1px solid var(--border); }
+    #teaching { padding: 7rem 3rem; border-top: 1px solid var(--border); }
     .teaching-sub { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
     .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); margin-bottom: 4rem; }
     .course-card { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.8rem 1.6rem; cursor: pointer; transition: background 0.18s; }
@@ -161,7 +161,7 @@
     .lab-block:hover .lab-hint { opacity: 1; }
 
     /* PRESS + EVENTS */
-    #chronicle { padding: 5rem 3rem; border-top: 1px solid var(--border); }
+    #chronicle { padding: 7rem 3rem; border-top: 1px solid var(--border); }
     .chronicle-layout { display: grid; grid-template-columns: 1fr 460px; gap: 0; }
     .chronicle-main { padding-right: 3rem; border-right: 1px solid var(--border); }
     .chronicle-aside { padding-left: 2.5rem; }
@@ -374,10 +374,21 @@
   </div>
 
   <div class="projects-grid" id="projects-grid">
+    <div class="project-card reveal" data-category="Interactive Narrative"
+      onclick="openModal(MODAL_DATA[0])">
+      <div class="card-image"><img src="images/laflordelmanglar.jpg" alt="La Flor del Manglar" /></div>
+      <div class="card-body">
+        <p class="project-tag">Interactive Narrative</p>
+        <h3 class="project-title">La Flor del Manglar</h3>
+        <p class="project-year">2026</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
 
     <div class="project-card reveal" data-category="Digital Pedagogy"
-      onclick="openModal('Digital Pedagogy','An Educator\'s Guide to Interactive Digital Narrative','2024','Editor & Co-Curator','A global, transdisciplinary, and continuously evolving open-access collection dedicated to educators, scholars, and practitioners who teach interactive digital narrative (IDN) across diverse fields — storytelling, game development, journalism, AR/VR/XR, digital humanities, and more. 45 syllabi from university programs worldwide offer a kaleidoscopic view of IDN as it solidifies into a recognized academic discipline.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/4ad1d2d5-0056-4bd5-a875-cfd65a31fe49/IDN-Book-Syllabi-1024x819.jpg',[{label:'idnsyllabi.com',url:'https://idnsyllabi.com/'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/4ad1d2d5-0056-4bd5-a875-cfd65a31fe49/IDN-Book-Syllabi-1024x819.jpg" alt="An Educator's Guide to Interactive Digital Narrative" /></div>
+      onclick="openModal(MODAL_DATA[1])">
+      <div class="card-image"><img src="images/IDN-Book-Syllabi-1024x819.jpg" alt="An Educator's Guide to Interactive Digital Narrative" /></div>
       <div class="card-body">
         <p class="project-tag">Digital Pedagogy</p>
         <h3 class="project-title">An Educator's Guide to Interactive Digital Narrative</h3>
@@ -387,8 +398,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Digital Pedagogy"
-      onclick="openModal('Conference','STREAMS / CORRIENTES — ICIDS 2024','2024','General Chair &amp; Program Chair','The 17th International Conference on Interactive Digital Storytelling — the first ICIDS ever held in Latin America. Hosted at Universidad del Norte, Barranquilla, Colombia (December 2–6, 2024). The theme STREAMS / CORRIENTES drew from Barranquilla's geography — surrounded by the Caribbean Sea, the Magdalena River, and the Mallorquín Swamp — to invite reflection on movement, exchange, convergences and divergences in interactive narrative research. 41 papers across 2 volumes. 300+ attendees from across the globe.\n\nGeneral Chair & Program Chair: María Cecilia Reyes · Program Co-Chair: John T. Murray (University of Central Florida) · Published in Springer LNCS 15467–15468.','img','images/icids2024-banner.png',[{label:'Conference website',url:'https://icids2024.ardin.online/'},{label:'Springer proceedings',url:'https://link.springer.com/book/9783031784521'}])">
-      <div class="card-image"><img src="images/icids2024-banner.png" alt="STREAMS / CORRIENTES — ICIDS 2024" /></div>
+      onclick="openModal(MODAL_DATA[2])">
+      <div class="card-image"><img src="images/icids2024-banner.jpg" alt="STREAMS / CORRIENTES — ICIDS 2024" /></div>
       <div class="card-body">
         <p class="project-tag">Digital Pedagogy</p>
         <h3 class="project-title">STREAMS / CORRIENTES — ICIDS 2024</h3>
@@ -398,8 +409,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Interactive Narrative"
-      onclick="openModal('Interactive Narrative','Chill Out! Interactive Cinema is not Dead!','2024','Lead Researcher & Workshop Director','How to create an interactive narrative that integrates a Brain-Computer Interface (BCI)? This co-created interactive short film uses the relaxation parameter of an EEG headset to trigger story progression. The interactor must consciously relax to advance through a series of stressful situations. Developed in a 3-day workshop entirely by students at Universidad del Norte (Colombia), framed in interactive cinema (Hales, 2015), enactive cinema (Tikka, 2008), and IDN studies (Koenitz, 2023). Workshop led by professor Chris Hales. First tests demonstrated that narrative affects emotions and biological data — during the experience, stressed participants learned to relax to progress the story.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1720982335154-DKR5VM9890GBG0CPPL6G/IMG_1239.jpeg',[])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1720982335154-DKR5VM9890GBG0CPPL6G/IMG_1239.jpeg" alt="Chill Out! Interactive Cinema is not Dead!" /></div>
+      onclick="openModal(MODAL_DATA[3])">
+      <div class="card-image"><img src="images/chillout.jpg" alt="Chill Out! Interactive Cinema is not Dead!" /></div>
       <div class="card-body">
         <p class="project-tag">Interactive Narrative</p>
         <h3 class="project-title">Chill Out! Interactive Cinema is not Dead!</h3>
@@ -409,8 +420,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Publication"
-      onclick="openModal('Publication','Interactive Fiction in Cinematic VR — Towards the Interactive Immersive Movie','2024','Author','A narrative model combining live-action 360° video with interactive fiction structure to create immersive and interactive narrative experiences. The book presents an epistemology of immersive interactive movies — analyzing artistic, narrative, and interactive qualities — the production workflow, and an evaluation methodology. Proposes that all VR movies should be interactive, building a bridge between cinema and virtual reality. Published by Mimesis International (228 pp., ISBN 9788869773259).','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1711126599808-60DANPKMJFKHMKQSPX54/international-reyes-interactive-fiction-cinematic-virtual-reality.jpg',[{label:'Mimesis International',url:'https://mimesisinternational.com/interactive-fiction-in-cinematic-virtual-reality-towards-the-interactive-immersive-movie/'},{label:'Amazon',url:'https://www.amazon.com/Interactive-Fiction-Cinematic-Virtual-Reality/dp/8869773256'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1711126599808-60DANPKMJFKHMKQSPX54/international-reyes-interactive-fiction-cinematic-virtual-reality.jpg" alt="Interactive Fiction in Cinematic VR — Towards the Interactive Immersive Movie" /></div>
+      onclick="openModal(MODAL_DATA[4])">
+      <div class="card-image"><img src="images/ifcvrbook.jpg" alt="Interactive Fiction in Cinematic VR — Towards the Interactive Immersive Movie" /></div>
       <div class="card-body">
         <p class="project-tag">Publication</p>
         <h3 class="project-title">Interactive Fiction in Cinematic VR — Towards the Interactive Immersive Movie</h3>
@@ -420,8 +431,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Immersive Media"
-      onclick="openModal('Immersive Media','Inverted Dreaming','2022','Artist','An immersive video installation born from footage shot at the Parco delle Alpi Marittime (Maritime Alps National Park) during the Le Marittime Irraggiungibili 360° workshop (2016). The installation evokes the disjointed logic of dreams: have you ever awakened trying to reconstruct the disconnected imagery of a long dream? Inverted Dreaming attempts to build that impossible logic line — suspended between memory and imagination, sometimes very clear, other times in non-natural colors, sometimes about people we know in the bodies of people we don\'t recognize.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/7482f125-3c0b-4945-a1ad-53365ddc878b/Performance+3.png',[])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/7482f125-3c0b-4945-a1ad-53365ddc878b/Performance+3.png" alt="Inverted Dreaming" /></div>
+      onclick="openModal(MODAL_DATA[5])">
+      <div class="card-image"><img src="images/inverteddreaming.png" alt="Inverted Dreaming" /></div>
       <div class="card-body">
         <p class="project-tag">Immersive Media</p>
         <h3 class="project-title">Inverted Dreaming</h3>
@@ -431,8 +442,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Interactive Narrative"
-      onclick="openModal('Interactive Narrative','Pueblo Santo — A Cumbia Trip','2022','Creator & Director','A multi-reality interactive musical experience for VR. Pueblo Santo, the place where Cumbia music originated, suffered a horrible massacre that submerged the town in an eternal fog. Only the lost gaita player can bring the town back to life by playing Cumbia\'s original melody. The indigenous Amacumbié cosmogony intertwines with Colombia\'s history of violence, challenging the interactor to explore the town and restore life by learning to play Cumbia. Based on Historias Cantadas, a concept album by Gaiteros de Pueblo Santo (nominated for best folklore album at the 2021 Latin Grammys). Available for stand-alone VR headsets and as a physical multi-sensorial installation. Work-in-progress. Illustration by Laura Ortiz.\n\nDirector: María Cecilia Reyes · Producer: Laura Casadiego · Storyworld & Music: Marlon Peroza','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1648667205869-YORUCV1N3S36BL5CCCT1/Screenshot+2022-03-30+at+21.46.12.png',[])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1648667205869-YORUCV1N3S36BL5CCCT1/Screenshot+2022-03-30+at+21.46.12.png" alt="Pueblo Santo — A Cumbia Trip" /></div>
+      onclick="openModal(MODAL_DATA[6])">
+      <div class="card-image"><img src="images/2pueblosanto.png" alt="Pueblo Santo — A Cumbia Trip" /></div>
       <div class="card-body">
         <p class="project-tag">Interactive Narrative</p>
         <h3 class="project-title">Pueblo Santo — A Cumbia Trip</h3>
@@ -442,8 +453,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal('Documentary','Same Different','2022','Co-Director','A poetry short film — a rare encounter between Khoekhoegowab and a still camera. The poem, written and performed by Ques (Nesindano Namises), together with the sounds of the bow and the forest, move along the sun, the wind, and the spirit of the poet herself. All Khoekhoegowab is also spoken in English. Subtitling is intentionally absent so as not to interrupt the rhythm of the poem and to create a sense of relation with Khoekhoegowab. Poster art by Namibian artist Vitjitua Ndjiharine.\n\nCo-directed by Ques (Nesindano Namises) & María Cecilia Reyes. Selected: 10th International Video Poetry Festival · International Poetry Film Festival of Thuringia (Germany) · Future Media Theaters, University of Skövde.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1651337730179-YVI1YT3K84MAJ88S8RBQ/IMG_3811.jpg',[])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1651337730179-YVI1YT3K84MAJ88S8RBQ/IMG_3811.jpg" alt="Same Different" /></div>
+      onclick="openModal(MODAL_DATA[7])">
+      <div class="card-image"><img src="images/samedifferent.jpg" alt="Same Different" /></div>
       <div class="card-body">
         <p class="project-tag">Documentary</p>
         <h3 class="project-title">Same Different</h3>
@@ -453,8 +464,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Performance"
-      onclick="openModal('Performance','En el Principio Todo Era Cumbia','2021','Co-Creator & Performer','A storytelling and musical performance that explores the cosmogonies of Cumbia music — the meanings and stories in this ancient rhythm, its instruments, its songs, and its dance. A trip to the pre-Columbian Caribbean coast of the land today called Colombia. Through narration, dance, and live-streamed music connecting Barranquilla\'s downtown to Schloss Solitude, Marlon Peroza, Carlos Monroy and María Cecilia Reyes explore Cumbia as the original heartbeat: being Native American, African, colonized, enslaved; being feminine, masculine and everything in the spectrum; being water, earth, air, and fire.\n\nWith Marlon Peroza & Carlos Monroy. Developed at Schloss Solitude Akademie, Germany.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1633098814083-HR7R0PDQI4K5RRBMI3IS/Screenshot%2B2021-10-01%2Bat%2B16.25.14.jpg',[])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1633098814083-HR7R0PDQI4K5RRBMI3IS/Screenshot%2B2021-10-01%2Bat%2B16.25.14.jpg" alt="En el Principio Todo Era Cumbia" /></div>
+      onclick="openModal(MODAL_DATA[8])">
+      <div class="card-image"><img src="images/cumbia.jpg" alt="En el Principio Todo Era Cumbia" /></div>
       <div class="card-body">
         <p class="project-tag">Performance</p>
         <h3 class="project-title">En el Principio Todo Era Cumbia</h3>
@@ -464,8 +475,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Publication"
-      onclick="openModal('Publication','Texts of Discomfort: Interactive Storytelling Art','2021','Co-Editor','Can discomfort be blissful? This volume presents an in-depth reflection on the selected artworks for the Art Exhibition of ICIDS 2020 (13th International Conference on Interactive Digital Storytelling, Bournemouth University, UK). The curatorial theme follows Barthes\'s concept of the Text of Bliss: \'the text that imposes a state of loss, the text that discomforts... unsettles the reader\'s historical, cultural, psychological assumptions.\' Interactive digital artworks that generate discomfort through form and content can inspire radical changes in the way we perceive the world.\n\nCo-edited with James Pope. CMU ETC Press.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1639101320540-QPILSUFYLNUS5BMA8QZN/750px+Wide+-+519px+Tall.jpg',[{label:'CMU ETC Press',url:'https://press.etc.cmu.edu/index.php/product/texts-of-discomfort/'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1639101320540-QPILSUFYLNUS5BMA8QZN/750px+Wide+-+519px+Tall.jpg" alt="Texts of Discomfort: Interactive Storytelling Art" /></div>
+      onclick="openModal(MODAL_DATA[9])">
+      <div class="card-image"><img src="images/textsofd.jpg" alt="Texts of Discomfort: Interactive Storytelling Art" /></div>
       <div class="card-body">
         <p class="project-tag">Publication</p>
         <h3 class="project-title">Texts of Discomfort: Interactive Storytelling Art</h3>
@@ -475,8 +486,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Interactive Narrative"
-      onclick="openModal('Interactive Narrative','Texts of Discomfort — ICIDS 2020 Art Exhibition','2020','Co-Creative Chair','The ICIDS 2020 Art Exhibition presenting interactive digital artworks that explore discomfort as aesthetic principle, following Barthes\'s concept of the Text of Bliss. Curated to present works in which discomfort through form and/or content inspires radical changes in the way we perceive the world. Co-curated with James Pope for the 13th International Conference on Interactive Digital Storytelling, Bournemouth University, UK.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1603807532598-CTPVF6FJFRPNLQEU07EM/ArtExhibitionWroks.png',[])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1603807532598-CTPVF6FJFRPNLQEU07EM/ArtExhibitionWroks.png" alt="Texts of Discomfort — ICIDS 2020 Art Exhibition" /></div>
+      onclick="openModal(MODAL_DATA[10])">
+      <div class="card-image"><img src="images/textsofd.jpg" alt="Texts of Discomfort — ICIDS 2020 Art Exhibition" /></div>
       <div class="card-body">
         <p class="project-tag">Interactive Narrative</p>
         <h3 class="project-title">Texts of Discomfort — ICIDS 2020 Art Exhibition</h3>
@@ -486,8 +497,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal('Documentary','NIJOLE','2020','Screenwriter & Editor','An intimate portrait of Lithuanian-Colombian artist Nijolė Sivickas (1925–2018) and her unusual relationship with her son, philosopher, mathematician and politician Antanas Mockus. Through Baltic landscapes and the streets of Bogotá, Nijolė and Antanas explore art, politics, migration, independence, the emancipation of women, and the concept of family. A film about the relationship between art and love, and about freedom.\n\nDirector: Sandro Bozzolo · Screenwriter & Editor: María Cecilia Reyes · Producers: Sandro Bozzolo, Max Chicco\n\nWorld Premiere: DOK.Leipzig 61st edition — Next Masters Competition · FICCI (Colombia) — Muestra Migración y Mestizaje · DOCSBarcelona — Selección Oficial Panorama · BiografilmFEST — Celebration of Lives Award · VDFF Vilnius — Opening Film','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1609175748826-XF5VF1F4K2VAFT6ZZBL9/Untitled2_1.250.1.jpg',[{label:'Watch on RTVCplay',url:'https://rtvcplay.co/peliculas-documentales/nijole'},{label:'Watch on Vimeo',url:'https://vimeo.com/ondemand/nijole'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1609175748826-XF5VF1F4K2VAFT6ZZBL9/Untitled2_1.250.1.jpg" alt="NIJOLE" /></div>
+      onclick="openModal(MODAL_DATA[11])">
+      <div class="card-image"><img src="images/nijole.jpg" alt="NIJOLE" /></div>
       <div class="card-body">
         <p class="project-tag">Documentary</p>
         <h3 class="project-title">NIJOLE</h3>
@@ -497,8 +508,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Interactive Narrative"
-      onclick="openModal('Interactive Narrative','ZENA — Interactive VR Film','2018','Director & Camera','"The one choosing the path won\'t be Lorenzo, but you." Lorenzo, a young apprentice of Alchemy, receives a call from the future through a dream: the magic clepsydra of his congregation is about to be destroyed. To save it he must travel 500 years into the future, to modern Zena (Genoa in the Genoese dialect). Through the journey he discovers how his city changed over centuries, finding new alleys and old enemies. To save the clepsydra he must pay close attention to details — because in Zena, things are not always what they seem.\n\nDirector & Camera: María Cecilia Reyes. First interactive VR film set in Genoa. Developed at the University of Genoa e-learning division.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1547584878478-RWU4CIT0MRKLJGM85ZM2/ZENA_foto1.jpg',[])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1547584878478-RWU4CIT0MRKLJGM85ZM2/ZENA_foto1.jpg" alt="ZENA — Interactive VR Film" /></div>
+      onclick="openModal(MODAL_DATA[12])">
+      <div class="card-image"><img src="images/zena.jpg" alt="ZENA — Interactive VR Film" /></div>
       <div class="card-body">
         <p class="project-tag">Interactive Narrative</p>
         <h3 class="project-title">ZENA — Interactive VR Film</h3>
@@ -508,8 +519,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Interactive Narrative"
-      onclick="openModal('Interactive Narrative','What Would an Artist Do?','2020','Creator & Curator','A transmedia art exhibition at the Ceramics Museum of Mondovì (Italy), dedicated to the unusual artistic-existential approach of Antanas Mockus and Nijolė Šivickas. Emigrated from Lithuania to Colombia in 1950, Nijolė transmitted to her son extraordinary instruments of contemporary and performative art — instruments Mockus put into practice as Mayor of Bogotá, involving eight million citizens.\n\nThe exhibition comprised 4 screens, 1 video installation, 1 virtual reality station, and 1 block of clay for the visitor to manipulate.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155081375-GZ6XK2N6B4COH2N0KXHT/unsplash-image-tZc3vjPCk-Q.jpg',[])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155081375-GZ6XK2N6B4COH2N0KXHT/unsplash-image-tZc3vjPCk-Q.jpg" alt="What Would an Artist Do?" /></div>
+      onclick="openModal(MODAL_DATA[13])">
+      <div class="card-image"><img src="images/whatwouldanartist.jpg" alt="What Would an Artist Do?" /></div>
       <div class="card-body">
         <p class="project-tag">Interactive Narrative</p>
         <h3 class="project-title">What Would an Artist Do?</h3>
@@ -519,8 +530,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Immersive Media"
-      onclick="openModal('Immersive Media','Yona Friedman — Ceramic City VR','2021','VR Developer','Yona Friedman\'s Ceramic City brought to life in virtual reality. In 2002, during the second Biennale of Ceramics, architect Yona Friedman (Budapest, 1923) created his ideal city from ceramics, to inspire young generations of artists, architects, musicians, and designers. This VR experience — created through an interpretation by Omar Tonella — allows the user to activate choices that change scenery. The journey begins at the Savona Ceramics Museum and enters its virtual reproduction; the user activates Friedman\'s voice, which mixes with a 360° sound setting by ceramist Jorge Fernandez playing musical instruments made of ceramic.\n\nA project by the Ceramics Museum of Savona and the Department of Architecture and Design, University of Genoa. Conceived by Tiziana Casapietra.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155081375-GZ6XK2N6B4COH2N0KXHT/unsplash-image-tZc3vjPCk-Q.jpg',[{label:'Savona Ceramics Museum',url:'http://musa.savona.it/museodellaceramica/en/inside-yona-friedmans-ceramic-city/'}])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1623155081375-GZ6XK2N6B4COH2N0KXHT/unsplash-image-tZc3vjPCk-Q.jpg" alt="Yona Friedman — Ceramic City VR" /></div>
+      onclick="openModal(MODAL_DATA[14])">
+      <div class="card-image"><img src="images/yonafriedman.jpg" alt="Yona Friedman — Ceramic City VR" /></div>
       <div class="card-body">
         <p class="project-tag">Immersive Media</p>
         <h3 class="project-title">Yona Friedman — Ceramic City VR</h3>
@@ -530,8 +541,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Digital Pedagogy"
-      onclick="openModal('Digital Pedagogy','Interactive MOOC — CNR-ITD','2020','Developer & Researcher','An interactive massive open online course (I-MOOC) developed at the Italian National Research Council — Institute for Educational Technologies (CNR-ITD) for the TRIS model: the inclusive hybrid classroom, which allows students to attend school classes and socialize with peers from home. The I-MOOC breaks the sequential structure of traditional MOOCs, allowing learners to freely explore components, customize browsing sequences, and interact with content through videos, stories, and multimedia materials. Research published in the Italian Journal of Educational Technology (2020).','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1619609705037-DTQPGP12GJE6JY0CWTJK/schermata-I-MOOC.png',[])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1619609705037-DTQPGP12GJE6JY0CWTJK/schermata-I-MOOC.png" alt="Interactive MOOC — CNR-ITD" /></div>
+      onclick="openModal(MODAL_DATA[15])">
+      <div class="card-image"><img src="images/imooc.png" alt="Interactive MOOC — CNR-ITD" /></div>
       <div class="card-body">
         <p class="project-tag">Digital Pedagogy</p>
         <h3 class="project-title">Interactive MOOC — CNR-ITD</h3>
@@ -541,8 +552,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Immersive Media"
-      onclick="openModal('Immersive Media','Le Marittime Irraggiungibili','2016','Director & Camera','LMI360 offers the possibility of living and exploring the most iconic places of the Maritime Alps Park and Marguareis Park through 360° video virtual reality. The project mixes storytelling, music, theater, video-making and performing arts with one objective: to destroy physical and temporal frontiers and give life to the scenarios of these alpine parks. Coordinated by the Protected Area of Maritime Alps and financed by Compagnia di San Paolo within the Festival Torino and the Alps 2016.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1654360386355-0GM0E7QEJQFLFNZ0X5E6/Mountains+3.png',[])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1654360386355-0GM0E7QEJQFLFNZ0X5E6/Mountains+3.png" alt="Le Marittime Irraggiungibili" /></div>
+      onclick="openModal(MODAL_DATA[16])">
+      <div class="card-image"><img src="images/Le_marittime.jpg" alt="Le Marittime Irraggiungibili" /></div>
       <div class="card-body">
         <p class="project-tag">Immersive Media</p>
         <h3 class="project-title">Le Marittime Irraggiungibili</h3>
@@ -552,8 +563,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Digital Pedagogy"
-      onclick="openModal('Digital Pedagogy','Who Is Behind the Cameras?','2013','Workshop Coordinator','An audiovisual workshop coordinated by Mundo Libre ONLUS–CEPAM, financed by the Consejo Nacional de Cinematografía del Ecuador. Held in Esmeraldas, Ecuador (2012–13), teaching local communities filmmaking as a tool for self-representation and cultural agency. The workshop resulted in short documentaries created by young people from the CODESA neighborhood, exploring their city and community through the camera.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591805227304-0W0Y7NHHTLKKVJCZO128/midiendo_luz.jpg',[])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591805227304-0W0Y7NHHTLKKVJCZO128/midiendo_luz.jpg" alt="Who Is Behind the Cameras?" /></div>
+      onclick="openModal(MODAL_DATA[17])">
+      <div class="card-image"><img src="images/quienestadetras.jpg" alt="Who Is Behind the Cameras?" /></div>
       <div class="card-body">
         <p class="project-tag">Digital Pedagogy</p>
         <h3 class="project-title">Who Is Behind the Cameras?</h3>
@@ -563,8 +574,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal('Documentary','Amazonia 2.0','2012','Director & Editor','In Sarayaku, an Ecuadorian indigenous community uses the Internet as a tool for sovereignty. Creativity vs. arms, respect for Mother Earth vs. petroleum, communal solidarity vs. Western individualism — and the Internet as the first great network that can overturn hierarchy. A documentary about how the Kichwa people of Sarayaku use digital technology to defend their territory and cultural identity.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646008809-SPSMN3L1T1WJHORJ0QFL/Captura+de+pantalla+2020-06-08+a+las+21.53.19.png',[])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646008809-SPSMN3L1T1WJHORJ0QFL/Captura+de+pantalla+2020-06-08+a+las+21.53.19.png" alt="Amazonia 2.0" /></div>
+      onclick="openModal(MODAL_DATA[18])">
+      <div class="card-image"><img src="images/2amazonia.png" alt="Amazonia 2.0" /></div>
       <div class="card-body">
         <p class="project-tag">Documentary</p>
         <h3 class="project-title">Amazonia 2.0</h3>
@@ -574,8 +585,8 @@
     </div>
 
     <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal('Documentary','Autunno Viola','2011','Director','A documentary short set in the Italian Alps, portraying life and landscape in late autumn. An early work exploring the cinematic language of documentary as a form of intimate observation.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646008809-SPSMN3L1T1WJHORJ0QFL/Captura+de+pantalla+2020-06-08+a+las+21.53.19.png',[])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646008809-SPSMN3L1T1WJHORJ0QFL/Captura+de+pantalla+2020-06-08+a+las+21.53.19.png" alt="Autunno Viola" /></div>
+      onclick="openModal(MODAL_DATA[19])">
+      <div class="card-image"><img src="images/Autunnoviola.png" alt="Autunno Viola" /></div>
       <div class="card-body">
         <p class="project-tag">Documentary</p>
         <h3 class="project-title">Autunno Viola</h3>
@@ -584,16 +595,7 @@
       </div>
     </div>
 
-    <div class="project-card reveal" data-category="Documentary"
-      onclick="openModal('Documentary','Las Farotas de Talaigua','2009','Research & Production','Research and production for the documentary directed by José Ospino Turizzo, exploring the Farotas de Talaigua — a traditional Colombian Caribbean festivity in which men dress as women in an act of cultural syncretism, blending indigenous, African, and Spanish traditions. A deep dive into cultural identity, ritual, and collective memory on the Colombian Caribbean coast.','img','https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646008809-SPSMN3L1T1WJHORJ0QFL/Captura+de+pantalla+2020-06-08+a+las+21.53.19.png',[])">
-      <div class="card-image"><img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591646008809-SPSMN3L1T1WJHORJ0QFL/Captura+de+pantalla+2020-06-08+a+las+21.53.19.png" alt="Las Farotas de Talaigua" /></div>
-      <div class="card-body">
-        <p class="project-tag">Documentary</p>
-        <h3 class="project-title">Las Farotas de Talaigua</h3>
-        <p class="project-year">2009</p>
-        <p class="card-hint">Read more ↗</p>
-      </div>
-    </div>
+    
 
   </div>
 </section>
@@ -875,13 +877,7 @@
   </div>
 
   <!-- LAB -->
-  <div class="lab-block reveal" onclick="openCourseModal(
-    'Audiovisual Research + Creation Lab',
-    'uni5lab',
-    'Universidad del Norte · Barranquilla, Colombia',
-    'uni5lab is an audiovisual research and creation laboratory at Universidad del Norte, where students and collaborators explore the intersections of moving image, sound, and critical practice. The lab hosts workshops, screenings, and collaborative projects that bridge academic inquiry and artistic production — with a particular focus on interactive narrative, immersive media, and decolonial approaches to storytelling.',
-    [{name:'Lab project A',note:'Interactive installation · 2024',img:''},{name:'Lab project B',note:'360° narrative · 2024',img:''},{name:'Lab project C',note:'Documentary · 2023',img:''},{name:'Lab project D',note:'Performance · 2023',img:''}]
-  )">
+  <div class="lab-block reveal" onclick="openCourseModal(COURSE_DATA[0])">
     <div class="lab-left">
       <p class="lab-eyebrow">Lab Coordination</p>
       <h3 class="lab-name">uni5lab</h3>
@@ -913,82 +909,42 @@
       <span class="cluster-label">Universidad del Norte · Barranquilla</span>
       <div class="course-cards">
 
-        <div class="course-pill" onclick="openCourseModal(
-          'Master's in Journalism · Universidad del Norte',
-          'Journalism and New Technologies',
-          '2024',
-          'A graduate seminar on digital journalism tools, data journalism, interactive storytelling formats, and the transformation of news media. Students produce multimedia journalism projects and explore the changing ethics and practices of the profession.',
-          [{name:'Podcast: Historia de los Medios en Colombia',note:'Master students · 2024',img:''}])">
+        <div class="course-pill" onclick="openCourseModal(COURSE_DATA[9])">
           <span class="cp-title">Journalism and New Technologies</span>
           <span class="cp-year">Master's in Journalism · 2024</span>
         </div>
 
-        <div class="course-pill" onclick="openCourseModal(
-          'B.A. Communication · Universidad del Norte',
-          'Audiovisual Media Production I',
-          '2023–2026',
-          'Foundational production studio course covering the full audiovisual workflow: pre-production, scripting, direction, cinematography, and sound. Students develop short documentary and fiction projects from initial concept through principal photography, with emphasis on collaborative practice and critical reflection on the relationship between form and content.',
-          [{name:'Proyecto documental: Línea 21 — Tejiendo historias, Construyendo Futuro en los Montes de María',note:'Hernández, C. & Movilla, M. · 2024',img:''},{name:'Cortometraje de ficción: FALTA(S)',note:'Fernández, S. & Otero, V. · 2024',img:''}])">
+        <div class="course-pill" onclick="openCourseModal(COURSE_DATA[1])">
           <span class="cp-title">Audiovisual Media Production I</span>
           <span class="cp-year">B.A. Communication · 2023–2026</span>
         </div>
 
-        <div class="course-pill" onclick="openCourseModal(
-          'B.A. Communication · Universidad del Norte',
-          'Audiovisual Media Production III',
-          '2023–2026',
-          'Advanced production studio course focused on post-production workflows: editing, colour grading, sound design, motion graphics, and distribution strategies. Students complete full post-production of their documentary and fiction projects, developing personal editing styles and critical understanding of montage as meaning-making.',
-          [{name:'Cortometraje de ficción con IA: El Triunfo Final',note:'Donado, I., Márquez, J. & Romero, J.C. · 2024',img:''}])">
+        <div class="course-pill" onclick="openCourseModal(COURSE_DATA[1])">
           <span class="cp-title">Audiovisual Media Production III</span>
           <span class="cp-year">B.A. Communication · 2023–2026</span>
         </div>
 
-        <div class="course-pill" onclick="openCourseModal(
-          'B.A. Communication · Universidad del Norte',
-          'Film Analysis',
-          '2025',
-          'Critical reading of cinematic form, narrative structure, and moving image aesthetics across film history. Students analyze fiction and documentary films through frameworks from film theory, narratology, and visual culture studies, with attention to Colombian and Latin American cinema.',
-          [])">
+        <div class="course-pill" onclick="openCourseModal(COURSE_DATA[2])">
           <span class="cp-title">Film Analysis</span>
           <span class="cp-year">B.A. Communication · 2025</span>
         </div>
 
-        <div class="course-pill" onclick="openCourseModal(
-          'B.A. Communication · Universidad del Norte',
-          'Communication Theory I &amp; II',
-          '2023',
-          'Foundational theoretical frameworks in communication — from classical transmission models and the Frankfurt School to Stuart Hall, cultural studies, and contemporary digital media theory. Students develop critical tools to analyse media texts, practices, and institutions.',
-          [])">
+        <div class="course-pill" onclick="openCourseModal(COURSE_DATA[2])">
           <span class="cp-title">Communication Theory I &amp; II</span>
           <span class="cp-year">B.A. Communication · 2023</span>
         </div>
 
-        <div class="course-pill" onclick="openCourseModal(
-          'B.A. Communication · Universidad del Norte',
-          'Semiotics &amp; Communication',
-          '2023',
-          'Sign systems, meaning-making, and semiotic analysis applied to media texts and communication practices. Drawing on Saussure, Peirce, Barthes, and Eco, students learn to decode visual, verbal, and digital signs and apply semiotic analysis to contemporary media objects.',
-          [{name:'Análisis de la estetización de los cadáveres en Hannibal desde lo grotesco',note:'Correa Jiménez, S. · 2024',img:''}])">
+        <div class="course-pill" onclick="openCourseModal(COURSE_DATA[3])">
           <span class="cp-title">Semiotics &amp; Communication</span>
           <span class="cp-year">B.A. Communication · 2023</span>
         </div>
 
-        <div class="course-pill" onclick="openCourseModal(
-          'B.A. Communication · Universidad del Norte',
-          'Thesis Project',
-          '2024',
-          'Supervision of undergraduate research and creative theses across communication, media studies, and audiovisual production. Supervised projects include analytical theses, documentary films, fiction shorts, game design, and interactive experiences.',
-          [{name:'Miniserie de ficción: Malas Fortunas',note:'Granados, A.C. & Salah, G. · 2024',img:''},{name:'Diseño de Videojuego: Espejos del Manglar',note:'Arrieta, A. & Castro, N. · 2024',img:''}])">
+        <div class="course-pill" onclick="openCourseModal(COURSE_DATA[3])">
           <span class="cp-title">Thesis Project</span>
           <span class="cp-year">B.A. Communication · 2024</span>
         </div>
 
-        <div class="course-pill" onclick="openCourseModal(
-          'Elective · Humanities · Universidad del Norte',
-          'Electronic and New Media Arts',
-          '2024–2026',
-          'An interdisciplinary elective at the intersection of art, technology, and critical practice. Students experiment with BCI, AR, VR, interactive fiction, and generative tools to create original artistic projects. The course culminates in a public exhibition.',
-          [{name:'Mapuka Aumentado — AR Exhibition, Museum of Caribbean Peoples Archaeology',note:'Electronic Arts students · 2024–2025',img:''},{name:'Tutti Frutti / Relájate — Interactive Short Films with Tangible and Brain Interfaces',note:'Uni5Lab · 2023',img:''}])">
+        <div class="course-pill" onclick="openCourseModal(COURSE_DATA[4])">
           <span class="cp-title">Electronic and New Media Arts</span>
           <span class="cp-year">Elective · Humanities · 2024–2026</span>
         </div>
@@ -1000,22 +956,12 @@
       <span class="cluster-label">Università di Genova · Italy</span>
       <div class="course-cards">
 
-        <div class="course-pill" onclick="openCourseModal(
-          'Master in Creative Writing &amp; Digital Content Design · Università di Genova',
-          'Interactive Digital Narrative',
-          '2018–2019',
-          'A graduate course on the theory and practice of interactive digital storytelling — from branching narrative and hypertext to transmedia and interactive documentary. Students developed original IDN prototypes using Twine, Klynt, Unity, and related platforms.',
-          [{name:'IDN prototypes · various formats',note:'Master students · 2019',img:''}])">
+        <div class="course-pill" onclick="openCourseModal(COURSE_DATA[5])">
           <span class="cp-title">Interactive Digital Narrative</span>
           <span class="cp-year">Master in Creative Writing · 2018–2019</span>
         </div>
 
-        <div class="course-pill" onclick="openCourseModal(
-          'Master in Creative Writing &amp; Digital Content Design · Università di Genova',
-          'New Media and Museology',
-          '2018–2019',
-          'The intersection of new media technologies and museum practice — from interactive installations to digital archives and narrative experiences in cultural heritage. Students developed digital mediation proposals for museum collections.',
-          [{name:'Digital museum experience prototypes',note:'Master students · 2019',img:''}])">
+        <div class="course-pill" onclick="openCourseModal(COURSE_DATA[6])">
           <span class="cp-title">New Media and Museology</span>
           <span class="cp-year">Master in Creative Writing · 2018–2019</span>
         </div>
@@ -1027,42 +973,22 @@
       <span class="cluster-label">Previous · Workshops &amp; Short Courses</span>
       <div class="course-cards">
 
-        <div class="course-pill" onclick="openCourseModal(
-          'Film Editing Technician Programme · Scuola Fassicomo, Genova',
-          'Audiovisual Narratives &amp; New Technologies',
-          '2021',
-          'A professional short course on the technical and narrative specificities of digital audiovisual production and post-production, with focus on new media formats, online video, and emerging distribution platforms.',
-          [])">
+        <div class="course-pill" onclick="openCourseModal(COURSE_DATA[7])">
           <span class="cp-title">Audiovisual Narratives &amp; New Technologies</span>
           <span class="cp-year">Scuola Fassicomo, Genova · 2021</span>
         </div>
 
-        <div class="course-pill" onclick="openCourseModal(
-          'Film Editing Technician Programme · Scuola Fassicomo, Genova',
-          'Montage Theory',
-          '2021',
-          'A bilingual (English–Spanish) course on cinematic montage theory for students of audiovisual communication and film editing. Covers classical montage theory — Eisenstein, Kuleshov, Pudovkin — through to contemporary digital editing practice.',
-          [])">
+        <div class="course-pill" onclick="openCourseModal(COURSE_DATA[7])">
           <span class="cp-title">Montage Theory</span>
           <span class="cp-year">Scuola Fassicomo, Genova · 2021</span>
         </div>
 
-        <div class="course-pill" onclick="openCourseModal(
-          'Audiovisual Production Technician · Escuela Distrital de Artes, Barranquilla',
-          'Audiovisual Narratives · Screenplay Writing · Semiotics',
-          '2014',
-          'Teaching audiovisual narrative, screenwriting, and semiotics to young artists at Barranquilla's public arts school. Students produced short documentary and fiction projects exploring their city and community through the camera.',
-          [{name:'Short documentary projects — CODESA neighbourhood',note:'EDA students · 2014',img:'https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1566567284038-WTGFFV86O09USN87GFLU/1557129_10152862681767037_2868304511527261615_o.jpg'}])">
+        <div class="course-pill" onclick="openCourseModal(COURSE_DATA[8])">
           <span class="cp-title">Audiovisual Narratives · Screenplay Writing · Semiotics</span>
           <span class="cp-year">Escuela Distrital de Artes, Barranquilla · 2014</span>
         </div>
 
-        <div class="course-pill" onclick="openCourseModal(
-          'Community Workshop · Mundo Libre ONLUS–CEPAM, Esmeraldas',
-          'Who Is Behind the Cameras?',
-          '2012–2013',
-          'An audiovisual workshop financed by the Consejo Nacional de Cinematografía del Ecuador, working with local communities in Esmeraldas to teach filmmaking as a tool for self-representation and cultural sovereignty. Students produced short documentaries about their neighbourhood.',
-          [{name:'Community documentary: CODESA neighbourhood, Esmeraldas',note:'Community filmmakers · 2013',img:'https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1591805227304-0W0Y7NHHTLKKVJCZO128/midiendo_luz.jpg'}])">
+        <div class="course-pill" onclick="openCourseModal(COURSE_DATA[8])">
           <span class="cp-title">Who Is Behind the Cameras?</span>
           <span class="cp-year">Mundo Libre ONLUS / CEPAM, Ecuador · 2012–2013</span>
         </div>
@@ -1070,7 +996,19 @@
       </div>
     </div>
 
-  </div>
+  
+    <div class="project-card reveal" data-category="Documentary"
+      onclick="openModal(MODAL_DATA[20])">
+      <div class="card-image"><img src="images/salonolimpia2.jpg" alt="Salón Olimpia" /></div>
+      <div class="card-body">
+        <p class="project-tag">Documentary</p>
+        <h3 class="project-title">Salón Olimpia</h3>
+        <p class="project-year">2017</p>
+        <p class="card-hint">Read more ↗</p>
+      </div>
+    </div>
+
+</div>
 
 </section>
 <!-- COURSE MODAL -->
@@ -1209,8 +1147,13 @@
       </div>
     </div>
 
-    <!-- CALENDAR MODAL -->
-    <div id="cal-overlay" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(10,10,10,.7);overflow-y:auto;" onclick="if(event.target===this)closeCalendar()">
+    <!-- CALENDAR MODAL moved outside grid to prevent clipping -->
+    </div>
+  </div>
+</section>
+
+<!-- CALENDAR OVERLAY (outside section to ensure fixed positioning works) -->
+<div id="cal-overlay" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(10,10,10,.7);overflow-y:auto;" onclick="if(event.target===this)closeCalendar()">
       <div id="cal-modal" style="background:#fff;margin:2rem auto;max-width:900px;padding:3rem;position:relative;">
         <button onclick="closeCalendar()" style="position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;cursor:pointer;font-family:var(--font-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);">Close ✕</button>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;">
@@ -1224,8 +1167,6 @@
         <div id="cal-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;"></div>
       </div>
     </div>
-  </div>
-</section>
 
 <!-- ABOUT -->
 <section id="about">
@@ -1283,60 +1224,522 @@
   <span class="footer-copy">© 2025</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  /* NAV */
-  function toggleNav() { var t=document.getElementById('nav-toggle'),d=document.getElementById('nav-dropdown'); t.classList.toggle('open'); d.classList.toggle('open'); document.body.style.overflow=d.classList.contains('open')?'hidden':''; }
-  function closeNav() { document.getElementById('nav-toggle').classList.remove('open'); document.getElementById('nav-dropdown').classList.remove('open'); document.body.style.overflow=''; }
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
 
-  /* COURSE MODAL */
-  var PH_SVG='<svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="2" y="5" width="32" height="26" rx="1" stroke="#0a0a0a" stroke-width="1.5"/><path d="M2 24l8-8 6 6 7-9 13 12" stroke="#0a0a0a" stroke-width="1.3" stroke-linejoin="round"/></svg>';
-  function openCourseModal(type,title,meta,desc,students) {
-    document.getElementById('cm-type').textContent=type;
-    document.getElementById('cm-title').textContent=title;
-    document.getElementById('cm-meta').textContent=meta;
-    document.getElementById('cm-desc').textContent=desc;
-    var grid=document.getElementById('cm-students'); grid.innerHTML='';
-    students.forEach(function(s){ var item=document.createElement('div'); item.className='course-student-item'; var imgDiv=document.createElement('div'); imgDiv.className='course-student-img'; imgDiv.innerHTML=s.img?'<img src="'+s.img+'" alt="'+s.name+'" />':`<div class="course-student-img-ph">${PH_SVG}</div>`; var cap=document.createElement('div'); cap.className='course-student-caption'; cap.innerHTML='<p class="course-student-name">'+s.name+'</p><p class="course-student-note">'+s.note+'</p>'; item.appendChild(imgDiv); item.appendChild(cap); grid.appendChild(item); });
-    document.getElementById('course-modal-overlay').classList.add('open'); document.body.style.overflow='hidden';
+  /* DATA */
+  var COURSE_DATA = [
+  {
+    "type": "Audiovisual Research + Creation Lab",
+    "title": "uni5lab",
+    "meta": "Universidad del Norte · Barranquilla, Colombia",
+    "desc": "uni5lab is an audiovisual research and creation laboratory at Universidad del Norte, where students and collaborators explore the intersections of moving image, sound, and critical practice. The lab hosts workshops, screenings, and collaborative projects that bridge academic inquiry and artistic production — with a particular focus on interactive narrative, immersive media, and decolonial approaches to storytelling.",
+    "students": [
+      {
+        "name": "Lab project A",
+        "note": "Interactive installation · 2024",
+        "img": ""
+      },
+      {
+        "name": "Lab project B",
+        "note": "360° narrative · 2024",
+        "img": ""
+      },
+      {
+        "name": "Lab project C",
+        "note": "Documentary · 2023",
+        "img": ""
+      },
+      {
+        "name": "Lab project D",
+        "note": "Performance · 2023",
+        "img": ""
+      }
+    ]
+  },
+  {
+    "type": "B.A. Communication · Universidad del Norte",
+    "title": "Audiovisual Media Production I",
+    "meta": "2023–2026",
+    "desc": "Foundational production studio course covering the full audiovisual workflow: pre-production, scripting, direction, cinematography, and sound. Students develop short documentary and fiction projects from initial concept through principal photography, with emphasis on collaborative practice and critical reflection on the relationship between form and content.",
+    "students": [
+      {
+        "name": "Proyecto documental: Línea 21 — Tejiendo historias, Construyendo Futuro en los Montes de María",
+        "note": "Hernández, C. & Movilla, M. · 2024",
+        "img": ""
+      },
+      {
+        "name": "Cortometraje de ficción: FALTA(S)",
+        "note": "Fernández, S. & Otero, V. · 2024",
+        "img": ""
+      }
+    ]
+  },
+  {
+    "type": "B.A. Communication · Universidad del Norte",
+    "title": "Film Analysis",
+    "meta": "2025",
+    "desc": "Critical reading of cinematic form, narrative structure, and moving image aesthetics across film history. Students analyze fiction and documentary films through frameworks from film theory, narratology, and visual culture studies, with attention to Colombian and Latin American cinema.",
+    "students": []
+  },
+  {
+    "type": "B.A. Communication · Universidad del Norte",
+    "title": "Semiotics &amp; Communication",
+    "meta": "2023",
+    "desc": "Sign systems, meaning-making, and semiotic analysis applied to media texts and communication practices. Drawing on Saussure, Peirce, Barthes, and Eco, students learn to decode visual, verbal, and digital signs and apply semiotic analysis to contemporary media objects.",
+    "students": [
+      {
+        "name": "Análisis de la estetización de los cadáveres en Hannibal desde lo grotesco",
+        "note": "Correa Jiménez, S. · 2024",
+        "img": ""
+      }
+    ]
+  },
+  {
+    "type": "Elective · Humanities · Universidad del Norte",
+    "title": "Electronic and New Media Arts",
+    "meta": "2024–2026",
+    "desc": "An interdisciplinary elective at the intersection of art, technology, and critical practice. Students experiment with BCI, AR, VR, interactive fiction, and generative tools to create original artistic projects. The course culminates in a public exhibition.",
+    "students": [
+      {
+        "name": "Mapuka Aumentado — AR Exhibition, Museum of Caribbean Peoples Archaeology",
+        "note": "Electronic Arts students · 2024–2025",
+        "img": ""
+      },
+      {
+        "name": "Tutti Frutti / Relájate — Interactive Short Films with Tangible and Brain Interfaces",
+        "note": "Uni5Lab · 2023",
+        "img": ""
+      }
+    ]
+  },
+  {
+    "type": "Master in Creative Writing &amp; Digital Content Design · Università di Genova",
+    "title": "Interactive Digital Narrative",
+    "meta": "2018–2019",
+    "desc": "A graduate course on the theory and practice of interactive digital storytelling — from branching narrative and hypertext to transmedia and interactive documentary. Students developed original IDN prototypes using Twine, Klynt, Unity, and related platforms.",
+    "students": [
+      {
+        "name": "IDN prototypes · various formats",
+        "note": "Master students · 2019",
+        "img": ""
+      }
+    ]
+  },
+  {
+    "type": "Master in Creative Writing &amp; Digital Content Design · Università di Genova",
+    "title": "New Media and Museology",
+    "meta": "2018–2019",
+    "desc": "The intersection of new media technologies and museum practice — from interactive installations to digital archives and narrative experiences in cultural heritage. Students developed digital mediation proposals for museum collections.",
+    "students": [
+      {
+        "name": "Digital museum experience prototypes",
+        "note": "Master students · 2019",
+        "img": ""
+      }
+    ]
+  },
+  {
+    "type": "Film Editing Technician Programme · Scuola Fassicomo, Genova",
+    "title": "Audiovisual Narratives &amp; New Technologies",
+    "meta": "2021",
+    "desc": "A professional short course on the technical and narrative specificities of digital audiovisual production and post-production, with focus on new media formats, online video, and emerging distribution platforms.",
+    "students": []
+  },
+  {
+    "type": "Audiovisual Production Technician · Escuela Distrital de Artes, Barranquilla",
+    "title": "Audiovisual Narratives · Screenplay Writing · Semiotics",
+    "meta": "2014",
+    "desc": "Teaching audiovisual narrative, screenwriting, and semiotics to young artists at Barranquillas public arts school. Students produced short documentary and fiction projects exploring their city and community through the camera.,\n          [{name:Short documentary projects — CODESA neighbourhood,note:EDA students · 2014,img:https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/1566567284038-WTGFFV86O09USN87GFLU/1557129_10152862681767037_2868304511527261615_o.jpg}]",
+    "students": []
+  },
+  {
+    "type": "Master's in Journalism · Universidad del Norte",
+    "title": "Journalism and New Technologies",
+    "meta": "2024",
+    "desc": "A graduate seminar on digital journalism tools, data journalism, interactive storytelling formats, and the transformation of news media. Students produce multimedia journalism projects and explore the changing ethics and practices of the profession.",
+    "students": [
+      {
+        "name": "Podcast: Historia de los Medios en Colombia",
+        "note": "Master students · 2024",
+        "img": ""
+      }
+    ]
   }
-  function closeCourseModal() { document.getElementById('course-modal-overlay').classList.remove('open'); document.body.style.overflow=''; }
-  function closeCourseModalOnOverlay(e) { if(e.target===document.getElementById('course-modal-overlay')) closeCourseModal(); }
+];
+  var MODAL_DATA  = [
+  {
+    "tag": "Interactive Narrative",
+    "title": "La Flor del Manglar",
+    "year": "2026",
+    "role": "Director",
+    "desc": "An interactive narrative project rooted in the mangrove ecosystems of the Colombian Caribbean coast. La Flor del Manglar explores the relationships between ecology, memory, and storytelling through immersive and participatory forms.",
+    "mediaType": "img",
+    "mediaSrc": "images/laflordelmanglar.jpg",
+    "links": [
+      {
+        "label": "laflordelmanglar.com",
+        "url": "https://laflordelmanglar.com/"
+      }
+    ]
+  },
+  {
+    "tag": "Digital Pedagogy",
+    "title": "An Educator's Guide to Interactive Digital Narrative",
+    "year": "2024",
+    "role": "Editor & Co-Curator",
+    "desc": "A global, transdisciplinary, and continuously evolving open-access collection dedicated to educators, scholars, and practitioners who teach interactive digital narrative (IDN) across diverse fields — storytelling, game development, journalism, AR/VR/XR, digital humanities, and more. 45 syllabi from university programs worldwide offer a kaleidoscopic view of IDN as it solidifies into a recognized academic discipline.",
+    "mediaType": "img",
+    "mediaSrc": "images/IDN-Book-Syllabi-1024x819.jpg",
+    "links": [
+      {
+        "label": "idnsyllabi.com",
+        "url": "https://idnsyllabi.com/"
+      }
+    ]
+  },
+  {
+    "tag": "Conference",
+    "title": "STREAMS / CORRIENTES — ICIDS 2024",
+    "year": "2024",
+    "role": "General Chair &amp; Program Chair",
+    "desc": "The 17th International Conference on Interactive Digital Storytelling — the first ICIDS ever held in Latin America. Hosted at Universidad del Norte, Barranquilla, Colombia (December 2–6, 2024). The theme STREAMS / CORRIENTES drew from Barranquillas geography — surrounded by the Caribbean Sea",
+    "mediaType": "img",
+    "mediaSrc": "images/icids2024-banner.jpg",
+    "links": []
+  },
+  {
+    "tag": "Interactive Narrative",
+    "title": "Chill Out! Interactive Cinema is not Dead!",
+    "year": "2024",
+    "role": "Lead Researcher & Workshop Director",
+    "desc": "How to create an interactive narrative that integrates a Brain-Computer Interface (BCI)? This co-created interactive short film uses the relaxation parameter of an EEG headset to trigger story progression. The interactor must consciously relax to advance through a series of stressful situations. Developed in a 3-day workshop entirely by students at Universidad del Norte (Colombia), framed in interactive cinema (Hales, 2015), enactive cinema (Tikka, 2008), and IDN studies (Koenitz, 2023). Workshop led by professor Chris Hales. First tests demonstrated that narrative affects emotions and biological data — during the experience, stressed participants learned to relax to progress the story.",
+    "mediaType": "img",
+    "mediaSrc": "images/chillout.jpg",
+    "links": []
+  },
+  {
+    "tag": "Publication",
+    "title": "Interactive Fiction in Cinematic VR — Towards the Interactive Immersive Movie",
+    "year": "2024",
+    "role": "Author",
+    "desc": "A narrative model combining live-action 360° video with interactive fiction structure to create immersive and interactive narrative experiences. The book presents an epistemology of immersive interactive movies — analyzing artistic, narrative, and interactive qualities — the production workflow, and an evaluation methodology. Proposes that all VR movies should be interactive, building a bridge between cinema and virtual reality. Published by Mimesis International (228 pp., ISBN 9788869773259).",
+    "mediaType": "img",
+    "mediaSrc": "images/ifcvrbook.jpg",
+    "links": [
+      {
+        "label": "Mimesis International",
+        "url": "https://mimesisinternational.com/interactive-fiction-in-cinematic-virtual-reality-towards-the-interactive-immersive-movie/"
+      },
+      {
+        "label": "Amazon",
+        "url": "https://www.amazon.com/Interactive-Fiction-Cinematic-Virtual-Reality/dp/8869773256"
+      }
+    ]
+  },
+  {
+    "tag": "Immersive Media",
+    "title": "Inverted Dreaming",
+    "year": "2022",
+    "role": "Artist",
+    "desc": "An immersive video installation born from footage shot at the Parco delle Alpi Marittime (Maritime Alps National Park) during the Le Marittime Irraggiungibili 360° workshop (2016). The installation evokes the disjointed logic of dreams: have you ever awakened trying to reconstruct the disconnected imagery of a long dream? Inverted Dreaming attempts to build that impossible logic line — suspended between memory and imagination, sometimes very clear, other times in non-natural colors, sometimes about people we know in the bodies of people we don't recognize.",
+    "mediaType": "img",
+    "mediaSrc": "images/inverteddreaming.png",
+    "links": []
+  },
+  {
+    "tag": "Interactive Narrative",
+    "title": "Pueblo Santo — A Cumbia Trip",
+    "year": "2022",
+    "role": "Creator & Director",
+    "desc": "A multi-reality interactive musical experience for VR. Pueblo Santo, the place where Cumbia music originated, suffered a horrible massacre that submerged the town in an eternal fog. Only the lost gaita player can bring the town back to life by playing Cumbia's original melody. The indigenous Amacumbié cosmogony intertwines with Colombia's history of violence, challenging the interactor to explore the town and restore life by learning to play Cumbia. Based on Historias Cantadas, a concept album by Gaiteros de Pueblo Santo (nominated for best folklore album at the 2021 Latin Grammys). Available for stand-alone VR headsets and as a physical multi-sensorial installation. Work-in-progress. Illustration by Laura Ortiz.\n\nDirector: María Cecilia Reyes · Producer: Laura Casadiego · Storyworld & Music: Marlon Peroza",
+    "mediaType": "img",
+    "mediaSrc": "images/2pueblosanto.png",
+    "links": []
+  },
+  {
+    "tag": "Documentary",
+    "title": "Same Different",
+    "year": "2022",
+    "role": "Co-Director",
+    "desc": "A poetry short film — a rare encounter between Khoekhoegowab and a still camera. The poem, written and performed by Ques (Nesindano Namises), together with the sounds of the bow and the forest, move along the sun, the wind, and the spirit of the poet herself. All Khoekhoegowab is also spoken in English. Subtitling is intentionally absent so as not to interrupt the rhythm of the poem and to create a sense of relation with Khoekhoegowab. Poster art by Namibian artist Vitjitua Ndjiharine.\n\nCo-directed by Ques (Nesindano Namises) & María Cecilia Reyes. Selected: 10th International Video Poetry Festival · International Poetry Film Festival of Thuringia (Germany) · Future Media Theaters, University of Skövde.",
+    "mediaType": "img",
+    "mediaSrc": "images/samedifferent.jpg",
+    "links": []
+  },
+  {
+    "tag": "Performance",
+    "title": "En el Principio Todo Era Cumbia",
+    "year": "2021",
+    "role": "Co-Creator & Performer",
+    "desc": "A storytelling and musical performance that explores the cosmogonies of Cumbia music — the meanings and stories in this ancient rhythm, its instruments, its songs, and its dance. A trip to the pre-Columbian Caribbean coast of the land today called Colombia. Through narration, dance, and live-streamed music connecting Barranquilla's downtown to Schloss Solitude, Marlon Peroza, Carlos Monroy and María Cecilia Reyes explore Cumbia as the original heartbeat: being Native American, African, colonized, enslaved; being feminine, masculine and everything in the spectrum; being water, earth, air, and fire.\n\nWith Marlon Peroza & Carlos Monroy. Developed at Schloss Solitude Akademie, Germany.",
+    "mediaType": "img",
+    "mediaSrc": "images/cumbia.jpg",
+    "links": []
+  },
+  {
+    "tag": "Publication",
+    "title": "Texts of Discomfort: Interactive Storytelling Art",
+    "year": "2021",
+    "role": "Co-Editor",
+    "desc": "Can discomfort be blissful? This volume presents an in-depth reflection on the selected artworks for the Art Exhibition of ICIDS 2020 (13th International Conference on Interactive Digital Storytelling, Bournemouth University, UK). The curatorial theme follows Barthes's concept of the Text of Bliss: 'the text that imposes a state of loss, the text that discomforts... unsettles the reader's historical, cultural, psychological assumptions.' Interactive digital artworks that generate discomfort through form and content can inspire radical changes in the way we perceive the world.\n\nCo-edited with James Pope. CMU ETC Press.",
+    "mediaType": "img",
+    "mediaSrc": "images/textsofd.jpg",
+    "links": [
+      {
+        "label": "CMU ETC Press",
+        "url": "https://press.etc.cmu.edu/index.php/product/texts-of-discomfort/"
+      }
+    ]
+  },
+  {
+    "tag": "Interactive Narrative",
+    "title": "Texts of Discomfort — ICIDS 2020 Art Exhibition",
+    "year": "2020",
+    "role": "Co-Creative Chair",
+    "desc": "The ICIDS 2020 Art Exhibition presenting interactive digital artworks that explore discomfort as aesthetic principle, following Barthes's concept of the Text of Bliss. Curated to present works in which discomfort through form and/or content inspires radical changes in the way we perceive the world. Co-curated with James Pope for the 13th International Conference on Interactive Digital Storytelling, Bournemouth University, UK.",
+    "mediaType": "img",
+    "mediaSrc": "images/textsofd.jpg",
+    "links": []
+  },
+  {
+    "tag": "Documentary",
+    "title": "NIJOLE",
+    "year": "2020",
+    "role": "Screenwriter & Editor",
+    "desc": "An intimate portrait of Lithuanian-Colombian artist Nijolė Sivickas (1925–2018) and her unusual relationship with her son, philosopher, mathematician and politician Antanas Mockus. Through Baltic landscapes and the streets of Bogotá, Nijolė and Antanas explore art, politics, migration, independence, the emancipation of women, and the concept of family. A film about the relationship between art and love, and about freedom.\n\nDirector: Sandro Bozzolo · Screenwriter & Editor: María Cecilia Reyes · Producers: Sandro Bozzolo, Max Chicco\n\nWorld Premiere: DOK.Leipzig 61st edition — Next Masters Competition · FICCI (Colombia) — Muestra Migración y Mestizaje · DOCSBarcelona — Selección Oficial Panorama · BiografilmFEST — Celebration of Lives Award · VDFF Vilnius — Opening Film",
+    "mediaType": "img",
+    "mediaSrc": "images/nijole.jpg",
+    "links": [
+      {
+        "label": "Watch on RTVCplay",
+        "url": "https://rtvcplay.co/peliculas-documentales/nijole"
+      },
+      {
+        "label": "Watch on Vimeo",
+        "url": "https://vimeo.com/ondemand/nijole"
+      }
+    ]
+  },
+  {
+    "tag": "Interactive Narrative",
+    "title": "ZENA — Interactive VR Film",
+    "year": "2018",
+    "role": "Director & Camera",
+    "desc": "\"The one choosing the path won't be Lorenzo, but you.\" Lorenzo, a young apprentice of Alchemy, receives a call from the future through a dream: the magic clepsydra of his congregation is about to be destroyed. To save it he must travel 500 years into the future, to modern Zena (Genoa in the Genoese dialect). Through the journey he discovers how his city changed over centuries, finding new alleys and old enemies. To save the clepsydra he must pay close attention to details — because in Zena, things are not always what they seem.\n\nDirector & Camera: María Cecilia Reyes. First interactive VR film set in Genoa. Developed at the University of Genoa e-learning division.",
+    "mediaType": "img",
+    "mediaSrc": "images/zena.jpg",
+    "links": []
+  },
+  {
+    "tag": "Interactive Narrative",
+    "title": "What Would an Artist Do?",
+    "year": "2020",
+    "role": "Creator & Curator",
+    "desc": "A transmedia art exhibition at the Ceramics Museum of Mondovì (Italy), dedicated to the unusual artistic-existential approach of Antanas Mockus and Nijolė Šivickas. Emigrated from Lithuania to Colombia in 1950, Nijolė transmitted to her son extraordinary instruments of contemporary and performative art — instruments Mockus put into practice as Mayor of Bogotá, involving eight million citizens.\n\nThe exhibition comprised 4 screens, 1 video installation, 1 virtual reality station, and 1 block of clay for the visitor to manipulate.",
+    "mediaType": "img",
+    "mediaSrc": "images/whatwouldanartist.jpg",
+    "links": []
+  },
+  {
+    "tag": "Immersive Media",
+    "title": "Yona Friedman — Ceramic City VR",
+    "year": "2021",
+    "role": "VR Developer",
+    "desc": "Yona Friedman's Ceramic City brought to life in virtual reality. In 2002, during the second Biennale of Ceramics, architect Yona Friedman (Budapest, 1923) created his ideal city from ceramics, to inspire young generations of artists, architects, musicians, and designers. This VR experience — created through an interpretation by Omar Tonella — allows the user to activate choices that change scenery. The journey begins at the Savona Ceramics Museum and enters its virtual reproduction; the user activates Friedman's voice, which mixes with a 360° sound setting by ceramist Jorge Fernandez playing musical instruments made of ceramic.\n\nA project by the Ceramics Museum of Savona and the Department of Architecture and Design, University of Genoa. Conceived by Tiziana Casapietra.",
+    "mediaType": "img",
+    "mediaSrc": "images/yonafriedman.jpg",
+    "links": [
+      {
+        "label": "Savona Ceramics Museum",
+        "url": "http://musa.savona.it/museodellaceramica/en/inside-yona-friedmans-ceramic-city/"
+      }
+    ]
+  },
+  {
+    "tag": "Digital Pedagogy",
+    "title": "Interactive MOOC — CNR-ITD",
+    "year": "2020",
+    "role": "Developer & Researcher",
+    "desc": "An interactive massive open online course (I-MOOC) developed at the Italian National Research Council — Institute for Educational Technologies (CNR-ITD) for the TRIS model: the inclusive hybrid classroom, which allows students to attend school classes and socialize with peers from home. The I-MOOC breaks the sequential structure of traditional MOOCs, allowing learners to freely explore components, customize browsing sequences, and interact with content through videos, stories, and multimedia materials. Research published in the Italian Journal of Educational Technology (2020).",
+    "mediaType": "img",
+    "mediaSrc": "images/imooc.png",
+    "links": []
+  },
+  {
+    "tag": "Immersive Media",
+    "title": "Le Marittime Irraggiungibili",
+    "year": "2016",
+    "role": "Director & Camera",
+    "desc": "LMI360 offers the possibility of living and exploring the most iconic places of the Maritime Alps Park and Marguareis Park through 360° video virtual reality. The project mixes storytelling, music, theater, video-making and performing arts with one objective: to destroy physical and temporal frontiers and give life to the scenarios of these alpine parks. Coordinated by the Protected Area of Maritime Alps and financed by Compagnia di San Paolo within the Festival Torino and the Alps 2016.",
+    "mediaType": "img",
+    "mediaSrc": "images/Le_marittime.jpg",
+    "links": []
+  },
+  {
+    "tag": "Digital Pedagogy",
+    "title": "Who Is Behind the Cameras?",
+    "year": "2013",
+    "role": "Workshop Coordinator",
+    "desc": "An audiovisual workshop coordinated by Mundo Libre ONLUS–CEPAM, financed by the Consejo Nacional de Cinematografía del Ecuador. Held in Esmeraldas, Ecuador (2012–13), teaching local communities filmmaking as a tool for self-representation and cultural agency. The workshop resulted in short documentaries created by young people from the CODESA neighborhood, exploring their city and community through the camera.",
+    "mediaType": "img",
+    "mediaSrc": "images/quienestadetras.jpg",
+    "links": []
+  },
+  {
+    "tag": "Documentary",
+    "title": "Amazonia 2.0",
+    "year": "2012",
+    "role": "Director & Editor",
+    "desc": "In Sarayaku, an Ecuadorian indigenous community uses the Internet as a tool for sovereignty. Creativity vs. arms, respect for Mother Earth vs. petroleum, communal solidarity vs. Western individualism — and the Internet as the first great network that can overturn hierarchy. A documentary about how the Kichwa people of Sarayaku use digital technology to defend their territory and cultural identity.",
+    "mediaType": "img",
+    "mediaSrc": "images/2amazonia.png",
+    "links": []
+  },
+  {
+    "tag": "Documentary",
+    "title": "Autunno Viola",
+    "year": "2011",
+    "role": "Director",
+    "desc": "A documentary short set in the Italian Alps, portraying life and landscape in late autumn. An early work exploring the cinematic language of documentary as a form of intimate observation.",
+    "mediaType": "img",
+    "mediaSrc": "images/Autunnoviola.png",
+    "links": []
+  },
+  {
+    "tag": "Documentary",
+    "title": "Salón Olimpia",
+    "year": "2017",
+    "role": "Director & Editor",
+    "desc": "A documentary short portrait of Salón Olimpia — one of Barranquilla's last surviving traditional billiard halls. Through the rituals of the game, the light filtering through old shutters, and the unhurried rhythms of its regulars, the film captures a vanishing social space and the quiet poetry of everyday life on the Colombian Caribbean coast.",
+    "mediaType": "video",
+    "mediaSrc": "https://www.youtube.com/embed/RBo3yGymMI8",
+    "links": [
+      {
+        "label": "Watch on YouTube",
+        "url": "https://www.youtube.com/watch?v=RBo3yGymMI8"
+      }
+    ]
+  }
+];
 
-  /* FILTER */
-  function filterProjects(cat,btn) { document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.project-card').forEach(card=>{ card.classList.toggle('hidden', cat!=='all' && card.dataset.category!==cat); }); }
+  /* NAV */
+  function toggleNav() {
+    var t = document.getElementById('nav-toggle');
+    var d = document.getElementById('nav-dropdown');
+    t.classList.toggle('open');
+    d.classList.toggle('open');
+    document.body.style.overflow = d.classList.contains('open') ? 'hidden' : '';
+  }
+  function closeNav() {
+    document.getElementById('nav-toggle').classList.remove('open');
+    document.getElementById('nav-dropdown').classList.remove('open');
+    document.body.style.overflow = '';
+  }
 
-  /* VIEW */
-  function setView(v) { var g=document.getElementById('projects-grid'); document.getElementById('grid-btn').classList.toggle('active',v==='grid'); document.getElementById('gallery-btn').classList.toggle('active',v==='gallery'); g.classList.toggle('gallery-view',v==='gallery'); }
+  /* FILTER / VIEW */
+  function filterProjects(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('.project-card').forEach(function(card) {
+      card.classList.toggle('hidden', cat !== 'all' && card.dataset.category !== cat);
+    });
+  }
+  function setView(v) {
+    var g = document.getElementById('projects-grid');
+    document.getElementById('grid-btn').classList.toggle('active', v === 'grid');
+    document.getElementById('gallery-btn').classList.toggle('active', v === 'gallery');
+    g.classList.toggle('gallery-view', v === 'gallery');
+  }
 
   /* PUB TABS */
-  function switchPub(id,btn) { document.querySelectorAll('.pub-tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.pub-section').forEach(s=>s.classList.remove('active')); document.getElementById('pub-'+id).classList.add('active'); }
+  function switchPub(id, btn) {
+    document.querySelectorAll('.pub-tab').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('.pub-section').forEach(function(s) { s.classList.remove('active'); });
+    document.getElementById('pub-' + id).classList.add('active');
+  }
 
   /* PROJECT MODAL */
-  function openModal(tag,title,year,role,desc,mediaType,mediaSrc,links) {
-    document.getElementById('modal-tag').textContent=tag;
-    document.getElementById('modal-title').textContent=title;
-    document.getElementById('modal-year').textContent=year;
-    document.getElementById('modal-role').innerHTML=role;
-    document.getElementById('modal-desc').textContent=desc;
-    var mediaEl=document.getElementById('modal-media');
-    if(mediaType==='img'&&mediaSrc) mediaEl.innerHTML='<img src="'+mediaSrc+'" alt="'+title+'" />';
-    else if(mediaType==='video'&&mediaSrc) mediaEl.innerHTML='<iframe src="'+mediaSrc+'" allowfullscreen allow="autoplay"></iframe>';
-    else mediaEl.innerHTML='<div class="modal-media-placeholder"><svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="4" y="10" width="56" height="44" rx="1" stroke="#0a0a0a" stroke-width="1.5"/><path d="M4 44l14-14 10 10 12-16 20 20" stroke="#0a0a0a" stroke-width="1.5" stroke-linejoin="round"/></svg></div>';
-    var linksEl=document.getElementById('modal-links'); linksEl.innerHTML='';
-    if(links&&links.length) links.forEach(function(l){ if(l.url&&l.url!=='#'){ var a=document.createElement('a'); a.href=l.url; a.target='_blank'; a.rel='noopener'; a.className='modal-ext-link'; a.textContent=l.label; linksEl.appendChild(a); } });
-    document.getElementById('modal-overlay').classList.add('open'); document.body.style.overflow='hidden';
+  function openModal(d) {
+    document.getElementById('modal-tag').textContent   = d.tag;
+    document.getElementById('modal-title').textContent = d.title;
+    document.getElementById('modal-year').textContent  = d.year;
+    document.getElementById('modal-role').innerHTML    = d.role;
+    document.getElementById('modal-desc').textContent  = d.desc;
+    var mediaEl = document.getElementById('modal-media');
+    if (d.mediaType === 'img' && d.mediaSrc)
+      mediaEl.innerHTML = '<img src="' + d.mediaSrc + '" alt="' + d.title + '" />';
+    else if (d.mediaType === 'video' && d.mediaSrc)
+      mediaEl.innerHTML = '<iframe src="' + d.mediaSrc + '" allowfullscreen allow="autoplay"></iframe>';
+    else
+      mediaEl.innerHTML = '<div class="modal-media-placeholder"><svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="4" y="10" width="56" height="44" rx="1" stroke="#0a0a0a" stroke-width="1.5"/><path d="M4 44l14-14 10 10 12-16 20 20" stroke="#0a0a0a" stroke-width="1.5" stroke-linejoin="round"/></svg></div>';
+    var linksEl = document.getElementById('modal-links');
+    linksEl.innerHTML = '';
+    if (d.links && d.links.length) {
+      d.links.forEach(function(l) {
+        if (l.url && l.url !== '#') {
+          var a = document.createElement('a');
+          a.href = l.url; a.target = '_blank'; a.rel = 'noopener';
+          a.className = 'modal-ext-link'; a.textContent = l.label;
+          linksEl.appendChild(a);
+        }
+      });
+    }
+    document.getElementById('modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
   }
-  function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow=''; }
-  function closeModalOnOverlay(e) { if(e.target===document.getElementById('modal-overlay')) closeModal(); }
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeModal(); closeCourseModal(); closeNav(); } });
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeModalOnOverlay(e) {
+    if (e.target === document.getElementById('modal-overlay')) closeModal();
+  }
+
+  /* COURSE MODAL */
+  var PH_SVG = '<svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="2" y="5" width="32" height="26" rx="1" stroke="#0a0a0a" stroke-width="1.5"/><path d="M2 24l8-8 6 6 7-9 13 12" stroke="#0a0a0a" stroke-width="1.3" stroke-linejoin="round"/></svg>';
+  function openCourseModal(d) {
+    document.getElementById('cm-type').textContent  = d.type;
+    document.getElementById('cm-title').textContent = d.title;
+    document.getElementById('cm-meta').textContent  = d.meta;
+    document.getElementById('cm-desc').textContent  = d.desc;
+    var grid = document.getElementById('cm-students');
+    grid.innerHTML = '';
+    d.students.forEach(function(s) {
+      var item   = document.createElement('div'); item.className = 'course-student-item';
+      var imgDiv = document.createElement('div'); imgDiv.className = 'course-student-img';
+      imgDiv.innerHTML = s.img
+        ? '<img src="' + s.img + '" alt="' + s.name + '" />'
+        : '<div class="course-student-img-ph">' + PH_SVG + '</div>';
+      var cap = document.createElement('div'); cap.className = 'course-student-caption';
+      cap.innerHTML = '<p class="course-student-name">' + s.name + '</p><p class="course-student-note">' + s.note + '</p>';
+      item.appendChild(imgDiv); item.appendChild(cap); grid.appendChild(item);
+    });
+    document.getElementById('course-modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCourseModal() {
+    document.getElementById('course-modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeCourseModalOnOverlay(e) {
+    if (e.target === document.getElementById('course-modal-overlay')) closeCourseModal();
+  }
+
+  /* KEYBOARD */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { closeModal(); closeCourseModal(); closeNav(); }
+  });
 
   /* CALENDAR */
-  var CAL_EVENTS = [
+  var CAL_EVENTS  = [
     {date:'2025-05-19', title:'Electronic and New Media Arts — Final Course Exhibition', venue:'Universidad del Norte · Barranquilla, Colombia', badge:'Exhibition'},
   ];
-  var calYear = 2025;
+  var calYear     = new Date().getFullYear();
   var MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var DAY_NAMES = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+  var DAY_NAMES   = ['Su','Mo','Tu','We','Th','Fr','Sa'];
 
   function openCalendar() {
     calYear = new Date().getFullYear();
@@ -1348,51 +1751,50 @@
     document.getElementById('cal-overlay').style.display = 'none';
     document.body.style.overflow = '';
   }
-  function calChangeYear(dir) { calYear += dir; document.getElementById('cal-modal-year').textContent = calYear; renderCalendar(); }
-
+  function calChangeYear(dir) {
+    calYear += dir;
+    renderCalendar();
+  }
   function renderCalendar() {
     document.getElementById('cal-modal-year').textContent = calYear;
     document.getElementById('cal-year-label').textContent = calYear;
     var grid = document.getElementById('cal-grid');
     grid.innerHTML = '';
     for (var m = 0; m < 12; m++) {
-      var div = document.createElement('div');
-      div.className = 'cal-month';
-      var nameP = document.createElement('p');
-      nameP.className = 'cal-month-name';
-      nameP.textContent = MONTH_NAMES[m];
+      var div   = document.createElement('div'); div.className = 'cal-month';
+      var nameP = document.createElement('p');   nameP.className = 'cal-month-name'; nameP.textContent = MONTH_NAMES[m];
       div.appendChild(nameP);
-      var dg = document.createElement('div');
-      dg.className = 'cal-days-grid';
-      DAY_NAMES.forEach(function(d){ var h=document.createElement('div');h.className='cal-day-hdr';h.textContent=d;dg.appendChild(h); });
+      var dg = document.createElement('div'); dg.className = 'cal-days-grid';
+      DAY_NAMES.forEach(function(d) { var h = document.createElement('div'); h.className = 'cal-day-hdr'; h.textContent = d; dg.appendChild(h); });
       var first = new Date(calYear, m, 1).getDay();
-      var days = new Date(calYear, m+1, 0).getDate();
-      for(var i=0;i<first;i++){var e=document.createElement('div');e.className='cal-day other-month';e.textContent='';dg.appendChild(e);}
-      for(var d=1;d<=days;d++){
-        var cell=document.createElement('div');
-        cell.className='cal-day';
-        cell.textContent=d;
-        var ds=calYear+'-'+(m+1<10?'0'+(m+1):m+1)+'-'+(d<10?'0'+d:d);
-        var ev=CAL_EVENTS.filter(function(e){return e.date===ds;});
-        if(ev.length){cell.classList.add('has-event');cell.title=ev[0].title;(function(evs){cell.onclick=function(){alert(evs.map(function(e){return e.title+'
-'+e.venue;}).join('
-
-'));};})(ev);}
+      var days  = new Date(calYear, m + 1, 0).getDate();
+      for (var i = 0; i < first; i++) { var emp = document.createElement('div'); emp.className = 'cal-day other-month'; dg.appendChild(emp); }
+      for (var day = 1; day <= days; day++) {
+        var cell = document.createElement('div'); cell.className = 'cal-day'; cell.textContent = day;
+        var ds   = calYear + '-' + (m + 1 < 10 ? '0' + (m + 1) : m + 1) + '-' + (day < 10 ? '0' + day : day);
+        var evs  = CAL_EVENTS.filter(function(ev) { return ev.date === ds; });
+        if (evs.length) {
+          cell.classList.add('has-event');
+          cell.title = evs[0].title;
+          (function(evList) {
+            cell.onclick = function() { alert(evList.map(function(ev) { return ev.title + '\n' + ev.venue; }).join('\n\n')); };
+          })(evs);
+        }
         dg.appendChild(cell);
       }
       div.appendChild(dg);
-      // month events list
-      var evs=CAL_EVENTS.filter(function(e){return e.date.startsWith(calYear+'-'+(m+1<10?'0'+(m+1):m+1));});
-      if(evs.length){
-        var el=document.createElement('div');el.className='cal-event-list';
-        evs.forEach(function(ev){
-          var row=document.createElement('div');row.className='cal-event-chip';
-          var dt=new Date(ev.date+'T12:00:00');
-          var dc=document.createElement('div');dc.className='cal-chip-date';dc.textContent=dt.getDate()+' '+MONTH_NAMES[dt.getMonth()].substring(0,3);
-          var info=document.createElement('div');
-          var t=document.createElement('p');t.className='cal-chip-title';t.textContent=ev.title;
-          var v=document.createElement('p');v.className='cal-chip-venue';v.textContent=ev.venue;
-          info.appendChild(t);info.appendChild(v);row.appendChild(dc);row.appendChild(info);el.appendChild(row);
+      var monthEvs = CAL_EVENTS.filter(function(ev) { return ev.date.startsWith(calYear + '-' + (m + 1 < 10 ? '0' + (m + 1) : m + 1)); });
+      if (monthEvs.length) {
+        var el = document.createElement('div'); el.className = 'cal-event-list';
+        monthEvs.forEach(function(ev) {
+          var row = document.createElement('div'); row.className = 'cal-event-chip';
+          var dt  = new Date(ev.date + 'T12:00:00');
+          var dc  = document.createElement('div'); dc.className = 'cal-chip-date';
+          dc.textContent = dt.getDate() + ' ' + MONTH_NAMES[dt.getMonth()].substring(0, 3);
+          var info = document.createElement('div');
+          var t2   = document.createElement('p'); t2.className = 'cal-chip-title'; t2.textContent = ev.title;
+          var v2   = document.createElement('p'); v2.className = 'cal-chip-venue'; v2.textContent = ev.venue;
+          info.appendChild(t2); info.appendChild(v2); row.appendChild(dc); row.appendChild(info); el.appendChild(row);
         });
         div.appendChild(el);
       }
@@ -1400,11 +1802,35 @@
     }
   }
 
-  /* REVEAL */
+  /* REVEAL ON SCROLL */
   document.body.classList.add('js-loaded');
-  var reveals=document.querySelectorAll('.reveal');
-  var observer=new IntersectionObserver(function(entries){ entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); },{threshold:0.02,rootMargin:'0px 0px -20px 0px'});
-  reveals.forEach(function(el){ observer.observe(el); });
+  var reveals  = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.02, rootMargin: '0px 0px -20px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
+
+  /* EXPOSE TO INLINE onclick HANDLERS */
+  window.toggleNav               = toggleNav;
+  window.closeNav                = closeNav;
+  window.filterProjects          = filterProjects;
+  window.setView                 = setView;
+  window.switchPub               = switchPub;
+  window.openModal               = openModal;
+  window.closeModal              = closeModal;
+  window.closeModalOnOverlay     = closeModalOnOverlay;
+  window.openCourseModal         = openCourseModal;
+  window.closeCourseModal        = closeCourseModal;
+  window.closeCourseModalOnOverlay = closeCourseModalOnOverlay;
+  window.openCalendar            = openCalendar;
+  window.closeCalendar           = closeCalendar;
+  window.calChangeYear           = calChangeYear;
+  window.MODAL_DATA              = MODAL_DATA;
+  window.COURSE_DATA             = COURSE_DATA;
+
+}); // end DOMContentLoaded
 </script>
 </body>
 </html>
