@@ -27,17 +27,26 @@
     .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-    .nav-dropdown { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 199; background: var(--white); display: flex; flex-direction: column; justify-content: center; padding: 6rem 3rem 3rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .nav-dropdown { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 199; background: var(--white); display: flex; flex-direction: column; justify-content: center; padding: 6rem 3rem 3rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; overflow-y: auto; }
     .nav-dropdown.open { opacity: 1; pointer-events: all; }
     .nav-dropdown ul { list-style: none; }
     .nav-dropdown li { border-bottom: 1px solid var(--border); }
-    .nav-dropdown a { display: flex; align-items: baseline; gap: 1.2rem; padding: 1.1rem 0; font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 400; letter-spacing: -0.02em; text-decoration: none; color: var(--black); transition: color 0.2s; }
+    .nav-dropdown a { display: flex; align-items: baseline; gap: 1.2rem; padding: 1.1rem 0; font-family: var(--font-serif); font-size: clamp(1.5rem, 5vw, 3.8rem); font-weight: 400; letter-spacing: -0.02em; text-decoration: none; color: var(--black); transition: color 0.2s; }
     .nav-dropdown a:hover { color: var(--accent); }
     .nav-dropdown a:hover .nav-item-num { color: var(--accent); }
     .nav-item-num { font-family: var(--font-mono); font-size: 0.6rem; color: var(--gray); letter-spacing: 0.1em; align-self: center; transition: color 0.2s; }
     .nav-dropdown-foot { margin-top: auto; padding-top: 2rem; display: flex; gap: 2rem; }
     .nav-dropdown-foot a { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--gray); transition: color 0.2s; }
     .nav-dropdown-foot a:hover { color: var(--accent); }
+    @media (max-height: 600px) {
+      .nav-dropdown { padding: 4.5rem 2rem 1.5rem; justify-content: flex-start; }
+      .nav-dropdown a { padding: 0.65rem 0; font-size: clamp(1.2rem, 4vw, 2rem); }
+      .nav-dropdown-foot { padding-top: 1rem; }
+    }
+    @media (max-width: 480px) {
+      .nav-dropdown { padding: 5rem 1.8rem 2rem; }
+      .nav-dropdown a { padding: 0.75rem 0; font-size: clamp(1.4rem, 8vw, 2.4rem); }
+    }
 
     /* HERO */
     #home { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 60px; border-bottom: 1px solid var(--border); }
@@ -62,9 +71,6 @@
     .filter-btn:last-child { border-right: none; }
     .filter-btn:hover { background: var(--accent-light); color: var(--accent); }
     .filter-btn.active { background: var(--accent); color: var(--white); }
-    .view-toggle { display: flex; gap: 0.6rem; align-items: center; }
-    .view-btn { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; background: none; border: 1px solid var(--border); padding: 0.4rem 0.8rem; cursor: pointer; color: var(--gray); transition: all 0.15s; }
-    .view-btn.active { border-color: var(--accent); color: var(--accent); }
     .projects-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem; }
 
     /* PROJECTS GRID */
@@ -84,8 +90,6 @@
     .project-year { font-family: var(--font-mono); font-size: 0.54rem; color: var(--gray); margin-top: 0.6rem; }
     .card-hint { font-family: var(--font-mono); font-size: 0.5rem; color: var(--accent); letter-spacing: 0.08em; margin-top: 0.5rem; opacity: 0; transition: opacity 0.18s; }
     .project-card:hover .card-hint { opacity: 1; }
-    .projects-grid.gallery-view { grid-template-columns: repeat(4, 1fr); }
-    .projects-grid.gallery-view .card-image { aspect-ratio: 16/10; }
 
     /* PROJECT MODAL */
     .modal-overlay { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.45); backdrop-filter: blur(4px); align-items: flex-start; justify-content: center; padding: 80px 2rem 2rem; overflow-y: auto; }
@@ -190,8 +194,8 @@
     .about-left { padding: 5rem 3rem; border-right: 1px solid var(--border); }
     .about-right { padding: 5rem 3rem; }
     .about-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 2rem; }
-    .headshot-wrapper { width: 140px; height: 140px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 1.8rem; background: #f4f4f4; }
-    .headshot-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .headshot-wrapper { width: 200px; height: 240px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 1.8rem; background: #f4f4f4; }
+    .headshot-wrapper img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
     .headshot-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; }
     .headshot-placeholder svg { opacity: 0.2; }
     .headshot-placeholder span { font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); text-align: center; line-height: 1.8; }
@@ -318,13 +322,12 @@
     <li><a href="#projects" onclick="closeNav()"><span class="nav-item-num">01</span>Projects</a></li>
     <li><a href="#publications" onclick="closeNav()"><span class="nav-item-num">02</span>Publications</a></li>
     <li><a href="#teaching" onclick="closeNav()"><span class="nav-item-num">03</span>Teaching</a></li>
-    <li><a href="#networks" onclick="closeNav()"><span class="nav-item-num">04</span>Networks</a></li>
-    <li><a href="#chronicle" onclick="closeNav()"><span class="nav-item-num">05</span>Now</a></li>
-    <li><a href="#about" onclick="closeNav()"><span class="nav-item-num">06</span>Bio</a></li>
-    <li><a href="#contact" onclick="closeNav()"><span class="nav-item-num">07</span>Contact</a></li>
+    <li><a href="#chronicle" onclick="closeNav()"><span class="nav-item-num">04</span>Now</a></li>
+    <li><a href="#about" onclick="closeNav()"><span class="nav-item-num">05</span>Bio</a></li>
+    <li><a href="#contact" onclick="closeNav()"><span class="nav-item-num">06</span>Contact</a></li>
   </ul>
   <div class="nav-dropdown-foot">
-    <a href="/cdn-cgi/l/email-protection#c1aca0b3a8a0a2a4a2a8ada8a0b3a4b8a4b2b381a6aca0a8adefa2aeac"><span class="__cf_email__" data-cfemail="7f121e0d161e1c1a1c1613161e0d1a061a0c0d3f18121e1613511c1012">[email&#160;protected]</span></a>
+    
     <a href="https://orcid.org/0000-0001-8084-469X" target="_blank">ORCID</a>
     <a href="https://scholar.google.com/citations?hl=en&user=5dFD_mgAAAAJ" target="_blank">Scholar</a>
   </div>
@@ -337,7 +340,7 @@
     <h1 class="hero-name">María<br>Cecilia<br><em>Reyes</em></h1>
   </div>
   <div class="hero-right">
-    <p class="hero-tagline">Working at the intersection of narrative, immersion, and learning.</p>
+    <p class="hero-tagline">I try to build worlds, understand them, and pass that on. The loop is the work.</p>
     <div class="hero-descriptor">
       <span>Interactive Narratives</span>
       <span>Emergent Media</span>
@@ -362,10 +365,6 @@
       <button class="filter-btn" onclick="filterProjects('Performance',this)">Performance</button>
       <button class="filter-btn" onclick="filterProjects('Digital Pedagogy',this)">Digital Pedagogy</button>
       <button class="filter-btn" onclick="filterProjects('Publication',this)">Publication</button>
-    </div>
-    <div class="view-toggle">
-      <button class="view-btn active" id="grid-btn" onclick="setView('grid')">Grid</button>
-      <button class="view-btn" id="gallery-btn" onclick="setView('gallery')">Gallery</button>
     </div>
   </div>
 
@@ -472,11 +471,11 @@
       </div>
     </div>
 
-    <div class="project-card reveal" data-category="Documentary"
+    <div class="project-card reveal" data-category="Videopoetry"
       onclick="openModal(MODAL_DATA[9])">
       <div class="card-image"><img src="images/samedifferent.jpg" alt="Same Different" /></div>
       <div class="card-body">
-        <p class="project-tag">Documentary</p>
+        <p class="project-tag">Videopoetry</p>
         <h3 class="project-title">Same Different</h3>
         <p class="project-year">2022</p>
         <p class="card-hint">Read more ↗</p>
@@ -1041,58 +1040,11 @@
 </div>
 
 <!-- NETWORKS -->
-<section id="networks" style="padding: 8rem 3rem; background: var(--off-white); border-bottom: 1px solid var(--border);">
-  <div class="section-header reveal" style="margin-bottom:3rem;">
-    <span class="section-number">04</span>
-    <h2 class="section-title">Networks &amp; Service</h2>
-  </div>
-
-  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; border-top:1px solid var(--border);">
-
-    <div class="reveal" style="padding:2.5rem 2.5rem 2.5rem 0; border-right:1px solid var(--border);">
-      <p style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;">Research Networks &amp; Memberships</p>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:.9rem;">
-        <li style="font-size:.9rem;"><a href="https://ardin.online/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:1px;"><strong>ARDIN</strong></a> — Board Member · PI, IDN Syllabi Project</li>
-        <li style="font-size:.9rem;"><a href="https://www.uninorte.edu.co/web/pbx" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:1px;"><strong>PBX Research Group</strong></a> — Communication, Culture &amp; Social Change · A1 Colciencias · Uninorte (2023–)</li>
-        <li style="font-size:.9rem;"><a href="https://www.academiacolcine.com/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:1px;"><strong>Academia Colombiana de Cine</strong></a> — Member, Screenplay Area (2024–)</li>
-        <li style="font-size:.9rem;"><strong>Red de Laboratorios de Iberoamérica</strong> (2024–)</li>
-        <li style="font-size:.9rem;"><a href="https://indcor.eu/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:1px;"><strong>INDCOR / CA18230</strong></a> — EU COST Action · Virtual Networking Coordinator (2020–2022)</li>
-      </ul>
-    </div>
-
-    <div class="reveal" style="padding:2.5rem 2.5rem; border-right:1px solid var(--border);">
-      <p style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;">Editorial &amp; Conference Service</p>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:.9rem;">
-        <li style="font-size:.9rem;"><strong>Editorial Boards</strong> — <a href="https://ardin.online/journal-of-interactive-narrative/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">Journal of Interactive Narrative</a> · <a href="https://riviste.unige.it/index.php/publifarum" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">Publifarum</a></li>
-        <li style="font-size:.9rem;"><strong>Grant Review</strong> — <a href="https://erc.europa.eu/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">European Research Council (ERC)</a> — Starting Grant Panel</li>
-        <li style="font-size:.9rem;"><strong>General &amp; Program Chair</strong> — <a href="https://icids2024.ardin.online/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">ICIDS 2024</a>, Barranquilla</li>
-        <li style="font-size:.9rem;"><strong>Program Chair</strong> — <a href="https://ardin.online/conferences/icids-interactive-storytelling/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">ICIDS 2025</a>, Malta</li>
-        <li style="font-size:.9rem;"><strong>Creative Chair</strong> — ICIDS 2020 · <strong>Virtual Chair</strong> — ICIDS 2021</li>
-      </ul>
-    </div>
-
-    <div class="reveal" style="padding:2.5rem 0 2.5rem 2.5rem;">
-      <p style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;">Peer Review · Journals</p>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem;">
-        <li style="font-size:.88rem;"><a href="https://journals.sagepub.com/home/sag" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">Simulation &amp; Gaming (SAGE)</a></li>
-        <li style="font-size:.88rem;"><a href="https://www.disegno.xyz/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">Disegno Journal</a></li>
-        <li style="font-size:.88rem;"><a href="https://www.tandfonline.com/journals/tbit20" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">Behaviour &amp; Information Technology (Taylor &amp; Francis)</a></li>
-        <li style="font-size:.88rem;"><a href="https://link.springer.com/journal/10055" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">Virtual Reality (Springer)</a></li>
-        <li style="font-size:.88rem;"><a href="https://direct.mit.edu/pres" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">PRESENCE (MIT Press)</a></li>
-        <li style="font-size:.88rem;"><a href="https://ijet.itd.cnr.it/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">Italian Journal of Educational Technology</a></li>
-        <li style="font-size:.88rem;"><a href="https://www.tandfonline.com/journals/rtpe20" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">Technology, Pedagogy and Education (Taylor &amp; Francis)</a></li>
-        <li style="font-size:.88rem;"><a href="https://onlinelibrary.wiley.com/journal/13652729" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">Journal of Computer Assisted Learning (Wiley)</a></li>
-      </ul>
-    </div>
-
-  </div>
-
-</section>
 
 <!-- PRESS + EVENTS -->
 <section id="chronicle">
   <div class="section-header reveal">
-    <span class="section-number">05</span>
+    <span class="section-number">04</span>
     <h2 class="section-title">Now</h2>
   </div>
   <div class="chronicle-layout">
@@ -1162,15 +1114,15 @@
 <section id="about">
   <div class="about-left">
     <div class="about-header reveal">
-      <span class="section-number">06</span>
+      <span class="section-number">05</span>
       <h2 class="section-title">Bio</h2>
     </div>
     <div class="headshot-wrapper reveal">
       <img src="https://images.squarespace-cdn.com/content/v1/57c88e7615d5db26d8ab6bf3/8af7b2d5-ce3e-4788-b0f9-2fae477bd976/2P3A7435c.jpeg" alt="María Cecilia Reyes — Photo: Davide Colombino @ilgiovanepink" />
     </div>
     <div class="about-bio reveal">
-      <p>I make things and I study things — often at the same time. Films, VR experiences, interactive stories, community workshops, academic papers: for me these are all ways of asking the same questions about narrative, immersion, and what stories do to people.</p>
-      <p>I am Colombian, based in Barranquilla, moving between Europe and Latin America. I hold a double Ph.D. in Digital Humanities (Università di Genova) and Communication (Universidad del Norte), Cum Laude. I teach, research, and create at Universidad del Norte, where I coordinate the UNI5LAB laboratory and the Master in Creation for Emergent Media. I have been Artist-in-Residence at Schloss Solitude (Germany) and Artistic Research Fellow at Future Media Theaters (Sweden).</p>
+      <p>I make work and I study work — often at the same time. Films, VR experiences, interactive stories, community workshops, academic papers: for me these are all ways of asking the same questions about narrative, immersion, and what stories do to people.</p>
+      <p>I am Colombian, based in Barranquilla, moving between Europe and Latin America. I hold a double Ph.D. in Digital Humanities (Università di Genova) and Communication (Universidad del Norte), Cum Laude. I teach, research, and create at Universidad del Norte, where I coordinate the UNI5LAB laboratory and the Master in Creation for Emergent Media. I conducted postdoctoral research at the CNR-ITD — Italian National Research Council, Institute for Educational Technologies (Genoa, Italy). I have been Artist-in-Residence at Schloss Solitude (Germany) and Artistic Research Fellow at Future Media Theaters (Sweden).</p>
     </div>
 
   </div>
@@ -1179,7 +1131,7 @@
       <div class="field-row"><span class="field-label">Position</span><span class="field-value">Assistant Professor · Communication &amp; Humanities, Universidad del Norte</span></div>
       <div class="field-row"><span class="field-label">Coordination</span><span class="field-value">UNI5LAB · Master in Creation for Emergent Media</span></div>
       <div class="field-row"><span class="field-label">Research</span><span class="field-value">Interactive Digital Narratives · Extended Reality · Decolonial Storytelling · Digital Humanities</span></div>
-      <div class="field-row"><span class="field-label">Ph.D.</span><span class="field-value">Digital Humanities · Università di Genova (IT) &amp; Universidad del Norte (CO) · 2019 · Cum Laude · Best Thesis Prize</span></div>
+      <div class="field-row"><span class="field-label">Ph.D.</span><span class="field-value">Digital Humanities · Università di Genova (IT) &amp; Universidad del Norte (CO) · 2019 · Cum Laude · Best Thesis of the Humanities Sciences School, Università di Genova</span></div>
       <div class="field-row"><span class="field-label">Residencies</span><span class="field-value">Schloss Solitude Akademie (2021) · Future Media Theaters, Skövde (2022) · Visiting Prof. Università di Genova (2025) · Visiting Researcher Vilnius University (2022)</span></div>
       <div class="field-row"><span class="field-label">Awards</span><span class="field-value">Best Full Paper ICIDS 2024 · Best Full Paper ICIDS 2023 · Teaching Excellence Award Uninorte 2024</span></div>
       <div class="field-row"><span class="field-label">Languages</span><span class="field-value">Spanish · Italian · English</span></div>
@@ -1191,11 +1143,11 @@
 <section id="contact">
   <div class="contact-left">
     <div class="section-header reveal">
-      <span class="section-number">07</span>
+      <span class="section-number">06</span>
       <h2 class="section-title">Contact</h2>
     </div>
     <p class="contact-intro reveal">For collaborations, speaking invitations, or inquiries about research and teaching. Moving between Europe and Colombia — working globally.</p>
-    <a href="/cdn-cgi/l/email-protection#abc6cad9c2cac8cec8c2c7c2cad9ced2ced8d9ebccc6cac2c785c8c4c6" class="contact-email reveal"><span class="__cf_email__" data-cfemail="375a56455e565452545e5b5e5645524e52444577505a565e5b1954585a">[email&#160;protected]</span></a>
+    
   </div>
   <div class="contact-right">
     <div class="contact-socials reveal">
@@ -1427,7 +1379,7 @@ document.addEventListener('DOMContentLoaded', function() {
     "links": []
   },
   {
-    "tag": "Documentary",
+    "tag": "Videopoetry",
     "title": "Same Different",
     "year": "2022",
     "role": "Co-Director",
@@ -1627,12 +1579,6 @@ document.addEventListener('DOMContentLoaded', function() {
       card.classList.toggle('hidden', cat !== 'all' && card.dataset.category !== cat);
     });
   }
-  function setView(v) {
-    var g = document.getElementById('projects-grid');
-    document.getElementById('grid-btn').classList.toggle('active', v === 'grid');
-    document.getElementById('gallery-btn').classList.toggle('active', v === 'gallery');
-    g.classList.toggle('gallery-view', v === 'gallery');
-  }
 
   /* PUB TABS */
   function switchPub(id, btn) {
@@ -1763,7 +1709,6 @@ document.addEventListener('DOMContentLoaded', function() {
   window.toggleNav               = toggleNav;
   window.closeNav                = closeNav;
   window.filterProjects          = filterProjects;
-  window.setView                 = setView;
   window.switchPub               = switchPub;
   window.openModal               = openModal;
   window.closeModal              = closeModal;
