@@ -12,6 +12,7 @@
       --black: #0a0a0a; --white: #ffffff; --accent: #0047FF;
       --accent-light: #eaf0ff; --gray: #777; --light-gray: #f7f7f5;
       --border: #e0e0e0; --off-white: #fafaf8; --warm: #f2f0eb;
+      --highlight: #FFC107;
       --font-serif: 'EB Garamond', Georgia, serif;
       --font-mono: 'Space Mono', monospace;
     }
@@ -48,12 +49,10 @@
     .globe-world, .globe-caribbean { position: absolute; inset: 0; width: 100%; height: 100%; display: block; transition: opacity 0.5s ease; }
     .globe-caribbean { opacity: 0; }
     .hero-globe.zoomed .globe-world { opacity: 0; }
-    .hero-globe.zoomed .globe-caribbean { opacity: 1; }
+    .hero-globe.zoomed .globe-caribbean { opacity: 0.7; }
     .globe-scroll { animation: worldSpin 12s linear infinite; }
     .hero-globe.zoomed .globe-scroll { animation-play-state: paused; }
     @keyframes worldSpin { from { transform: translateX(0); } to { transform: translateX(-100px); } }
-    .globe-caption { position: absolute; left: 50%; bottom: -1.4rem; transform: translateX(-50%); margin: 0; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #149954; opacity: 0; transition: opacity 0.4s ease 0.3s; white-space: nowrap; pointer-events: none; }
-    .hero-globe.zoomed .globe-caption { opacity: 1; }
     @media (max-width: 640px) { .hero-globe { width: 56px; height: 56px; } }
     @media (prefers-reduced-motion: reduce) { .globe-scroll { animation: none; } .hero-globe { transition: none; } }
 
@@ -68,7 +67,7 @@
     /* SECTION BASE */
     section { padding: 5rem 3rem; border-top: 1px solid var(--border); }
     .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem; }
-    .section-number { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.1em; }
+    .section-number { font-family: var(--font-mono); font-size: 0.65rem; color: var(--black); letter-spacing: 0.1em; background: var(--highlight); padding: 0.25rem 0.55rem; display: inline-block; }
     .section-title { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 400; letter-spacing: -0.01em; }
 
     /* FILTER BAR */
@@ -76,17 +75,14 @@
     .filter-btn { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; background: none; border: none; padding: 0.6rem 1.2rem; cursor: pointer; color: var(--gray); border-right: 1px solid var(--border); transition: background 0.15s, color 0.15s; }
     .filter-btn:last-child { border-right: none; }
     .filter-btn:hover { background: var(--accent-light); color: var(--accent); }
-    .filter-btn.active { background: var(--accent); color: var(--white); }
-    .view-toggle { display: flex; gap: 0.6rem; align-items: center; }
-    .view-btn { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; background: none; border: 1px solid var(--border); padding: 0.4rem 0.8rem; cursor: pointer; color: var(--gray); transition: all 0.15s; }
-    .view-btn.active { border-color: var(--accent); color: var(--accent); }
+    .filter-btn.active { background: var(--highlight); color: var(--black); }
     .projects-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem; }
 
     /* PROJECTS GRID */
     .projects-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
     .project-card { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.18s; overflow: hidden; }
     .project-card.hidden { display: none; }
-    .project-card:hover { background: var(--accent-light); }
+    .project-card:hover { background: var(--accent-light); box-shadow: inset 4px 0 0 var(--highlight); }
     .project-card:hover .project-title { color: var(--accent); }
     .card-image { width: 100%; aspect-ratio: 4/3; background: var(--light-gray); overflow: hidden; }
     .card-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
@@ -99,8 +95,6 @@
     .project-year { font-family: var(--font-mono); font-size: 0.54rem; color: var(--gray); margin-top: 0.6rem; }
     .card-hint { font-family: var(--font-mono); font-size: 0.5rem; color: var(--accent); letter-spacing: 0.08em; margin-top: 0.5rem; opacity: 0; transition: opacity 0.18s; }
     .project-card:hover .card-hint { opacity: 1; }
-    .projects-grid.gallery-view { grid-template-columns: repeat(4, 1fr); }
-    .projects-grid.gallery-view .card-image { aspect-ratio: 16/10; }
 
     /* PROJECT MODAL */
     .modal-overlay { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.45); backdrop-filter: blur(4px); align-items: flex-start; justify-content: center; padding: 80px 2rem 2rem; overflow-y: auto; }
@@ -130,7 +124,7 @@
     .pub-tabs { display: flex; gap: 0; border: 1px solid var(--border); width: fit-content; margin-bottom: 2.5rem; }
     .pub-tab { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; background: none; border: none; border-right: 1px solid var(--border); padding: 0.55rem 1rem; cursor: pointer; color: var(--gray); transition: background 0.15s, color 0.15s; }
     .pub-tab:last-child { border-right: none; }
-    .pub-tab.active { background: var(--accent); color: var(--white); }
+    .pub-tab.active { background: var(--highlight); color: var(--black); }
     .pub-section { display: none; max-width: 820px; }
     .pub-section.active { display: block; }
     .pub-item { display: grid; grid-template-columns: 72px 1fr; gap: 1.5rem; padding: 1.6rem 0; border-bottom: 1px solid var(--border); align-items: start; }
@@ -183,10 +177,24 @@
     .press-sub { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
     .press-item { display: flex; align-items: baseline; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; }
     .press-item:hover .press-title { color: var(--accent); }
+    .press-item:hover { box-shadow: inset 4px 0 0 var(--highlight); }
     .press-type-badge { font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); white-space: nowrap; flex-shrink: 0; width: 68px; }
     .press-title { font-size: 0.95rem; font-weight: 400; line-height: 1.4; flex: 1; transition: color 0.15s; }
     .press-meta-right { font-family: var(--font-mono); font-size: 0.52rem; color: var(--gray); white-space: nowrap; flex-shrink: 0; text-align: right; }
     .press-arrow { font-family: var(--font-mono); font-size: 0.6rem; color: var(--accent); flex-shrink: 0; margin-left: 0.4rem; }
+    .cp-toggle { display: flex; gap: 0.5rem; }
+    .cp-toggle-btn { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 0.9rem; border: 1px solid var(--border); background: none; cursor: pointer; color: var(--gray); transition: all 0.18s; }
+    .cp-toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .cp-toggle-btn.active { background: var(--highlight); border-color: var(--highlight); color: var(--black); }
+    .cp-list { display: flex; flex-direction: column; gap: 1.4rem; }
+    .cp-item { display: block; text-decoration: none; color: inherit; position: relative; padding-right: 1.6rem; }
+    .cp-title { font-size: 1rem; font-weight: 500; margin-bottom: 0.3rem; }
+    .cp-desc { font-size: 0.9rem; color: #444; line-height: 1.55; margin-bottom: 0.3rem; }
+    .cp-meta { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.06em; color: var(--gray); text-transform: uppercase; }
+    .cp-arrow { position: absolute; top: 0; right: 0; color: var(--accent); opacity: 0; transition: opacity 0.18s; }
+    a.cp-item:hover .cp-arrow { opacity: 1; }
+    a.cp-item:hover .cp-title { color: var(--accent); }
+    .cp-empty { font-size: 0.9rem; color: var(--gray); font-style: italic; }
     .events-sub { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
     .event-item { display: grid; grid-template-columns: 72px 1fr; gap: 1.4rem; padding: 1.4rem 0; border-bottom: 1px solid var(--border); align-items: start; text-decoration: none; color: inherit; }
     .event-item:hover .event-title { color: var(--accent); }
@@ -280,8 +288,8 @@
     .cal-days-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; }
     .cal-day-hdr { font-family:var(--font-mono); font-size:.5rem; text-align:center; color:var(--gray); padding:.2rem 0; }
     .cal-day { font-family:var(--font-mono); font-size:.62rem; text-align:center; padding:.3rem 0; border-radius:2px; cursor:default; position:relative; }
-    .cal-day.has-event { background:var(--accent); color:#fff; cursor:pointer; }
-    .cal-day.has-event:hover { background:#003acc; }
+    .cal-day.has-event { background:var(--highlight); color:var(--black); cursor:pointer; }
+    .cal-day.has-event:hover { background:#e0a800; }
     .cal-day.other-month { color:var(--border); }
     .cal-event-list { margin-top:1.5rem; display:flex; flex-direction:column; gap:.5rem; }
     .cal-event-chip { display:flex; align-items:flex-start; gap:.6rem; padding:.7rem 0; border-bottom:1px solid var(--border); }
@@ -339,7 +347,7 @@
     <li><a href="#publications" onclick="closeNav()"><span class="nav-item-num">03</span>Pubblicazioni</a></li>
     <li><a href="#teaching" onclick="closeNav()"><span class="nav-item-num">04</span>Didattica</a></li>
     <li><a href="#networks" onclick="closeNav()"><span class="nav-item-num">05</span>Reti</a></li>
-    <li><a href="#chronicle" onclick="closeNav()"><span class="nav-item-num">06</span>Ora</a></li>
+    <li><a href="#chronicle" onclick="closeNav()"><span class="nav-item-num">06</span>In Movimento</a></li>
     <li><a href="#contact" onclick="closeNav()"><span class="nav-item-num">07</span>Contatti</a></li>
   </ul>
   <div class="nav-dropdown-foot">
@@ -358,22 +366,32 @@
             <g clip-path="url(#globeClip)">
               <g class="globe-scroll">
                 <g>
-          <polygon points="20,10 34,8 42,14 44,24 38,32 42,38 34,40 24,32 16,22" fill="none" stroke="var(--accent)" stroke-width="1.3"/>
-          <polygon points="28,40 34,42 30,46 26,44" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
-          <polygon points="30,40 40,38 50,44 54,58 46,74 36,84 28,70 26,54" fill="none" stroke="var(--accent)" stroke-width="1.3"/>
-          <polygon points="30,36 36,38 34,42 28,40" fill="none" stroke="#149954" stroke-width="1.4"/>
-          <polygon points="56,18 62,16 64,22 58,26" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
-          <polygon points="56,26 66,24 70,40 64,56 56,58 52,40" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
-          <polygon points="72,14 88,18 92,32 84,42 72,36 68,24" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
+          <g opacity="0.7">
+            <polygon points="14,6 30,3 42,8 42,16 38,22 42,26 36,30 32,36 28,44 24,38 16,32 10,20 10,10" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+            <polygon points="24,42 30,42 32,46 28,48 22,46" fill="none" stroke="var(--accent)" stroke-width="1"/>
+            <polygon points="26,48 36,44 46,46 52,52 50,64 44,76 40,86 37,94 33,86 29,72 26,58" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+            <polygon points="52,10 58,8 60,16 66,18 62,24 56,28 50,24 44,18 42,12 46,8" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
+            <polygon points="48,28 58,26 68,28 72,34 66,40 62,52 58,64 53,72 48,64 44,50 42,38 44,28" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+            <polygon points="68,56 71,54 73,60 70,63" fill="none" stroke="var(--accent)" stroke-width="1"/>
+            <polygon points="64,16 76,10 90,14 94,24 86,30 78,28 74,38 68,34 66,42 70,52 62,42 58,32 62,22 58,16" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+          </g>
+          <polygon points="18,36 34,39 31,49 15,46" fill="none" stroke="#149954" stroke-width="1.8"/>
+          <circle cx="25" cy="42" r="2.2" fill="#FFC107" stroke="none"/>
+          <circle cx="58" cy="13" r="1.6" fill="#FFC107" stroke="none"/>
                 </g>
                 <g transform="translate(100,0)">
-          <polygon points="20,10 34,8 42,14 44,24 38,32 42,38 34,40 24,32 16,22" fill="none" stroke="var(--accent)" stroke-width="1.3"/>
-          <polygon points="28,40 34,42 30,46 26,44" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
-          <polygon points="30,40 40,38 50,44 54,58 46,74 36,84 28,70 26,54" fill="none" stroke="var(--accent)" stroke-width="1.3"/>
-          <polygon points="30,36 36,38 34,42 28,40" fill="none" stroke="#149954" stroke-width="1.4"/>
-          <polygon points="56,18 62,16 64,22 58,26" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
-          <polygon points="56,26 66,24 70,40 64,56 56,58 52,40" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
-          <polygon points="72,14 88,18 92,32 84,42 72,36 68,24" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
+          <g opacity="0.7">
+            <polygon points="14,6 30,3 42,8 42,16 38,22 42,26 36,30 32,36 28,44 24,38 16,32 10,20 10,10" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+            <polygon points="24,42 30,42 32,46 28,48 22,46" fill="none" stroke="var(--accent)" stroke-width="1"/>
+            <polygon points="26,48 36,44 46,46 52,52 50,64 44,76 40,86 37,94 33,86 29,72 26,58" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+            <polygon points="52,10 58,8 60,16 66,18 62,24 56,28 50,24 44,18 42,12 46,8" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
+            <polygon points="48,28 58,26 68,28 72,34 66,40 62,52 58,64 53,72 48,64 44,50 42,38 44,28" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+            <polygon points="68,56 71,54 73,60 70,63" fill="none" stroke="var(--accent)" stroke-width="1"/>
+            <polygon points="64,16 76,10 90,14 94,24 86,30 78,28 74,38 68,34 66,42 70,52 62,42 58,32 62,22 58,16" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+          </g>
+          <polygon points="18,36 34,39 31,49 15,46" fill="none" stroke="#149954" stroke-width="1.8"/>
+          <circle cx="25" cy="42" r="2.2" fill="#FFC107" stroke="none"/>
+          <circle cx="58" cy="13" r="1.6" fill="#FFC107" stroke="none"/>
                 </g>
               </g>
             </g>
@@ -398,9 +416,9 @@
             <polygon points="78,58 81,57 80,62" fill="none" stroke="#149954" stroke-width="0.9"/>
             <polygon points="73,64 76,63 75,68" fill="none" stroke="#149954" stroke-width="0.9"/>
             <polygon points="68,68 71,67 70,72" fill="none" stroke="#149954" stroke-width="0.9"/>
+            <circle cx="41" cy="69" r="1.8" fill="#FFC107" stroke="none"/>
           </svg>
       </div>
-      <p class="globe-caption">Caraibi</p>
     </div>
   <script>
   (function(){
@@ -506,10 +524,6 @@
       <button class="filter-btn" onclick="filterProjects('Performance',this)">Performance</button>
       <button class="filter-btn" onclick="filterProjects('Digital Pedagogy',this)">Pedagogia Digitale</button>
       <button class="filter-btn" onclick="filterProjects('Publication',this)">Pubblicazione</button>
-    </div>
-    <div class="view-toggle">
-      <button class="view-btn active" id="grid-btn" onclick="setView('grid')">Griglia</button>
-      <button class="view-btn" id="gallery-btn" onclick="setView('gallery')">Galleria</button>
     </div>
   </div>
 
@@ -1044,7 +1058,7 @@
     <div class="course-cluster reveal">
       <span class="cluster-label">Universidad del Norte · Barranquilla</span>
 
-      <div class="lab-block reveal" style="margin-bottom:1.75rem;" onclick="openCourseModal(
+      <div class="lab-block reveal" style="margin-bottom:3.5rem;" onclick="openCourseModal(
         'Laboratorio di Ricerca e Creazione Audiovisiva',
         'uni5lab',
         'Universidad del Norte · Barranquilla, Colombia',
@@ -1243,7 +1257,7 @@
 <section id="networks" style="padding: 8rem 3rem; background: var(--off-white); border-bottom: 1px solid var(--border);">
   <div class="section-header reveal" style="margin-bottom:3rem;">
     <span class="section-number">05</span>
-    <h2 class="section-title">Reti &amp; Servizio</h2>
+    <h2 class="section-title">Reti e Servizio Accademico</h2>
   </div>
 
   <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; border-top:1px solid var(--border);">
@@ -1264,9 +1278,11 @@
       <ul style="list-style:none;display:flex;flex-direction:column;gap:.9rem;">
         <li style="font-size:.9rem;"><strong>Editorial Boards</strong> · <a href="https://ardin.online/journal-of-interactive-narrative/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">Journal of Interactive Narrative</a> · <a href="https://riviste.unige.it/index.php/publifarum" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">Publifarum</a></li>
         <li style="font-size:.9rem;"><strong>Grant Review</strong> · <a href="https://erc.europa.eu/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">European Research Council (ERC)</a> · Starting Grant Panel</li>
+        <li style="font-size:.9rem;"><strong>Project Evaluator</strong> · <a href="https://erc.europa.eu/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">European Research Council (ERC)</a></li>
         <li style="font-size:.9rem;"><strong>General &amp; Program Chair</strong> · <a href="https://icids2024.ardin.online/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">ICIDS 2024</a>, Barranquilla</li>
         <li style="font-size:.9rem;"><strong>Program Chair</strong> · <a href="https://ardin.online/conferences/icids-interactive-storytelling/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">ICIDS 2025</a>, Malta</li>
         <li style="font-size:.9rem;"><strong>Creative Chair</strong> · ICIDS 2020 · <strong>Virtual Chair</strong> · ICIDS 2021</li>
+        <li style="font-size:.9rem;"><strong>General Chair</strong> · <a href="https://eliterature.org/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">ELO 2027</a></li>
       </ul>
     </div>
 
@@ -1292,9 +1308,19 @@
 <section id="chronicle">
   <div class="section-header reveal">
     <span class="section-number">06</span>
-    <h2 class="section-title">Ora</h2>
+    <h2 class="section-title">In Movimento</h2>
   </div>
   <div class="chronicle-layout">
+    <div class="current-projects-block reveal" style="grid-column:1/-1;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border);">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border);">
+        <p class="events-sub" style="margin:0;padding:0;border:0;">Progetti in Corso</p>
+        <div class="cp-toggle">
+          <button class="cp-toggle-btn active" onclick="setProjectsFilter('ongoing',this)">In corso</button>
+          <button class="cp-toggle-btn" onclick="setProjectsFilter('completed',this)">Archivio</button>
+        </div>
+      </div>
+      <div id="current-projects-list" class="cp-list"></div>
+    </div>
     <div class="chronicle-main reveal">
       <p class="press-sub">Stampa &amp; Rassegna</p>
 
@@ -1428,7 +1454,6 @@
   function filterProjects(cat,btn) { document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.project-card').forEach(card=>{ card.classList.toggle('hidden', cat!=='all' && card.dataset.category!==cat); }); }
 
   /* VIEW */
-  function setView(v) { var g=document.getElementById('projects-grid'); document.getElementById('grid-btn').classList.toggle('active',v==='grid'); document.getElementById('gallery-btn').classList.toggle('active',v==='gallery'); g.classList.toggle('gallery-view',v==='gallery'); }
 
   /* PUB TABS */
   function switchPub(id,btn) { document.querySelectorAll('.pub-tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.pub-section').forEach(s=>s.classList.remove('active')); document.getElementById('pub-'+id).classList.add('active'); }
@@ -1452,13 +1477,68 @@
   function closeModalOnOverlay(e) { if(e.target===document.getElementById('modal-overlay')) closeModal(); }
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeModal(); closeCourseModal(); closeNav(); } });
 
+  /* DYNAMIC DATA (calendar-events.json / current-projects.json) */
+  var CURRENT_PROJECTS = [];
+  var CP_EMPTY = {ongoing:"Nessun progetto in corso al momento.", completed:"Ancora nessun progetto in archivio."};
+  var CP_PRESENT = "presente";
+  var dataReady = Promise.all([
+    fetch('data/calendar-events.json').then(function(r){ return r.json(); }).catch(function(){ return null; }),
+    fetch('data/current-projects.json').then(function(r){ return r.json(); }).catch(function(){ return null; })
+  ]).then(function(results){
+    if(results[0]){ CAL_EVENTS = results[0]; renderCalPreview(); }
+    if(results[1]){ CURRENT_PROJECTS = results[1]; renderCurrentProjects('ongoing'); }
+  });
+
+  function renderCalPreview(){
+    var previewEl = document.querySelector('.cal-preview');
+    if(!previewEl || !CAL_EVENTS.length) return;
+    var today = new Date().toISOString().slice(0,10);
+    var sorted = CAL_EVENTS.slice().sort(function(a,b){ return a.date < b.date ? -1 : 1; });
+    var upcoming = sorted.filter(function(e){ return e.date >= today; });
+    var ev = upcoming[0] || sorted[sorted.length - 1];
+    if(!ev) return;
+    var dt = new Date(ev.date + 'T12:00:00');
+    previewEl.innerHTML = '<div class="cal-event-row"><span class="cal-dot"></span><div><p class="cal-ev-title"></p><p class="cal-ev-meta"></p></div></div>';
+    previewEl.querySelector('.cal-ev-title').textContent = ev.title;
+    previewEl.querySelector('.cal-ev-meta').textContent = MONTH_NAMES[dt.getMonth()] + ' ' + dt.getDate() + ', ' + dt.getFullYear() + ' \u00b7 ' + ev.venue;
+    var yearLabel = document.getElementById('cal-year-label');
+    if(yearLabel) yearLabel.textContent = dt.getFullYear();
+  }
+
+  function renderCurrentProjects(status){
+    var container = document.getElementById('current-projects-list');
+    if(!container) return;
+    container.innerHTML = '';
+    var items = CURRENT_PROJECTS.filter(function(p){ return p.status === status; });
+    if(!items.length){
+      var empty = document.createElement('p');
+      empty.className = 'cp-empty';
+      empty.textContent = CP_EMPTY[status] || '';
+      container.appendChild(empty);
+      return;
+    }
+    items.forEach(function(p){
+      var row = document.createElement(p.link ? 'a' : 'div');
+      row.className = 'cp-item';
+      if(p.link){ row.href = p.link; row.target = '_blank'; row.rel = 'noopener'; }
+      var range = (p.startDate || '') + (p.endDate ? ' \u2013 ' + p.endDate : (status === 'ongoing' ? ' \u2013 ' + CP_PRESENT : ''));
+      var title = document.createElement('p'); title.className = 'cp-title'; title.textContent = p.title || '';
+      var desc = document.createElement('p'); desc.className = 'cp-desc'; desc.textContent = p.description || '';
+      var meta = document.createElement('p'); meta.className = 'cp-meta'; meta.textContent = range;
+      row.appendChild(title); row.appendChild(desc); row.appendChild(meta);
+      if(p.link){ var arrow = document.createElement('span'); arrow.className = 'cp-arrow'; arrow.textContent = '\u2197'; row.appendChild(arrow); }
+      container.appendChild(row);
+    });
+  }
+
+  function setProjectsFilter(status, btn){
+    document.querySelectorAll('.cp-toggle-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    renderCurrentProjects(status);
+  }
+
   /* CALENDAR */
-  var CAL_EVENTS = [
-    {date:'2025-05-19', title:'Electronic and New Media Arts · Final Course Exhibition', venue:'Universidad del Norte · Barranquilla, Colombia', badge:'Exhibition'},
-    {date:'2026-07-14', title:'Escuela de Verano CLACSO - UNINORTE', venue:'Universidad del Norte · Barranquilla, Colombia', badge:'Escuela de Verano'},
-    {date:'2026-07-15', title:'Escuela de Verano CLACSO - UNINORTE', venue:'Universidad del Norte · Barranquilla, Colombia', badge:'Escuela de Verano'},
-    {date:'2026-07-16', title:'Escuela de Verano CLACSO - UNINORTE', venue:'Universidad del Norte · Barranquilla, Colombia', badge:'Escuela de Verano'},
-  ];
+  var CAL_EVENTS = [];
   var calYear = 2025;
   var MONTH_NAMES = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
   var DAY_NAMES = ['Su','Mo','Tu','We','Th','Fr','Sa'];
@@ -1467,7 +1547,7 @@
     calYear = new Date().getFullYear();
     document.getElementById('cal-overlay').style.display = 'block';
     document.body.style.overflow = 'hidden';
-    renderCalendar();
+    dataReady.then(renderCalendar);
   }
   function closeCalendar() {
     document.getElementById('cal-overlay').style.display = 'none';
